@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 60rem);
+    
+    border: 5px solid;
+    border-radius: 1rem;
+    
+    padding: 1.4rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input, button {
+    padding: 0.5rem;
+    margin-block: .5rem;
+}
+
+h1, input[type="submit"], button, a {
+    align-self: center;
+}
+
+a {
+    text-decoration: none;
+}
