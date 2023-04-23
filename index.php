@@ -11,6 +11,7 @@
         session_start();
 
         $_SESSION['username'] = $_COOKIE['username'];
+        $_SESSION['firstname'] = $_COOKIE['firstname'];
         header('Location: home.php');
 
     } else {

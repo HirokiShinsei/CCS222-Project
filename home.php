@@ -7,6 +7,8 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Welcome, <?php if (isset($_SESSION['username'])) echo $_SESSION['username'] ?></h1>
+    <?php include "header.php" ?>
+
+    
 </body>
 </html>

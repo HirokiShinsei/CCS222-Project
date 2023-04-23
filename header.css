@@ -1,0 +1,104 @@
+@font-face {
+    font-family: nunito-reg;
+    src: url(Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: nunito-black;
+    src: url(Nunito-Black.ttf);
+}
+
+@font-face {
+    font-family: nunito-xtrabold;
+    src: url(Nunito-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: nunito-xtrabold;
+    src: url(Nunito-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: nunito-semibold;
+    src: url(Nunito-SemiBold.ttf);
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    border-bottom: solid 1px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    height: 4rem;
+}
+
+h2 {
+    font-family: nunito-black;
+}
+
+p {
+    font-family: nunito-reg;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 8rem;
+}
+
+.icon {
+    max-width: 1rem;
+}
+
+.searchbar {
+    filter: drop-shadow(0 4px 2px #0004);
+    width: max(2rem, 50vw);
+    height: 30px;
+}
+
+.user {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 0.5rem;
+    justify-content: center;
+
+    width: 12rem;
+}
+
+.user > p {
+    grid-column: 2;
+    margin-block: -0rem;
+}
+
+#firstname {
+    font-family: nunito-semibold;
+
+    position: relative;
+    top: 0.1rem;
+}
+
+#firstname::after {
+    content: attr(username);
+
+    position: absolute;
+    left: 0;
+    top: 1.2rem;
+
+    font-size: 0.75rem;
+    font-family: nunito-reg;
+}
+
+.user > svg  {
+    grid-column: 1;
+}
+
+.redirect {
+    text-decoration: none;
+    font-family: nunito-semibold;
+    color: #2774E9;
+}
