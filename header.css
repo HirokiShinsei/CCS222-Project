@@ -147,16 +147,16 @@ p {
 
 .user {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     column-gap: 0.5rem;
     justify-content: center;
 
-    width: 12rem;
+    /* min-width: 10rem; */
+    position: relative;
 }
 
 .user > p {
     grid-column: 2;
-    margin-block: -0rem;
 }
 
 #firstname {
@@ -166,19 +166,38 @@ p {
     top: 0.1rem;
 }
 
-#firstname::after {
-    content: attr(username);
-
-    position: absolute;
-    left: 0;
-    top: 1.2rem;
-
+#username {
     font-size: 0.75rem;
     font-family: nunito-reg;
 }
 
 .user > svg  {
     grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.user::after {
+    content: 'Log out?';
+    position: absolute;
+    inset: -0.2rem;
+    
+    background-color: #222;
+    border-radius: 2rem;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: nunito-black;
+    font-size: 1.2rem;
+    color: white;
+
+    opacity: 0;
+    transition: opacity 200ms;
+}
+
+.user:hover::after {
+    opacity: 1;
 }
 
 .redirect {

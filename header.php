@@ -68,6 +68,7 @@
                 </form>
             </foreignObject>
         </svg>
+        
         <?php if (isset($_SESSION['username'])) {
         echo 
         '
@@ -75,7 +76,8 @@
             <svg width="40" height="40">
                 <circle cx="20" cy="20" r="20" fill="black" />
             </svg>
-            <p id="firstname" username="' . $_SESSION['username'] . '">' . $_SESSION['firstname'] . '</p>
+            <p id="firstname">' . $_SESSION['firstname'] . '</p>
+            <p id="username">' . $_SESSION['username'] . '</p>
         </div>
         ';
         } else {

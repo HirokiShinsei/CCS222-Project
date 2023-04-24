@@ -10,4 +10,15 @@ window.addEventListener('click', e => {
     if(!optionBtn.contains(e.target)) {
         optionBox.classList.remove('dropdown-box-active');
     }
+
+    if (document.querySelector('.user').contains(e.target)) {
+        console.log("Clicked");
+
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'logout.php');
+        xhr.send();
+
+        window.location.href = "login.php";
+    }
 });
