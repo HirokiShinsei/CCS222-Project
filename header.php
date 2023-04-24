@@ -6,7 +6,7 @@
     session_start();
     
     function setDropdowns() {
-        if ($_SERVER['PHP_SELF'] != '/ccs-final/home.php') {
+        if ($_SERVER['PHP_SELF'] != '/CCS222-Project/home.php') {
             echo 
             '
             <div class="dropdown-item" onclick="window.location.href = \'home.php\';">
@@ -15,7 +15,7 @@
             </div>
             ';
         }
-        if ($_SERVER['PHP_SELF'] != '/ccs-final/communities.php') {
+        if ($_SERVER['PHP_SELF'] != '/CCS222-Project/communities.php') {
             echo 
             '
             <div class="dropdown-item" onclick="window.location.href = \'communities.php\';">
@@ -24,7 +24,7 @@
             </div>
             ';
         }
-        if ($_SERVER['PHP_SELF'] != '/ccs-final/trending.php') {
+        if ($_SERVER['PHP_SELF'] != '/CCS222-Project/trending.php') {
             echo 
             '
             <div class="dropdown-item" onclick="window.location.href = \'trending.php\';">
@@ -37,13 +37,13 @@
 
     function setMainTab() {
         switch($_SERVER['PHP_SELF']) {
-            case '/ccs-final/home.php':
+            case '/CCS222-Project/home.php':
                 echo '<img src="img/home.png" alt="" class="icon"><p>Home</p>';
                 break;
-            case '/ccs-final/communities.php':
+            case '/CCS222-Project/communities.php':
                 echo '<img src="img/add.png" alt="" class="icon"><p>Communities</p>';
                 break;
-            case '/ccs-final/trending.php':
+            case '/CCS222-Project/trending.php':
                 echo '<img src="img/trend.png" alt="" class="icon"><p>Trending</p>';
                 break;
         }
