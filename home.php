@@ -7,12 +7,6 @@
     <title>Home</title>
 </head>
 <body>
-<<<<<<< HEAD
     <?php include "header.php" ?>
-
-    
-=======
-    <h1>Welcome, <?php if (isset($_SESSION['username'])) echo $_SESSION['username'] ?></h1>
->>>>>>> bdcbdf3 (Add files via upload)
 </body>
 </html>
