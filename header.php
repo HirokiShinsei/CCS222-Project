@@ -62,7 +62,11 @@
         <svg class="searchbar">
             <rect x="0" y="0" rx="15" ry="15" width="100%" height="100%" stroke="none" fill="#e4e4e4"/>
             <image href="img/search.png" x="-22%" y="25%" width="50%" height="50%"/>
-            
+            <foreignObject x="7%" y="0" width=85% height=100%>
+                <form action="" method="post" id="searchtext">
+                    <input type="text" name="searchquery" placeholder="Search a post or article">
+                </form>
+            </foreignObject>
         </svg>
         <?php if (isset($_SESSION['username'])) {
         echo 

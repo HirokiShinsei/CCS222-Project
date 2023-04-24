@@ -123,6 +123,28 @@ p {
     cursor: text;
 }
 
+#searchtext {
+    height: 100%;
+    width: 100%;
+}
+
+#searchtext > input {
+    display: block;
+    margin-block: auto;
+    height: 100%;
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: 1rem;
+    font-family: nunito-reg;
+}
+
+#searchtext > input:focus {
+    outline: none;
+}
+
 .user {
     display: grid;
     grid-template-columns: auto auto;
