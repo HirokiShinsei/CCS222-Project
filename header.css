@@ -42,23 +42,85 @@ h2 {
 
 p {
     font-family: nunito-reg;
-}
-
-.dropdown {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 8rem;
+    margin-block: 0;
+    user-select: none;
 }
 
 .icon {
     max-width: 1rem;
+    object-fit: contain;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 9rem;
+
+    position: relative;
+    cursor: pointer;
+
+    padding-block: 0.2rem;
+    border-radius: 0.6rem;
+
+    transition: 200ms;
+}
+
+.dropdown p {
+    margin-right: 1rem;
+    margin-left: 0.4rem;
+}
+
+.dropdown .icon {
+    width: 0.9rem;
+}
+
+.dropdown-box {
+    position: absolute;
+    top: 0;
+    width: 110%;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 4px lightgray;
+        
+    transform-origin: top;
+    object-fit: cover;
+    overflow: hidden;
+
+    display: none;
+}
+
+.dropdown-box > section {
+    background-color: transparent;
+    height: 1.8rem;
+}
+
+.dropdown-box-active {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    column-gap: 0.5rem;
+    padding: 0.3rem 1rem;
+
+    background-color: white;
+    font-size: 0.8rem;
+}
+
+.dropdown-item:hover {
+    background-color: lightgray;
 }
 
 .searchbar {
     filter: drop-shadow(0 4px 2px #0004);
     width: max(2rem, 50vw);
     height: 30px;
+
+    cursor: text;
 }
 
 .user {
