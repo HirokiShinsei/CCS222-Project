@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
     font-family: nunito-reg;
     src: url(Nunito-Regular.ttf);
@@ -18,12 +19,22 @@ form {
     flex-direction: column;
     align-items: center;
     width: 30rem;
+=======
+form {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 60rem);
+    
+    border: 5px solid;
+    border-radius: 1rem;
+>>>>>>> bdcbdf3 (Add files via upload)
     
     padding: 1.4rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+<<<<<<< HEAD
 
     --black-font: nunito-black;
     --bold-font: nunito-xtrabold;
@@ -127,4 +138,19 @@ a.forgot {
     text-decoration: none;
 
     margin-block: 0.6rem 1.2rem;
+=======
+}
+
+input, button {
+    padding: 0.5rem;
+    margin-block: .5rem;
+}
+
+h1, input[type="submit"], button, a {
+    align-self: center;
+}
+
+a {
+    text-decoration: none;
+>>>>>>> bdcbdf3 (Add files via upload)
 }

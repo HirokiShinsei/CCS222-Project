@@ -11,7 +11,10 @@
         session_start();
 
         $_SESSION['username'] = $_COOKIE['username'];
+<<<<<<< HEAD
         $_SESSION['firstname'] = $_COOKIE['firstname'];
+=======
+>>>>>>> bdcbdf3 (Add files via upload)
         header('Location: home.php');
 
     } else {
