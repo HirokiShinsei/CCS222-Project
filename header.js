@@ -1,5 +1,5 @@
 const optionBtn = document.querySelector('#dropdown');
-const optionBox = document.querySelector('#dropdown-box');
+const optionBox = document.querySelector('.dropdown-box');
 const optionItem = document.querySelectorAll('.dropdown-item');
 
 optionBtn.onclick = function(e) {
@@ -11,7 +11,7 @@ window.addEventListener('click', e => {
         optionBox.classList.remove('dropdown-box-active');
     }
 
-    if (document.querySelector('#user').contains(e.target)) {
+    if (document.querySelector('.user').contains(e.target)) {
         console.log("Clicked");
 
         let xhr = new XMLHttpRequest();

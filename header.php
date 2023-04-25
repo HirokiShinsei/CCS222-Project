@@ -60,7 +60,7 @@ function setMainTab() {
         <img src="img/drop down.png" alt="dropdownicon" class="icon">
 
         <!-- Dropdown box -->
-        <nav id="dropdown-box">
+        <nav class="dropdown-box">
             <section></section>
 
             <!-- Dropdown options -->
@@ -83,7 +83,7 @@ function setMainTab() {
     <?php if (isset($_SESSION['username'])) {
     echo 
     '
-    <div id="user">
+    <div class="user">
         <svg width="40" height="40">
             <circle cx="20" cy="20" r="20" fill="black" />
         </svg>

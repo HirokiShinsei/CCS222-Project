@@ -75,7 +75,7 @@ body {
     width: 0.9rem;
 }
 
-#dropdown-box {
+.dropdown-box {
     position: absolute;
     top: 0;
     width: 110%;
@@ -93,7 +93,7 @@ body {
     display: none;
 }
 
-#dropdown-box > section {
+.dropdown-box > section {
     background-color: transparent;
     height: 1.8rem;
 }
@@ -102,7 +102,7 @@ body {
     display: block;
 }
 
-#main-header > .dropdown-item {
+#main-header .dropdown-item {
     display: flex;
     column-gap: 0.5rem;
     padding: 0.3rem 1rem;
@@ -111,7 +111,7 @@ body {
     font-size: 0.8rem;
 }
 
-#main-header > .dropdown-item:hover {
+#main-header .dropdown-item:hover {
     background-color: lightgray;
 }
 
@@ -145,7 +145,7 @@ body {
     outline: none;
 }
 
-#user {
+.user {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 0.5rem;
@@ -155,7 +155,7 @@ body {
     position: relative;
 }
 
-#user > p {
+.user > p {
     grid-column: 2;
 }
 
@@ -171,12 +171,12 @@ body {
     font-family: nunito-reg;
 }
 
-#user > svg  {
+.user > svg  {
     grid-column: 1;
     grid-row: 1 / span 2;
 }
 
-#user::after {
+.user::after {
     content: 'Log out?';
     position: absolute;
     inset: -0.2rem;
@@ -196,7 +196,7 @@ body {
     transition: opacity 200ms;
 }
 
-#user:hover::after {
+.user:hover::after {
     opacity: 1;
 }
 
