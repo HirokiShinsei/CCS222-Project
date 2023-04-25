@@ -89,6 +89,17 @@ function setMainTab() {
         </svg>
         <p id="firstname">' . $_SESSION['firstname'] . '</p>
         <p id="username">' . $_SESSION['username'] . '</p>
+        
+        <div class="user-dropdown">
+            <div class="dropdown-item" id="profile">
+                <img src="img/trend.png" alt="" class="icon">
+                <p>Profile</p>
+            </div>
+            <div class="dropdown-item" id="logout">
+                <img src="img/trend.png" alt="" class="icon">
+                <p>Log Out</p>
+            </div>
+        </div>
     </div>
     ';
     } else {

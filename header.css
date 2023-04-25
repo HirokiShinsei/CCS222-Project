@@ -86,10 +86,7 @@ body {
     border-radius: 0.5rem;
     box-shadow: 2px 2px 4px lightgray;
         
-    transform-origin: top;
-    object-fit: cover;
     overflow: hidden;
-
     display: none;
 }
 
@@ -123,6 +120,10 @@ body {
     cursor: text;
 }
 
+#searchbar:focus-within > rect, #searchbar:hover > rect{
+    fill: #f5f5f5;
+}
+
 #searchtext {
     height: 100%;
     width: 100%;
@@ -151,7 +152,6 @@ body {
     column-gap: 0.5rem;
     justify-content: center;
 
-    /* min-width: 10rem; */
     position: relative;
 }
 
@@ -176,28 +176,23 @@ body {
     grid-row: 1 / span 2;
 }
 
-.user::after {
-    content: 'Log out?';
+.user-dropdown {
     position: absolute;
-    inset: -0.2rem;
-    
-    background-color: #222;
-    border-radius: 2rem;
-    
+    top: 120%;
+    width: 110%;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
-    font-family: nunito-black;
-    font-size: 1.2rem;
-    color: white;
-
-    opacity: 0;
-    transition: opacity 200ms;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 4px lightgray;
+        
+    overflow: hidden;
+    display: none;
 }
 
-.user:hover::after {
-    opacity: 1;
+.user-dropdown-active {
+    display: block;
 }
 
 #redirect {
