@@ -27,7 +27,7 @@ body {
     margin: 0;
 }
 
-header {
+#main-header {
     display: flex;
     border-bottom: solid 1px;
     justify-content: space-evenly;
@@ -36,22 +36,22 @@ header {
     height: 4rem;
 }
 
-h2 {
+#main-header h2 {
     font-family: nunito-black;
 }
 
-p {
+#main-header p {
     font-family: nunito-reg;
     margin-block: 0;
     user-select: none;
 }
 
-.icon {
+#main-header .icon {
     max-width: 1rem;
     object-fit: contain;
 }
 
-.dropdown {
+#dropdown {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,16 +66,16 @@ p {
     transition: 200ms;
 }
 
-.dropdown p {
+#dropdown p {
     margin-right: 1rem;
     margin-left: 0.4rem;
 }
 
-.dropdown .icon {
+#dropdown .icon {
     width: 0.9rem;
 }
 
-.dropdown-box {
+#dropdown-box {
     position: absolute;
     top: 0;
     width: 110%;
@@ -93,7 +93,7 @@ p {
     display: none;
 }
 
-.dropdown-box > section {
+#dropdown-box > section {
     background-color: transparent;
     height: 1.8rem;
 }
@@ -102,7 +102,7 @@ p {
     display: block;
 }
 
-.dropdown-item {
+#main-header > .dropdown-item {
     display: flex;
     column-gap: 0.5rem;
     padding: 0.3rem 1rem;
@@ -111,11 +111,11 @@ p {
     font-size: 0.8rem;
 }
 
-.dropdown-item:hover {
+#main-header > .dropdown-item:hover {
     background-color: lightgray;
 }
 
-.searchbar {
+#searchbar {
     filter: drop-shadow(0 4px 2px #0004);
     width: max(2rem, 50vw);
     height: 30px;
@@ -145,7 +145,7 @@ p {
     outline: none;
 }
 
-.user {
+#user {
     display: grid;
     grid-template-columns: auto 1fr;
     column-gap: 0.5rem;
@@ -155,7 +155,7 @@ p {
     position: relative;
 }
 
-.user > p {
+#user > p {
     grid-column: 2;
 }
 
@@ -171,12 +171,12 @@ p {
     font-family: nunito-reg;
 }
 
-.user > svg  {
+#user > svg  {
     grid-column: 1;
     grid-row: 1 / span 2;
 }
 
-.user::after {
+#user::after {
     content: 'Log out?';
     position: absolute;
     inset: -0.2rem;
@@ -196,11 +196,11 @@ p {
     transition: opacity 200ms;
 }
 
-.user:hover::after {
+#user:hover::after {
     opacity: 1;
 }
 
-.redirect {
+#redirect {
     text-decoration: none;
     font-family: nunito-semibold;
     color: #2774E9;
