@@ -23,180 +23,174 @@
     src: url(Nunito-SemiBold.ttf);
 }
 
-body {
-    margin: 0;
+:root {
+    --dark-color-1: '';
+    --dark-color-2: '';
+    --light-color-1: '';
+    --light-color-2: '';
 }
 
-#main-header {
+header {
+    height: 4rem;
+
+    border-bottom: solid 1px black;
+
     display: flex;
-    border-bottom: solid 1px;
     justify-content: space-evenly;
     align-items: center;
-
-    height: 4rem;
 }
 
-#main-header h2 {
-    font-family: nunito-black;
-}
-
-#main-header p {
-    font-family: nunito-reg;
-    margin-block: 0;
+header h2, header p {
     user-select: none;
 }
 
-#main-header .icon {
-    max-width: 1rem;
-    object-fit: contain;
+header > h2 {
+    font-family: nunito-black;
+    margin: 0 2rem;
 }
 
-#dropdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 9rem;
+.icon {
+    width: 1rem;
+}
+
+#tab-box {
+    background-color: white;
+    
+    align-self: flex-start;
+    margin-top: 0.85rem;
 
     position: relative;
-    cursor: pointer;
-
-    padding-block: 0.2rem;
-    border-radius: 0.6rem;
-
-    transition: 200ms;
-}
-
-#dropdown p {
-    margin-right: 1rem;
-    margin-left: 0.4rem;
-}
-
-#dropdown .icon {
-    width: 0.9rem;
-}
-
-.dropdown-box {
-    position: absolute;
-    top: 0;
-    width: 110%;
-
     display: flex;
     flex-direction: column;
-
+    
+    width: 11rem;
     border-radius: 0.5rem;
-    box-shadow: 2px 2px 4px lightgray;
-        
+
+    /* To be changed on hover */
+    height: 2.25rem;
     overflow: hidden;
-    display: none;
+
 }
 
-.dropdown-box > section {
-    background-color: transparent;
-    height: 1.8rem;
+#tab-box:hover {
+    background-color: #f0f0f0;
+    box-shadow: 2px 2px 4px lightgray;
+
+    height: auto;
+    overflow-y: visible;
 }
 
-.dropdown-box-active {
-    display: block;
-}
-
-#main-header .dropdown-item {
+.tab-option {
+    padding: 0.5em 0.7em;
     display: flex;
-    column-gap: 0.5rem;
-    padding: 0.3rem 1rem;
+    align-items: center;
 
-    background-color: white;
-    font-size: 0.8rem;
 }
 
-#main-header .dropdown-item:hover {
+.tab-option:hover {
     background-color: lightgray;
 }
 
-#searchbar {
-    filter: drop-shadow(0 4px 2px #0004);
-    width: max(2rem, 50vw);
-    height: 30px;
-
-    cursor: text;
+.tab-option > img {
+    object-fit: contain;
 }
 
-#searchbar:focus-within > rect, #searchbar:hover > rect{
-    fill: #f5f5f5;
-}
+.tab-option > p {
+    margin: 0;
+    margin-left: 1rem;
 
-#searchtext {
-    height: 100%;
-    width: 100%;
-}
-
-#searchtext > input {
-    display: block;
-    margin-block: auto;
-    height: 100%;
-    width: 100%;
-
-    background-color: transparent;
-    border: none;
-
-    font-size: 1rem;
     font-family: nunito-reg;
 }
 
-#searchtext > input:focus {
-    outline: none;
-}
-
-.user {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 0.5rem;
-    justify-content: center;
-
-    position: relative;
-}
-
-.user > p {
-    grid-column: 2;
-}
-
-#firstname {
-    font-family: nunito-semibold;
-
-    position: relative;
-    top: 0.1rem;
-}
-
-#username {
-    font-size: 0.75rem;
-    font-family: nunito-reg;
-}
-
-.user > svg  {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-}
-
-.user-dropdown {
+.dropdown.icon {
     position: absolute;
-    top: 120%;
-    width: 110%;
+    right: 0.5rem;
+    top: 0.7rem;
 
-    display: flex;
-    flex-direction: column;
+    align-self: center;
+}
 
-    border-radius: 0.5rem;
+#searchbar {
+    display: flex; 
+    align-items: center;
+
+    background-color: #eaeaea;
+    border-radius: 2rem;
     box-shadow: 2px 2px 4px lightgray;
-        
+
+    padding: 0.4rem;
+    width: 40rem;
+}
+
+#searchbar:focus-within, #searchbar:hover {
+    background-color: #f5f5f5;
+}
+
+#searchbar > input {
+    background: none;
+    border: none;
+    outline: none;
+
+    width: 100%;
+    margin-left: 1rem;
+
+    font-family: nunito-reg;
+}
+
+#user-btn {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    align-self: flex-start;
+
+    height: 3.5rem;
+
+    margin-top: 0.35rem;
+    border-radius: 0.5rem;
+
     overflow: hidden;
-    display: none;
 }
 
-.user-dropdown-active {
-    display: block;
+#user-btn:hover {
+    background-color: #f0f0f0;
+    box-shadow: 2px 2px 4px lightgray;
+
+    height: auto;
+    overflow-y: visible;
 }
 
-#redirect {
-    text-decoration: none;
+#user-btn > svg {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+
+    transform: scale(0.8);
+}
+
+#user-btn > p {
+    padding-inline: 0.5rem;
+    grid-column: 2;
+    margin: 0;
+}
+
+#user-btn > .firstname {
     font-family: nunito-semibold;
-    color: #2774E9;
+    align-self: flex-end;
+    font-size: 1rem;
+}
+
+#user-btn > .username {
+    font-family: nunito-reg;
+    align-self: flex-start;
+    font-size: 0.7rem;
+}
+
+#user-btn > .tab-option {
+    grid-column: 1 / span 2;
+
+}
+
+a[href="login.php"] {
+    font-family: nunito-semibold;
+    color: blue;
+    text-decoration: none;
 }
