@@ -8,7 +8,7 @@
         <?php 
             if ($_SERVER['PHP_SELF'] == '/CCS222-Project/home.php') {
                 echo '
-                <div class="tab-option">
+                <div class="tab-option" first-option>
                     <img src="img/home.png" alt="" class="icon">
                     <p>Home</p>
                 </div>
@@ -24,7 +24,7 @@
             }
             else if ($_SERVER['PHP_SELF'] == '/CCS222-Project/communities.php') {
                 echo '
-                <div class="tab-option">
+                <div class="tab-option" first-option>
                     <img src="img/add.png" alt="" class="icon">
                     <p>Communities</p>
                 </div>
@@ -40,7 +40,7 @@
             }
             else if ($_SERVER['PHP_SELF'] == '/CCS222-Project/trending.php') {
                 echo '
-                <div class="tab-option">
+                <div class="tab-option" first-option>
                     <img src="img/trend.png" alt="" class="icon">
                     <p>Trending</p>
                 </div>
