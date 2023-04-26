@@ -65,6 +65,8 @@
                         $insert_data -> execute();
 
                         session_destroy();
+                        setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
+                        setcookie("firstname", $_SESSION['firstname'], time() + (86400 * 7), "/");
                         header('Location: login.php');
 
                     }
