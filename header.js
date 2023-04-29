@@ -10,6 +10,33 @@ logoutBtn.addEventListener('keydown', e => {
 const dropdowns = document.querySelectorAll('header > div');
 dropdowns.forEach(div => navigateThrough(div));
 
+// Tab options 
+const tabOptions = document.querySelectorAll('header > #tab-box > .tab-option:not([first-option])');
+tabOptions.forEach(option => {
+    option.addEventListener('keydown', e => {
+        if (e.key === 'Enter') {
+            const name = option.querySelector('p');
+            
+            switch (name.innerText) {
+                case 'Home':
+                    window.location.href='home.php';
+                    break;
+                case 'Communities':
+                    window.location.href='communities.php';
+                    break;
+                case 'Trending':
+                    window.location.href='trending.php';
+                    break;
+            }
+        }
+    });
+});
+
+// Remove focus from options dropdown if first option is selected
+document.querySelector('header > #tab-box > .tab-option[first-option]').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.querySelector('header > #tab-box > .tab-option[first-option]').blur();
+});
+
 // Search box
 const searchInput = document.querySelector('#searchbar > input');
 
@@ -73,7 +100,6 @@ function navigateThrough(div) {
         if (e.key === 'ArrowDown') {
             e.preventDefault();
             const children = div.querySelectorAll('.tab-option');
-            console.log(children);
             
             const currentIndex = Array.from(children).indexOf(document.activeElement);
             const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
@@ -82,7 +108,6 @@ function navigateThrough(div) {
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
             const children = div.querySelectorAll('.tab-option');
-            console.log(children);
             const currentIndex = Array.from(children).indexOf(document.activeElement);
             const prevIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
             children[prevIndex].focus();
