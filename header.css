@@ -80,7 +80,7 @@ header > h2 {
     background-color: var(--light-color-2);
 } */
 
-#tab-box:hover, #tab-box:focus {
+#tab-box:hover, #tab-box:focus, #tab-box:focus-within {
     /* box-shadow: 2px 2px 4px #0007; */
     outline: solid 2px var(--light-color-1);
     max-height: 10rem;
@@ -92,11 +92,8 @@ header > h2 {
     align-items: center;
 }
 
-/* .tab-option:not(:hover) {
-    background-color: var(--light-color-1);
-}
-*/
-.tab-option:hover {
+.tab-option:hover, .tab-option:focus {
+    outline: none;
     background-color: var(--light-color-1);
 }
 
@@ -129,6 +126,12 @@ header > h2 {
 
     padding: 0.4rem;
     width: 40rem;
+    position: relative;
+    isolation: isolate;
+}
+
+#searchbar.start-input {
+    box-shadow: none;
 }
 
 #searchbar > input {
@@ -141,6 +144,34 @@ header > h2 {
 
     font-family: nunito-reg;
     color: black;
+}
+
+#search-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: white;
+    z-index: -1;
+
+    display: none;
+}
+
+#searchbar.start-input > #search-box {
+    display: block;
+}
+
+#search-box section {
+    padding-left: 1rem;
+}
+
+#search-box section:first-child {
+    margin-top: 2.2rem;
+}
+
+#search-box section.active {
+    background-color: gray;
 }
 
 #user-btn {
@@ -164,7 +195,7 @@ header > h2 {
     
 }
 
-#user-btn:hover {
+#user-btn:hover, #user-btn:focus, #user-btn:focus-within {
     /* background-color: var(--light-color-1); */
     outline: solid 2px var(--light-color-1);
 
