@@ -155,6 +155,10 @@ header > h2 {
     background-color: white;
     z-index: -1;
 
+    box-shadow: 2px 2px 4px #0007;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
     display: none;
 }
 
@@ -164,6 +168,12 @@ header > h2 {
 
 #search-box section {
     padding-left: 1rem;
+    font-family: nunito-reg;
+    
+    min-height: 2rem;
+    
+    display: flex;
+    align-items: center;
 }
 
 #search-box section:first-child {
@@ -171,7 +181,7 @@ header > h2 {
 }
 
 #search-box section.active {
-    background-color: gray;
+    background-color: var(--light-color-1);
 }
 
 #user-btn {

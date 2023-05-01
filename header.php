@@ -63,7 +63,10 @@
     <form action="" method="get" id="searchbar">
         <!-- Search box -->
         <div id="search-box">
-            <section>Option 1</section>
+            <!-- This is where the typed suggestion is placed -->
+            <section></section> 
+
+            <!-- Recent options -->
             <section>Option 2</section>
             <section>Option 3</section>
         </div>
