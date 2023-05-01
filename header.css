@@ -76,7 +76,11 @@ header > h2 {
     transition: 400ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-#tab-box:hover, #tab-box:focus {
+/* #tab-box:not(:hover) > .tab-option[first-option] {
+    background-color: var(--light-color-2);
+} */
+
+#tab-box:hover, #tab-box:focus, #tab-box:focus-within {
     /* box-shadow: 2px 2px 4px #0007; */
     outline: solid 2px var(--light-color-1);
     max-height: 10rem;
@@ -86,12 +90,10 @@ header > h2 {
     padding: 0.5em 0.7em;
     display: flex;
     align-items: center;
-
-    transition: background-color 200ms;
-    background-color: transparent;
 }
 
-.tab-option:hover {
+.tab-option:hover, .tab-option:focus {
+    outline: none;
     background-color: var(--light-color-1);
 }
 
@@ -124,6 +126,12 @@ header > h2 {
 
     padding: 0.4rem;
     width: 40rem;
+    position: relative;
+    isolation: isolate;
+}
+
+#searchbar.start-input {
+    box-shadow: none;
 }
 
 #searchbar > input {
@@ -136,6 +144,44 @@ header > h2 {
 
     font-family: nunito-reg;
     color: black;
+}
+
+#search-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    background-color: white;
+    z-index: -1;
+
+    box-shadow: 2px 2px 4px #0007;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+    display: none;
+}
+
+#searchbar.start-input > #search-box {
+    display: block;
+}
+
+#search-box section {
+    padding-left: 1rem;
+    font-family: nunito-reg;
+    
+    min-height: 2rem;
+    
+    display: flex;
+    align-items: center;
+}
+
+#search-box section:first-child {
+    margin-top: 2.2rem;
+}
+
+#search-box section.active {
+    background-color: var(--light-color-1);
 }
 
 #user-btn {
@@ -159,7 +205,7 @@ header > h2 {
     
 }
 
-#user-btn:hover {
+#user-btn:hover, #user-btn:focus, #user-btn:focus-within {
     /* background-color: var(--light-color-1); */
     outline: solid 2px var(--light-color-1);
 
