@@ -13,6 +13,20 @@
 <body>
     <?php include "header.php" ?>
 
+    <div class="post-tab">
+        <svg width=35 height=35>
+            <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+        </svg>
+        <input type="text" placeholder="Create a post" onclick="window.location.href='create-a-post.php'">
+        <img src="img/image.png" alt="" class="icon">
+    </div>
+    <div class="post-tab">
+        <svg width=35 height=35>
+            <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+        </svg>
+        <input type="text" placeholder="Create a post" onclick="window.location.href='create-a-post.php'">
+        <img src="img/image.png" alt="" class="icon">
+    </div>
     <section class="post-section">
     <?php
         $db_file = __DIR__ . '\forum_database.db';

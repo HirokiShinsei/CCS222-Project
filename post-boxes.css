@@ -3,14 +3,45 @@ h4.username {
     margin-inline: 0.5rem;
 }
 
+
+.post-tab {
+    width: calc(100% - 36rem);
+    background-color: lightgray;
+    
+    display: flex;
+    align-items: center;
+
+    margin: 2rem auto 0;
+    padding: 1rem;
+
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px 0 gray;
+
+    font-family: nunito-reg;
+}
+
+.post-tab input {
+    flex-grow: 1;
+
+    background-color: white;
+    
+    height: 1.8rem;
+    margin-inline: 1rem;
+    
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.post-tab img {
+    width: 2rem;
+}
+
 .post-section {
     width: calc(100% - 30rem);
     display: flex;
     flex-direction: column-reverse;
     
     margin-inline: auto;
-
-    /* background-color: azure; */
 }
 
 .post-container {
