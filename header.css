@@ -29,8 +29,11 @@ body {
     --medium-color: #bc6c25;
     --light-color-1: #dda15e;
     --light-color-2: #fefae0;
-
+    
     background-color: var(--light-color-2);
+    
+    margin: 0;
+    overflow-y: overlay;
 }
 
 header {
