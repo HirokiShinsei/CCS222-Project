@@ -27,6 +27,9 @@ tabOptions.forEach(option => {
                 case 'Trending':
                     window.location.href='trending.php';
                     break;
+                case 'Create a post':
+                    window.location.href='create-a-post.php';
+                    break;
             }
         }
     });

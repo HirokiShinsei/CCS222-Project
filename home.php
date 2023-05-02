@@ -39,7 +39,7 @@
                                 <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
                             </svg>
                             <h4 class="username">' . $post_user['username'] . '</h4>
-                            <p>' . $post_user['link'] . '</p>
+                            <p>' . $post['date'] . '</p>
                         </div>
                         <div class="post-content">
                             <h2>' . $post['title'] . '</h2>
@@ -59,7 +59,8 @@
                                 <svg width=30 height=30>
                                     <circle cx=15 cy=15 r=15 fill=black/>
                                 </svg>
-                                <h4 class="username">' . $comment['name'] . ':</h4>
+                                <h4 class="username">' . $comment['name'] . '</h4>
+                                <p>(' . $comment['date'] . ')</p>
                             </div>
                             <p>' . $comment['content'] . '</p>
                         </div>';
