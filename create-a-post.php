@@ -22,13 +22,17 @@
             $stmt = $db -> prepare('SELECT * FROM users WHERE username = :username');
             $stmt -> bindParam(':username', $_SESSION['username']);
             $stmt -> execute();
-            $_SESSION['user_id'] = $stmt -> fetch(PDO::FETCH_ASSOC);
+            $_SESSION['user_id'] = $stmt -> fetch(PDO::FETCH_ASSOC)['user_id'];
+
+            // Get current date and time
+            $date = new DateTime("now", new DateTimeZone("Asia/Manila"));
 
             // Insert post data into a new row (in table posts)
-            $stmt = $db -> prepare('INSERT INTO posts (user_id, title, content) VALUES (:userID, :title, :content)');
+            $stmt = $db -> prepare('INSERT INTO posts (user_id, title, content, date) VALUES (:userID, :title, :content, :date)');
             $stmt -> bindParam(':userID', $_SESSION['user_id'], PDO::PARAM_INT);
             $stmt -> bindParam(':title', $_POST['title'], PDO::PARAM_STR);
             $stmt -> bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+            $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
             $stmt -> execute();
 
             // Redirect to home.php

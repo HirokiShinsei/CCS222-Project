@@ -1,16 +1,16 @@
 @font-face {
     font-family: nunito-reg;
-    src: url(Nunito-Regular.ttf);
+    src: url(fonts/Nunito-Regular.ttf);
 }
 
 @font-face {
     font-family: nunito-black;
-    src: url(Nunito-Black.ttf);
+    src: url(fonts/Nunito-Black.ttf);
 }
 
 @font-face {
     font-family: nunito-xtrabold;
-    src: url(Nunito-ExtraBold.ttf);
+    src: url(fonts/Nunito-ExtraBold.ttf);
 }
 
 form {
