@@ -81,7 +81,7 @@
                     <p>Communities</p>
                 </div>
                 <div class="tab-option" onclick="window.location.href=\'trending.php\'" tabindex=-1>
-                    <img src="img/home.png" alt="" class="icon">
+                    <img src="img/trend.png" alt="" class="icon">
                     <p>Trending</p>
                 </div>
                 ';
