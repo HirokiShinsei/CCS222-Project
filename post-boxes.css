@@ -3,7 +3,6 @@ h4.username {
     margin-inline: 0.5rem;
 }
 
-
 .post-tab {
     width: calc(100% - 36rem);
     background-color: lightgray;
@@ -35,6 +34,38 @@ h4.username {
 .post-tab img {
     width: 2rem;
 }
+
+
+/* best-hot-new */
+.group {
+    margin-right: 2rem; 
+    font-style: bold;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.reddit-button {
+    padding: 8px 16px;
+    border-radius: 4px; /* Adjust the value to change the roundness */
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.reddit-button:hover {
+    background-color: white;
+    opacity: 0.8;
+}
+
+.reddit-button:active {
+    opacity: 1;
+    border-color: #999;
+}
+
 
 .post-section {
     width: calc(100% - 30rem);

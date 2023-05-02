@@ -20,13 +20,33 @@
         <input type="text" placeholder="Create a post" onclick="window.location.href='create-a-post.php'">
         <img src="img/image.png" alt="" class="icon">
     </div>
+
+    <!-- /* best-hot-new */ -->
     <div class="post-tab">
-        <svg width=35 height=35>
-            <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
-        </svg>
-        <input type="text" placeholder="Create a post" onclick="window.location.href='create-a-post.php'">
-        <img src="img/image.png" alt="" class="icon">
+
+    <div class="group">
+        <a href="#" class="reddit-button">
+            <img src="img/hot.png" alt="" class="icon"/>
+            <span class="txt-hot"><span>Hot</span></span>
+        </a>
     </div>
+
+    <div class="group">
+        <a href="#" class="reddit-button">
+            <img src="img/new.png" alt="" class="icon" />
+            <span class="new"><span>New</span></span>
+        </a>
+    </div>
+
+    <div class="group">
+        <a href="#" class="reddit-button">
+            <img src="img/top.png" alt="" class="icon" />
+            <span class="top"><span>Top</span></span>
+        </a>
+    </div>
+
+    </div>
+
     <section class="post-section">
     <?php
         $db_file = __DIR__ . '\forum_database.db';
