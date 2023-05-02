@@ -36,12 +36,12 @@
 
                     } else {
                         
-                        $_SESSION['firstname'] = $row['firstname'];
-                        $_SESSION['lastname'] = $row['lastname'];
+                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['user-link'] = $row['link'];
                         
-                        setcookie("firstname", $_SESSION['firstname'], time() + (86400 * 7), "/");
                         setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
-
+                        setcookie("user-link", $_SESSION['user-link'], time() + (86400 * 7), "/");
+                        
                         header('Location: home.php');
                     }
                 }

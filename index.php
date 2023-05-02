@@ -12,7 +12,7 @@
         session_start();
 
         $_SESSION['username'] = $_COOKIE['username'];
-        $_SESSION['firstname'] = $_COOKIE['firstname'];
+        $_SESSION['user-link'] = $_COOKIE['user-link'];
 
         header('Location: home.php');
     } else {
