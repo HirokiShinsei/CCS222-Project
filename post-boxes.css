@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    overflow-y: overlay;
+}
+
+h4.username {
+    margin: 0;
+    margin-inline: 0.5rem;
+}
+
+.post-section {
+    width: calc(100% - 30rem);
+    display: flex;
+    flex-direction: column-reverse;
+    
+    margin-inline: auto;
+
+    /* background-color: azure; */
+}
+
+.post-container {
+    background-color: lightgray;
+    
+    display: flex;
+    flex-direction: column;
+
+    margin: 2rem;
+    padding: 1rem 3rem;
+
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px 0 gray;
+
+    font-family: nunito-reg;
+}
+
+.post-container hr {
+    border: none;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+}
+
+.post-user {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    
+    width: fit-content;
+}
+
+.post-user * {
+    grid-column: 2;
+    margin: 0;
+}
+
+.post-user svg {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+}
+
+.post-user p {
+    font-size: 0.7rem;
+    margin-left: 0.5rem;
+}
+
+.comment-container {
+    margin-left: 1rem;
+}
+
+.comment-container div {
+    display: flex;
+    align-items: center;
+}
+
+form.comment-box {
+    display: flex;
+    align-items: flex-end;
+    
+    --height: 35px;
+}   
+
+form.comment-box div {
+    display: flex;
+    align-items: center;
+
+}
+
+form.comment-box input[type="submit"] {
+    height: var(--height);
+}
+
+form.comment-box textarea {
+    resize: none;
+    
+    margin-inline: 1.3rem;
+    border-radius: 0.5rem;
+    padding-block: calc(var(--height) / 7);
+    
+    flex-grow: 1;
+    box-sizing: border-box;
+    overflow-y: hidden;
+
+    height: var(--height);
+    min-height: var(--height);
+    
+    font-family: nunito-reg;
+    font-size: 1rem;
+}
+
+form.comment-box textarea:focus {
+    outline: none;
+}

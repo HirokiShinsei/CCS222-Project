@@ -82,7 +82,6 @@
             <svg width=50 height=50>
                 <circle cx=25 cy=25 r=25 fill=black />
             </svg>
-            <p class="firstname">' . $_SESSION['firstname'] . '</p>
             <p class="username">' . $_SESSION['username'] . '</p>
 
             <div class="tab-option" name="logout" tabindex=-1>

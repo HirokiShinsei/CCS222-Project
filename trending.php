@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trending</title>
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="tabs.css">
+    <link rel="stylesheet" href="post-boxes.css">
     <link rel="stylesheet" href="header.css">
     
 </head>

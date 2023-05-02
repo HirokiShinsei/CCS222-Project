@@ -7,20 +7,31 @@
     <title>Create a post</title>
     <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="tabs.css">
     
 </head>
 <body>
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            session_start();
+
+            // Open database file
             $db_file = __DIR__ . '\forum_database.db';
             $db = new PDO('sqlite:' . $db_file);
 
-            $stmt = $db -> prepare('INSERT INTO posts (title, content) VALUES (:title, :content)');
+            // Get current logged in user id from logged in username
+            $stmt = $db -> prepare('SELECT * FROM users WHERE username = :username');
+            $stmt -> bindParam(':username', $_SESSION['username']);
+            $stmt -> execute();
+            $_SESSION['user_id'] = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+            // Insert post data into a new row (in table posts)
+            $stmt = $db -> prepare('INSERT INTO posts (user_id, title, content) VALUES (:userID, :title, :content)');
+            $stmt -> bindParam(':userID', $_SESSION['user_id'], PDO::PARAM_INT);
             $stmt -> bindParam(':title', $_POST['title'], PDO::PARAM_STR);
             $stmt -> bindParam(':content', $_POST['content'], PDO::PARAM_STR);
             $stmt -> execute();
 
+            // Redirect to home.php
             header('location: home.php');
             exit;
         }
