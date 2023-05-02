@@ -21,7 +21,7 @@
                     <p>Trending</p>
                 </div>
                 <div class="tab-option" onclick="window.location.href=\'create-a-post.php\'" tabindex=-1>
-                    <img src="img/home.png" alt="" class="icon">
+                    <img src="img/new.png" alt="" class="icon">
                     <p>Create a post</p>
                 </div>
                 ';
@@ -41,7 +41,7 @@
                     <p>Trending</p>
                 </div>
                 <div class="tab-option" onclick="window.location.href=\'create-a-post.php\'" tabindex=-1>
-                    <img src="img/home.png" alt="" class="icon">
+                    <img src="img/new.png" alt="" class="icon">
                     <p>Create a post</p>
                 </div>
                 ';
@@ -61,7 +61,7 @@
                     <p>Communities</p>
                 </div>
                 <div class="tab-option" onclick="window.location.href=\'create-a-post.php\'" tabindex=-1>
-                    <img src="img/home.png" alt="" class="icon">
+                    <img src="img/new.png" alt="" class="icon">
                     <p>Create a post</p>
                 </div>
                 ';
@@ -69,7 +69,7 @@
             else if ($_SERVER['PHP_SELF'] == '/CCS222-Project/create-a-post.php') {
                 echo '
                 <div class="tab-option" first-option tabindex=-1>
-                    <img src="img/trend.png" alt="" class="icon">
+                    <img src="img/new.png" alt="" class="icon">
                     <p>Create a post</p>
                 </div>
                 <div class="tab-option" onclick="window.location.href=\'home.php\'" tabindex=-1>
