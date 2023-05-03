@@ -177,6 +177,12 @@ header > h2 {
     background-color: var(--light-color-1);
 }
 
+#search-box p {
+    font-family: nunito-reg;
+    font-size: 0.5rem;
+    margin-left: 0.5em;
+}
+
 #user-btn {
     background-color: var(--light-color-2);
 

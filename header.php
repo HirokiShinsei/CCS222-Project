@@ -1,5 +1,23 @@
 <header>
-    <?php session_start(); ?>
+    <?php session_start(); 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
+            if (isset($_COOKIE['RECENT_SEARCHES'])) {
+                $searches = json_decode($_COOKIE['RECENT_SEARCHES'], true);
+                
+                if (!(($index = array_search($_POST['search'], $searches)) === false)) {
+                    unset($searches[$index]);
+                }
+                array_unshift($searches, $_POST['search']);
+                
+                $searches = array_slice($searches, 0, 10);
+            } else {
+                $searches = array($_POST['search']);
+                
+            }
+            setcookie('RECENT_SEARCHES', json_encode($searches), time() + (86400 * 7), "/");
+            header($_SERVER['PHP_SELF']);
+        }
+    ?>
 
     <h2>DiscussDen</h2>
 
@@ -60,16 +78,28 @@
     </div>
 
     <!-- Search bar -->
-    <form action="" method="get" id="searchbar">
+    <form action="" method="post" id="searchbar">
         <!-- Search box -->
         <div id="search-box">
             <!-- This is where the typed suggestion is placed -->
             <section></section> 
 
-            <!-- Recent options -->
-            <div class="search-suggestions">
-                
+            <!-- Recent searches -->
+            <?php if (isset($searches)) echo '<p>RECENT SEARCHES</p>' ?>
+            <div id="recent-searches">
+                <?php
+                    if (isset($searches)) {
+                        
+                        foreach($searches as $search) {
+                                echo '<section>' . $search . '</section>';
+                        }
+                    }
+                ?>
             </div>
+
+            <!-- Search suggestions -->
+            <p id="search-suggest-label">SEARCH</p>
+            <div id="search-suggestions"></div>
         </div>
         
         <img src="img/search.png" alt="" class="icon">

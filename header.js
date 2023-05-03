@@ -43,7 +43,7 @@ document.querySelector('header > #tab-box > .tab-option[first-option]').addEvent
 // Search box
 const searchInput = document.querySelector('#searchbar > input');
 const searchBox = document.querySelector('#search-box');
-const searchSuggestions = document.querySelector('.search-suggestions');
+const searchSuggestions = document.querySelector('#search-suggestions');
 
 searchInput.addEventListener('input', () => {
     searchbar.classList.add('start-input');
@@ -68,14 +68,19 @@ searchInput.addEventListener('input', () => {
                 
                 if (suggestions.length > 0) {
                     suggestionsHTML = suggestions.map(suggestion => `<section>${suggestion}</section>`).join('');
+                    document.querySelector('#search-suggest-label').innerHTML = 'POSTS RELATED TO YOUR SEARCH';
+                    document.querySelector('#search-suggest-label').style.marginBlock = "1em";
                 } else {
+                    document.querySelector('#search-suggest-label').innerHTML = '';
+                    document.querySelector('#search-suggest-label').style.marginBlock = "0";
+
                     suggestionsHTML = '';
                 }
                 searchSuggestions.innerHTML = suggestionsHTML;
             }
         };
         xhr.send('searchTerm=' + encodeURIComponent(searchBar));
-
+        
     } else {
         searchbar.classList.remove('start-input');
         searchSuggestions.innerHTML = '';
