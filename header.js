@@ -42,20 +42,45 @@ document.querySelector('header > #tab-box > .tab-option[first-option]').addEvent
 
 // Search box
 const searchInput = document.querySelector('#searchbar > input');
+const searchBox = document.querySelector('#search-box');
+const searchSuggestions = document.querySelector('.search-suggestions');
 
 searchInput.addEventListener('input', () => {
     searchbar.classList.add('start-input');
     document.querySelectorAll('#search-box > section')[0].classList.add('active');
     
-    if (searchInput.value.length > 0) {
+    if (searchInput.value.trim().length > 0) {
         const searchSections = document.querySelectorAll('#search-box > section');
-        searchSections[0].innerHTML = searchInput.value;
+        searchSections[0].innerHTML = searchInput.value.trim();
         for (let i = 1; i < searchSections.length; i++) {
             searchSections[i].classList.remove('active'); 
         }
 
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'search-suggestions.php', true);
+        
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                const suggestions = JSON.parse(xhr.responseText);
+                let suggestionsHTML = '';
+                
+                if (suggestions.length > 0) {
+                    suggestionsHTML = suggestions.map(suggestion => `<section>${suggestion}</section>`).join('');
+                } else {
+                    suggestionsHTML = '<section>No suggestions</section>';
+                }
+                searchSuggestions.innerHTML = suggestionsHTML;
+            } else {
+                console.error(xhr.statusText);
+            }
+        };
+
+        xhr.send(`searchTerm=${searchInput.value.trim()}`);
+
+    } else {
+        searchbar.classList.remove('start-input');
+        searchSuggestions.innerHTML = '';
     }
-    else searchbar.classList.remove('start-input');
 });
 
 searchInput.addEventListener('blur', () => {
@@ -66,11 +91,9 @@ searchInput.addEventListener('blur', () => {
 })
 
 // Search options
-const searchBox = document.querySelector('#search-box');
-
 searchInput.addEventListener('keydown', e => {
     
-    if (searchInput.value != "") {
+    if (searchInput.value.trim().length > 0) {
         if (!searchbar.classList.contains('start-input') && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
             searchbar.classList.add('start-input');
             document.querySelectorAll('#search-box > section')[0].innerHTML = searchInput.value;

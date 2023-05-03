@@ -169,7 +169,7 @@ header > h2 {
     align-items: center;
 }
 
-#search-box section:first-child {
+#search-box > section:first-child {
     margin-top: 2.2rem;
 }
 

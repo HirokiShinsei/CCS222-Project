@@ -99,8 +99,9 @@
             <section></section> 
 
             <!-- Recent options -->
-            <section>Option 2</section>
-            <section>Option 3</section>
+            <div class="search-suggestions">
+                
+            </div>
         </div>
         
         <img src="img/search.png" alt="" class="icon">
