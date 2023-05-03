@@ -48,8 +48,9 @@ const searchSuggestions = document.querySelector('.search-suggestions');
 searchInput.addEventListener('input', () => {
     searchbar.classList.add('start-input');
     document.querySelectorAll('#search-box > section')[0].classList.add('active');
-    
-    if (searchInput.value.trim().length > 0) {
+    const searchBar = searchInput.value.trim();
+
+    if (searchBar.length > 0) {
         const searchSections = document.querySelectorAll('#search-box > section');
         searchSections[0].innerHTML = searchInput.value.trim();
         for (let i = 1; i < searchSections.length; i++) {
@@ -58,6 +59,7 @@ searchInput.addEventListener('input', () => {
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'search-suggestions.php', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         
         xhr.onload = () => {
             if (xhr.status === 200) {
@@ -67,15 +69,12 @@ searchInput.addEventListener('input', () => {
                 if (suggestions.length > 0) {
                     suggestionsHTML = suggestions.map(suggestion => `<section>${suggestion}</section>`).join('');
                 } else {
-                    suggestionsHTML = '<section>No suggestions</section>';
+                    suggestionsHTML = '';
                 }
                 searchSuggestions.innerHTML = suggestionsHTML;
-            } else {
-                console.error(xhr.statusText);
             }
         };
-
-        xhr.send(`searchTerm=${searchInput.value.trim()}`);
+        xhr.send('searchTerm=' + encodeURIComponent(searchBar));
 
     } else {
         searchbar.classList.remove('start-input');
@@ -99,7 +98,7 @@ searchInput.addEventListener('keydown', e => {
             document.querySelectorAll('#search-box > section')[0].innerHTML = searchInput.value;
         }
         
-        if (e.key === 'ArrowDown') {
+        if (e.key === 'ArrowDown' && searchSuggestions.innerHTML != '') {
             e.preventDefault();
             const children = searchBox.querySelectorAll('section');
             
@@ -116,7 +115,7 @@ searchInput.addEventListener('keydown', e => {
             searchInput.value = children[nextIndex].innerText;
             if (currentIndex >= 0) children[currentIndex].classList.remove('active');
         
-        } else if (e.key === 'ArrowUp') {
+        } else if (e.key === 'ArrowUp' && searchSuggestions.innerHTML != '') {
             e.preventDefault();
             const children = searchBox.querySelectorAll('section');
             
