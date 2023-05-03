@@ -3,14 +3,76 @@ h4.username {
     margin-inline: 0.5rem;
 }
 
+.post-tab {
+    width: calc(100% - 36rem);
+    background-color: lightgray;
+    
+    display: flex;
+    align-items: center;
+
+    margin: 2rem auto 0;
+    padding: 1rem;
+
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px 0 gray;
+
+    font-family: nunito-reg;
+}
+
+.post-tab input {
+    flex-grow: 1;
+
+    background-color: white;
+    
+    height: 1.8rem;
+    margin-inline: 1rem;
+    
+    border-radius: 0.5rem;
+    border: 1px solid;
+}
+
+.post-tab img {
+    width: 2rem;
+}
+
+
+/* best-hot-new */
+.group {
+    margin-right: 2rem; 
+    font-style: bold;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+.reddit-button {
+    padding: 8px 16px;
+    border-radius: 4px; /* Adjust the value to change the roundness */
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.reddit-button:hover {
+    background-color: white;
+    opacity: 0.8;
+}
+
+.reddit-button:active {
+    opacity: 1;
+    border-color: #999;
+}
+
+
 .post-section {
     width: calc(100% - 30rem);
     display: flex;
     flex-direction: column-reverse;
     
     margin-inline: auto;
-
-    /* background-color: azure; */
 }
 
 .post-container {
