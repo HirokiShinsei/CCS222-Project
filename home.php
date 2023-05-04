@@ -79,10 +79,11 @@
                             <h2>' . $post['title'] . '</h2>
                             <p>' . $post['content'] . '</p>
                             </div>
-                        <form method="post" action="like-post.php" class="like-form">
+                        <form method="post" action="like_post.php" class="like-form">
                             <input type="hidden" name="post_id" value="' . $post['id'] . '">
+                            <input type="hidden" name="user_id" value="' . $_SESSION['user_id'] . '">
                             <button type="submit" class="like-button">Like</button>
-                         </form>
+                        </form>
                         </div><hr>';
             
             // Insert all comments here
