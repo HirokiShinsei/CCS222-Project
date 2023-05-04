@@ -65,7 +65,7 @@
             $stmt -> bindParam(':userID', $post['user_id'], PDO::PARAM_INT);
             $stmt -> execute();
             $post_user = $stmt -> fetch(PDO::FETCH_ASSOC);
-            
+
             // Create post container and content
             echo    '<div class="post-container">
                         <div class="post-user">
@@ -77,7 +77,18 @@
                         </div>
                         <div class="post-content">
                             <h2>' . $post['title'] . '</h2>
-                            <p>' . $post['content'] . '</p>
+                            <p>' . $post['content'] . '</p>';
+
+            if (($likes = json_decode($post['likes'])) !== NULL) {
+                if (count($likes) > 0)
+                echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
+            }
+            
+            echo            '<form method="post" action="get-likes.php">
+                                <input type="hidden" name="post_id" value="' . $post['id'] . '">
+                                <input type="hidden" name="URL" value="' . $_SERVER['PHP_SELF'] . '">
+                                <input type="submit" value="Like">
+                            </form>
                         </div><hr>';
             
             // Insert all comments here
