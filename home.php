@@ -69,8 +69,8 @@
             // Create post container and content
             echo    '<div class="post-container">
                         <div class="post-user">
-                            <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                             <svg width=35 height=35>
+                            <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
                             </svg>
                             <h4 class="username">' . $post_user['username'] . '</h4>
                             <p>' . $post['date'] . '</p>
@@ -78,6 +78,11 @@
                         <div class="post-content">
                             <h2>' . $post['title'] . '</h2>
                             <p>' . $post['content'] . '</p>
+                            </div>
+                        <form method="post" action="like_post.php" class="like-form">
+                            <input type="hidden" name="post_id" value="' . $post['id'] . '">
+                            <button type="submit" class="like-button">Like</button>
+                         </form>
                         </div><hr>';
             
             // Insert all comments here
