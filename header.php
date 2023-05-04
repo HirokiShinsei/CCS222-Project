@@ -14,9 +14,11 @@
                 $searches = array($_POST['search']);
                 
             }
+            
             setcookie('RECENT_SEARCHES', json_encode($searches), time() + (86400 * 7), "/");
             header($_SERVER['PHP_SELF']);
         }
+
     ?>
 
     <h2>DiscussDen</h2>
