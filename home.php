@@ -79,7 +79,7 @@
                             <h2>' . $post['title'] . '</h2>
                             <p>' . $post['content'] . '</p>
                             </div>
-                        <form method="post" action="like_post.php" class="like-form">
+                        <form method="post" action="like-post.php" class="like-form">
                             <input type="hidden" name="post_id" value="' . $post['id'] . '">
                             <button type="submit" class="like-button">Like</button>
                          </form>
