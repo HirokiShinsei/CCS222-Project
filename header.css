@@ -32,11 +32,18 @@ body {
 }
 
 header {
+    position: fixed;
+    inset: 0 0 auto;
     height: 4rem;
+
+    background-color: var(--light-color-2);
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
+    z-index: 2;
+
 }
 
 header h2, header p {
