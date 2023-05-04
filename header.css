@@ -42,8 +42,6 @@ header {
     justify-content: space-evenly;
     align-items: center;
 
-    z-index: 2;
-
 }
 
 header h2, header p {
