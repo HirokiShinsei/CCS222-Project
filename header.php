@@ -18,8 +18,10 @@
             setcookie('RECENT_SEARCHES', json_encode($searches), time() + (86400 * 7), "/");
             header($_SERVER['PHP_SELF']);
         }
+        if (isset($_COOKIE['RECENT_SEARCHES'])) 
+            $searches = json_decode($_COOKIE['RECENT_SEARCHES'], true);
 
-    ?>
+    ?>  
 
     <h2>DiscussDen</h2>
 
@@ -84,7 +86,7 @@
         <!-- Search box -->
         <div id="search-box">
             <!-- This is where the typed suggestion is placed -->
-            <section></section> 
+            <section id="user-typed"></section> 
 
             <!-- Recent searches -->
             <?php if (isset($searches)) echo '<p>RECENT SEARCHES</p>' ?>

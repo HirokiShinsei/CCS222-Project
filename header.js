@@ -41,21 +41,37 @@ document.querySelector('header > #tab-box > .tab-option[first-option]').addEvent
 });
 
 // Search box
+
+// search bar (input)
 const searchInput = document.querySelector('#searchbar > input');
+
+// search box (appears on user type)
 const searchBox = document.querySelector('#search-box');
+
+// Search suggestions div
 const searchSuggestions = document.querySelector('#search-suggestions');
 
-searchInput.addEventListener('input', () => {
-    searchbar.classList.add('start-input');
-    document.querySelectorAll('#search-box > section')[0].classList.add('active');
-    const searchBar = searchInput.value.trim();
+// First search box option (user typed)
+const user_option = document.querySelector('#user-typed');
 
-    if (searchBar.length > 0) {
-        const searchSections = document.querySelectorAll('#search-box > section');
-        searchSections[0].innerHTML = searchInput.value.trim();
-        for (let i = 1; i < searchSections.length; i++) {
-            searchSections[i].classList.remove('active'); 
-        }
+// Every time user types on search bar
+searchInput.addEventListener('input', () => {
+    // remove all active class tags
+    searchBox.querySelectorAll('section').forEach((option, index) => {
+        if (index > 0) option.classList.remove('active');
+    });
+    user_option.classList.add('active');
+
+    if (!searchbar.classList.contains('start-input')) {
+        // show the search box
+        searchbar.classList.add('start-input');
+        user_option.classList.add('active');
+    }
+
+    const searchValue = searchInput.value.trim();
+
+    if (searchValue.length > 0) {
+        user_option.innerHTML = searchValue;
 
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'search-suggestions.php', true);
@@ -79,7 +95,7 @@ searchInput.addEventListener('input', () => {
                 searchSuggestions.innerHTML = suggestionsHTML;
             }
         };
-        xhr.send('searchTerm=' + encodeURIComponent(searchBar));
+        xhr.send('searchTerm=' + encodeURIComponent(searchValue));
         
     } else {
         searchbar.classList.remove('start-input');
@@ -87,55 +103,50 @@ searchInput.addEventListener('input', () => {
     }
 });
 
+// When searchbar loses focus
 searchInput.addEventListener('blur', () => {
     searchbar.classList.remove('start-input');
-    document.querySelectorAll('#search-box > section').forEach(option => {
+    
+    // remove all active class tags
+    searchBox.querySelectorAll('section').forEach(option => {
         option.classList.remove('active');
-    })
+    });
 })
 
-// Search options
+// When down button is pressed and there is content on the searchbar
 searchInput.addEventListener('keydown', e => {
-    
-    if (searchInput.value.trim().length > 0) {
-        if (!searchbar.classList.contains('start-input') && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+
+    // if there is content on the searchbar, allow arrow navigation
+    if (searchInput.value.length > 0 && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+        // show the searchbar
+        if (!searchbar.classList.contains('start-input')) {
             searchbar.classList.add('start-input');
-            document.querySelectorAll('#search-box > section')[0].innerHTML = searchInput.value;
-        }
-        
-        if (e.key === 'ArrowDown' && searchSuggestions.innerHTML != '') {
+            user_option.classList.add('active');
+
+        } else {
             e.preventDefault();
-            const children = searchBox.querySelectorAll('section');
-            
-            let currentIndex = -1;
-            for (let i = 0; i < children.length; i++) {
-                if (children[i].classList.contains('active')) {
-                    currentIndex = i;
-                    break;
-                }
+            const searchSections = searchBox.querySelectorAll("section");
+            let sectionIndex = Array.from(searchSections).findIndex(section => section.classList.contains('active'));
+
+            // If down key is pressed
+            if (e.key === 'ArrowDown') {
+                sectionIndex = sectionIndex === searchSections.length - 1 ? 0 : sectionIndex + 1;
+            } 
+            // If up key is pressed
+            else if (e.key === 'ArrowUp') {
+                sectionIndex = sectionIndex === 0 ? searchSections.length - 1 : sectionIndex - 1;
             }
-            const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
-        
-            children[nextIndex].classList.add('active');
-            searchInput.value = children[nextIndex].innerText;
-            if (currentIndex >= 0) children[currentIndex].classList.remove('active');
-        
-        } else if (e.key === 'ArrowUp' && searchSuggestions.innerHTML != '') {
-            e.preventDefault();
-            const children = searchBox.querySelectorAll('section');
-            
-            let currentIndex = 1;
-            for (let i = 0; i < children.length; i++) {
-                if (children[i].classList.contains('active')) {
-                    currentIndex = i;
-                    break;
-                }
-            }
-            const nextIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
-        
-            children[nextIndex].classList.add('active')
-            searchInput.value = children[nextIndex].innerText;
-            children[currentIndex].classList.remove('active');
+
+            searchSections.forEach((section, index) => {
+                if (index === sectionIndex)
+                    section.classList.add('active');
+                else 
+                    section.classList.remove('active');
+            });
+
+            // Modify searchbar text value to the active section's text
+            searchInput.value = searchSections[sectionIndex].innerHTML.trim();
+
         }
     }
 });
