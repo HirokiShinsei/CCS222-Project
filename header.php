@@ -1,8 +1,17 @@
 <header>
     <?php session_start(); 
+        $db_file = __DIR__ . '\forum_database.db';
+        $db = new PDO('sqlite:' . $db_file);
+
+        $stmt = $db -> prepare('SELECT recent_searches FROM users WHERE username = :username');
+        $stmt -> bindParam(':username', $_SESSION['username']);
+        $stmt -> execute();
+
+        $recent_searches = $stmt -> fetch(PDO::FETCH_ASSOC)['recent_searches'];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
-            if (isset($_COOKIE['RECENT_SEARCHES'])) {
-                $searches = json_decode($_COOKIE['RECENT_SEARCHES'], true);
+            if (isset($recent_searches)) {
+                $searches = json_decode($recent_searches, true);
                 
                 if (!(($index = array_search($_POST['search'], $searches)) === false)) {
                     unset($searches[$index]);
@@ -14,12 +23,18 @@
                 $searches = array($_POST['search']);
                 
             }
+            $searches = json_encode($searches);
             
-            setcookie('RECENT_SEARCHES', json_encode($searches), time() + (86400 * 7), "/");
-            header($_SERVER['PHP_SELF']);
+            // setcookie('RECENT_SEARCHES', json_encode($searches), time() + (86400 * 7), "/");
+            $stmt = $db -> prepare('UPDATE users SET recent_searches = :recent_searches WHERE username = :username');
+            $stmt -> bindParam(':username', $_SESSION['username']);
+            $stmt -> bindParam(':recent_searches', $searches);
+            $stmt -> execute();
+
+            header('refresh:0');
         }
-        if (isset($_COOKIE['RECENT_SEARCHES'])) 
-            $searches = json_decode($_COOKIE['RECENT_SEARCHES'], true);
+        if (isset($recent_searches))
+            $searches = json_decode($recent_searches, true);
 
     ?>  
 

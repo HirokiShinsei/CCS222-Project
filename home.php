@@ -48,9 +48,6 @@
 
     <section class="post-section">
     <?php
-        $db_file = __DIR__ . '\forum_database.db';
-        $db = new PDO('sqlite:' . $db_file);
-
         // Insert all posts here
         $stmt = $db -> prepare('SELECT * FROM posts');
         $stmt -> execute();
