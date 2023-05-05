@@ -23,80 +23,78 @@ body {
 }
 
 .post {
-    max-width: 60%;
-    min-height: 30rem;
+    width: 45rem;
     height: auto;
     margin: 0 auto;
-    margin-top: 10rem;
+    margin-top: 8rem;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     /* display: flex; */
     flex-direction: column;
-  }
-  
-  .post-head {
-    font-size: 24px;
-    font-family: nunito-xtrabold;
-    font-weight: bold;
-    margin: 0 0 20px;
-    color: #1a1a1b;
-    text-align: center;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-  }
-  
-  .post input[type="text"],
-  .post textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #e5e5e5;
-    border-radius: 3px;
-    font-size: 16px;
-  }
-  
-  .title {
-    box-shadow: 2px 2px 5px 2px #0002;
-    border: 0;
-    border-radius: 5px;
-    margin-bottom: 10rem;
-    font-family: nunito-black;
-    font-weight: bolder;
-  }
+}
 
-  .title [type="text"] {
-    font-weight: bold;
-    font-family: nunito-black;
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-  }
-  
-  .content {
-    margin-top: 1.5rem;
-    min-height: 20rem;
-    box-shadow: 2px 2px 5px 2px #0002;
-    border: 0;
-    border-radius: 5px;
-  }
-  
-  .post input[type="submit"] {
-    background-color: white;
-    color: black;
-    border: solid 1px black;
-    border-radius: 3px;
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: 200ms;
-  }
-  
-  .post input[type="submit"]:hover {
-    color: white;
-    background-color: black;
-  }
-  
+.post-head {
+  font-size: 24px;
+  font-family: nunito-xtrabold;
+  font-weight: bold;
+  margin: 0 0 20px;
+  color: #1a1a1b;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.post input[type="text"],
+.post textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.title {
+  box-shadow: 2px 2px 5px 2px #0002;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 10rem;
+  font-family: nunito-black;
+  font-weight: bolder;
+}
+
+.title [type="text"] {
+  font-weight: bold;
+  font-family: nunito-black;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.content {
+  margin-top: 1.5em;
+  min-height: 12em;
+  box-shadow: 2px 2px 5px 2px #0002;
+  border: 0;
+  border-radius: 5px;
+}
+
+.post input[type="submit"] {
+  background-color: white;
+  color: black;
+  border: solid 1px black;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.post input[type="submit"]:hover {
+  color: white;
+  background-color: black;
+}
