@@ -31,7 +31,6 @@ body {
     background-color: #ffffff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    flex-direction: column;
 } 
 
 .post-head {
@@ -47,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
+  min-height: calc(40vh + 1rem);
 }
 
 .post input[type="text"],
@@ -82,6 +82,7 @@ body {
   border-radius: 5px;
 
   resize: none;
+  flex-grow: 1;
 }
 
 .post input[type="submit"] {
