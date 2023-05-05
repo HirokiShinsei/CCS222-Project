@@ -1,6 +1,6 @@
 <?php 
-
 session_start();
+ob_start();
 
 $db_file = __DIR__ . '\forum_database.db';
 $db = new PDO('sqlite:' . $db_file);
@@ -26,8 +26,9 @@ if (json_decode($post['likes']) !== NULL) {
 
 $stmt = $db -> prepare('UPDATE posts SET likes = :likes WHERE id = :post_id');
 $stmt -> bindParam(':likes', json_encode($likes));
+ob_clean();
 $stmt -> bindParam(':post_id', $_POST['post_id']);
 $stmt -> execute();
 
-header('location:' . $_POST['URL']);
+echo count($likes);
 ?>

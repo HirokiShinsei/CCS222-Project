@@ -79,16 +79,17 @@
                             <p>' . $post['content'] . '</p>';
 
             if (($likes = json_decode($post['likes'])) !== NULL) {
-                if (count($likes) > 0)
                 echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
             }
-            
-            echo            '<form method="post" action="get-likes.php">
-                                <input type="hidden" name="post_id" value="' . $post['id'] . '">
-                                <input type="hidden" name="URL" value="' . $_SERVER['PHP_SELF'] . '">
-                                <input type="submit" value="Like">
-                            </form>
-                        </div><hr>';
+            echo '<button class="like" data-id="' . $post['id'] . '">';
+            if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
+                echo 'dislike';
+            } else {
+                echo 'like';
+            }
+            echo '</button>';
+
+            echo '</div><hr>';
             
             // Insert all comments here
             $stmt = $db -> prepare('SELECT * FROM comments WHERE post_id = :post_id');
@@ -144,5 +145,6 @@
             });
         })
     </script>
+    <script src="post-boxes.js"></script>
 </body>
 </html>
