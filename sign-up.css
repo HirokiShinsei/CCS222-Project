@@ -99,6 +99,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
     color: white;
     background-color: black;
+    cursor: pointer;
 }
 
 hr {
