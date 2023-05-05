@@ -18,7 +18,7 @@
                 }
                 array_unshift($searches, $_POST['search']);
                 
-                $searches = array_slice($searches, 0, 10);
+                $searches = array_slice($searches, 0, 5);
             } else {
                 $searches = array($_POST['search']);
                 
