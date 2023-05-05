@@ -23,7 +23,7 @@ body {
 }
 
 .post {
-    width: 45rem;
+    width: calc(100% - 20rem);
     height: auto;
     margin: 0 auto;
     margin-top: 8rem;
