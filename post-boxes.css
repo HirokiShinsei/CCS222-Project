@@ -79,6 +79,8 @@ h4.username {
     
     margin-inline: auto;
     margin-bottom: 2rem;
+
+    --light-color-1: #dda15e;
 }
 
 .post-container {
@@ -132,6 +134,8 @@ button.like {
     flex-direction: row-reverse;
     align-items: center;
     column-gap: 0.5rem;
+
+    background-color: var(--light-color-1);
 }
 
 img.like-state {

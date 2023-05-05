@@ -86,9 +86,9 @@
                     // Like or dislike
                     echo '<img class="like-state" ';
                         if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
-                            echo 'src="img/burning-sun.png"';
+                            echo 'src="img/upvote-filled.png"';
                         } else {
-                            echo 'src="img/crescent-moon.png"';
+                            echo 'src="img/upvote-nofill.png"';
                         }
                     echo '/>
                 </button>';
