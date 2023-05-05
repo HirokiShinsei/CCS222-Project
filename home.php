@@ -54,7 +54,7 @@
         $posts = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         
         // Iterate through every post
-        foreach ($posts as $post) {
+        foreach (array_reverse($posts) as $post) {
 
             // Get post user details
             $stmt = $db -> prepare('SELECT * FROM users WHERE user_id = :userID');

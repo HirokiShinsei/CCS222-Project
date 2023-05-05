@@ -75,7 +75,7 @@ h4.username {
 .post-section {
     width: calc(100% - 30rem);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     
     margin-inline: auto;
     margin-bottom: 2rem;
