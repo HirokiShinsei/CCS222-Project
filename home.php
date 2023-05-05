@@ -75,18 +75,23 @@
                             <h2>' . $post['title'] . '</h2>
                             <p>' . $post['content'] . '</p>';
 
-            if (($likes = json_decode($post['likes'])) !== NULL) {
-                echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
-            }
-
             if (isset($_SESSION['username'])) {
                 echo '<button class="like" data-id="' . $post['id'] . '">';
-                if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
-                    echo 'dislike';
-                } else {
-                    echo 'like';
+                
+                // Like count
+                if (($likes = json_decode($post['likes'])) !== NULL) {
+                    echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
                 }
-                echo '</button>';
+
+                    // Like or dislike
+                    echo '<img class="like-state" ';
+                        if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
+                            echo 'src="img/burning-sun.png"';
+                        } else {
+                            echo 'src="img/crescent-moon.png"';
+                        }
+                    echo '/>
+                </button>';
             } else {
                 echo '<button disabled>Like</button>';
             }

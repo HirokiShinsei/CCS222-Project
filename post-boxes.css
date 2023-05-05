@@ -127,6 +127,17 @@ h4.username {
     margin-left: 0.5rem;
 }
 
+button.like {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+img.like-state {
+    max-width: 1rem;
+}
+
 .comment-container {
     margin-left: 1rem;
 }
