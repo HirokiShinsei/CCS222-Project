@@ -81,6 +81,8 @@ body {
   box-shadow: 2px 2px 5px 2px #0002;
   border: 0;
   border-radius: 5px;
+
+  resize: none;
 }
 
 .post input[type="submit"] {
