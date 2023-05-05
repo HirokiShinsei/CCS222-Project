@@ -48,16 +48,13 @@
 
     <section class="post-section">
     <?php
-        $db_file = __DIR__ . '\forum_database.db';
-        $db = new PDO('sqlite:' . $db_file);
-
         // Insert all posts here
         $stmt = $db -> prepare('SELECT * FROM posts');
         $stmt -> execute();
         $posts = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         
         // Iterate through every post
-        foreach ($posts as $post) {
+        foreach (array_reverse($posts) as $post) {
 
             // Get post user details
             $stmt = $db -> prepare('SELECT * FROM users WHERE user_id = :userID');
@@ -78,18 +75,23 @@
                             <h2>' . $post['title'] . '</h2>
                             <p>' . $post['content'] . '</p>';
 
-            if (($likes = json_decode($post['likes'])) !== NULL) {
-                echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
-            }
-
             if (isset($_SESSION['username'])) {
                 echo '<button class="like" data-id="' . $post['id'] . '">';
-                if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
-                    echo 'dislike';
-                } else {
-                    echo 'like';
+                
+                // Like count
+                if (($likes = json_decode($post['likes'])) !== NULL) {
+                    echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
                 }
-                echo '</button>';
+
+                    // Like or dislike
+                    echo '<img class="like-state" ';
+                        if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
+                            echo 'src="img/burning-sun.png"';
+                        } else {
+                            echo 'src="img/crescent-moon.png"';
+                        }
+                    echo '/>
+                </button>';
             } else {
                 echo '<button disabled>Like</button>';
             }

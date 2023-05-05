@@ -5,9 +5,12 @@ document.querySelectorAll('.like').forEach(like_button => {
         const xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
             if (xhr.readyState == 4 && xhr.status === 200) {
-                if (this.innerHTML === "like") this.innerHTML = "dislike";
-                else this.innerHTML = "like";
-                this.parentElement.querySelector('.likes').innerHTML = xhr.responseText;
+                if (this.querySelector(".like-state").getAttribute("src") == "img/crescent-moon.png") {
+                    this.querySelector(".like-state").src = "img/burning-sun.png";
+                } else {
+                    this.querySelector(".like-state").src = "img/crescent-moon.png";  
+                } 
+                this.querySelector('.likes').innerHTML = xhr.responseText;
             }
         }
         xhr.open("POST", 'get-likes.php', true);

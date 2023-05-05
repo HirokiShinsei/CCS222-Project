@@ -75,7 +75,7 @@ h4.username {
 .post-section {
     width: calc(100% - 30rem);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     
     margin-inline: auto;
     margin-bottom: 2rem;
@@ -125,6 +125,17 @@ h4.username {
 .post-user p {
     font-size: 0.7rem;
     margin-left: 0.5rem;
+}
+
+button.like {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+img.like-state {
+    max-width: 1rem;
 }
 
 .comment-container {
