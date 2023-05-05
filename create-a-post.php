@@ -7,6 +7,7 @@
     <title>Create a post</title>
     <link rel="icon" href="img/icon.png">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="createpost.css">
     
 </head>
 <body>
@@ -41,12 +42,14 @@
         }
     ?>
     <?php include "header.php" ?>
-    <h1 class="post">Create a post</h1>
-    <hr class="post">
-    <form action="create-a-post.php" method="post" class="post">
-        <input type="text" name="title" class="title" placeholder="Title..." required>
-        <textarea name="content" class="content" placeholder="Write something..." required></textarea>
-        <input type="submit" value="Post">
-    </form>
+    <div class="post">
+        <h1 class="post-head">Create a post</h1>
+        <!-- <hr class="post"> -->
+        <form action="create-a-post.php" method="post" class="form">
+            <input type="text" name="title" class="title" placeholder="Title..." required>
+            <textarea name="content" class="content" placeholder="Write something..." required></textarea>
+            <input type="submit" value="Post">
+        </form>
+    </div>
 </body>
 </html>

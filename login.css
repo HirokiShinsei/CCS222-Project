@@ -50,6 +50,7 @@ h3 {
 }
 
 label {
+
     font-size: 0.75rem;
     align-self: flex-start;
     margin-top: 1rem;
@@ -61,11 +62,10 @@ label.error {
 }
 
 input[type="text"], input[type="password"] {
-    align-self: stretch;
 
+    align-self: stretch;
     padding: 0.8rem;
     margin-top: 0.2rem ;
-
     box-shadow: 2px 2px 5px 2px #0002;
     border: 0;
     border-radius: 5px;
@@ -77,15 +77,12 @@ input[type="submit"] {
     width: 6rem;
     height: 2.5rem;
     margin-top: 0.5rem;
-
     background-color: white;
-
     border-radius: 0.3rem;
     border: solid 1px black;
-
     font-size: 1.1rem;
-
     transition: 200ms;
+    cursor: pointer;
 }
 
 input[type="submit"]:hover {
@@ -102,21 +99,21 @@ hr {
 }
 
 a.create {
+
     width: 11rem;
     padding: 0.5rem;
-
     text-decoration: none;
     text-align: center;
     color: black;
-
     background-color: lightgreen;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     border-radius: 0.3rem;
 
     transition: 200ms;
 }
 
 a.create:hover {
+    
     background-color: seagreen;
     color: white;
 }
