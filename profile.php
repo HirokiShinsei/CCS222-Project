@@ -11,6 +11,7 @@
     
 </head>
 <body>
+    <section class="post-section">
     <?php 
         include "header.php";
          // Insert all posts here
@@ -109,6 +110,6 @@
         }
 
     ?>
-
+    </section>
 </body>
 </html>
