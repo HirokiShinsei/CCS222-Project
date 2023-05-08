@@ -134,6 +134,10 @@
             </svg>
             <p class="username">' . $_SESSION['username'] . '</p>
 
+            <div class="tab-option" name="profile" tabindex=-1>
+                <img src="img/add.png" alt="" class="icon">
+                <p>Profile</p>
+            </div>
             <div class="tab-option" name="logout" tabindex=-1>
                 <img src="img/add.png" alt="" class="icon">
                 <p>Log out</p>

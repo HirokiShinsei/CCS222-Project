@@ -6,6 +6,14 @@ logoutBtn.addEventListener('keydown', e => {
     if (e.key === 'Enter') logOut();
 });
 
+// Profile button
+const profileBtn = document.querySelector('.tab-option[name="profile"]');
+
+profileBtn.addEventListener('click', profile);
+profileBtn.addEventListener('keydown', e => {
+    if (e.key === 'Enter') profile();
+});
+
 // Drop down options
 const dropdowns = document.querySelectorAll('header > div');
 dropdowns.forEach(div => navigateThrough(div));
@@ -181,5 +189,13 @@ function logOut() {
     xhr.send();
 
     window.location.href = 'login.php';
+}
+function profile() {
+    let xhr = new XMLHttpRequest();
+    
+    xhr.open('GET', 'profile.php');
+    xhr.send();
+
+    window.location.href = 'profile.php';
 }
 
