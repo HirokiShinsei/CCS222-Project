@@ -11,13 +11,13 @@ const profileBtn = document.querySelector('.tab-option[name="profile"]');
 
 profileBtn.addEventListener('click', () => {
     console.log(profileBtn.getAttribute('data-name'));
-    if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php') window.location.href = 'home.php';
+    if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php' || profileBtn.getAttribute('data-name') == '/CCS222-Project/profile-visit.php') window.location.href = 'home.php';
     else window.location.href = 'profile.php';
 });
 
 profileBtn.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
-        if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php') window.location.href = 'home.php';
+        if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php' || profileBtn.getAttribute('data-name') == '/CCS222-Project/profile-visit.php') window.location.href = 'home.php';
         else window.location.href = 'profile.php';
     }
 });

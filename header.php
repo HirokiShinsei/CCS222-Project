@@ -137,7 +137,7 @@
             <div class="tab-option" name="profile" tabindex=-1 data-name="' . $_SERVER['PHP_SELF'] . '">
                 <img src="img/add.png" alt="" class="icon">
                 <p>';
-                    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php') echo 'Back to Home';
+                    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php') echo 'Back to Home';
                     else echo 'Profile';
                 echo '</p>
             </div>
