@@ -9,9 +9,17 @@ logoutBtn.addEventListener('keydown', e => {
 // Profile button
 const profileBtn = document.querySelector('.tab-option[name="profile"]');
 
-profileBtn.addEventListener('click', profile);
+profileBtn.addEventListener('click', () => {
+    console.log(profileBtn.getAttribute('data-name'));
+    if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php') window.location.href = 'home.php';
+    else window.location.href = 'profile.php';
+});
+
 profileBtn.addEventListener('keydown', e => {
-    if (e.key === 'Enter') profile();
+    if (e.key === 'Enter') {
+        if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php') window.location.href = 'home.php';
+        else window.location.href = 'profile.php';
+    }
 });
 
 // Drop down options
@@ -190,12 +198,5 @@ function logOut() {
 
     window.location.href = 'login.php';
 }
-function profile() {
-    let xhr = new XMLHttpRequest();
-    
-    xhr.open('GET', 'profile.php');
-    xhr.send();
 
-    window.location.href = 'profile.php';
-}
 

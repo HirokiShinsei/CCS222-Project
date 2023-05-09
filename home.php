@@ -119,7 +119,7 @@
             }
 
             echo '
-                    <form method="post" action="add_comment.php" class="comment-box">
+                    <form class="comment-box">
                         <input type="hidden" name="post_id" value="' . $post['id'] . '">
                 ';
 

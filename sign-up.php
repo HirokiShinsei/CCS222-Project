@@ -40,9 +40,6 @@
                 else {
                     $_SESSION['password'] = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
 
-                    $user_count = $db -> prepare('SELECT COUNT(*) FROM users');
-                    $user_count -> execute();
-
                     $insert_data = $db -> prepare('INSERT INTO users (username, password, link) VALUES (:username, :password, :link)');
                     $insert_data -> bindParam(':username', $_SESSION['username']);
                     $insert_data -> bindParam(':password', $_SESSION['password']);

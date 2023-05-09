@@ -80,7 +80,11 @@ h4.username {
     margin-inline: auto;
     margin-bottom: 2rem;
 
+    --dark-color-1: #283618;
+    --dark-color-2: #606c38;
+    --medium-color: #bc6c25;
     --light-color-1: #dda15e;
+    --light-color-2: #fefae0;
 }
 
 .post-container {
@@ -88,6 +92,7 @@ h4.username {
     
     display: flex;
     flex-direction: column;
+    position: relative;
 
     margin: 2rem 2rem 0;
     padding: 1rem 3rem;
@@ -96,6 +101,7 @@ h4.username {
     box-shadow: 0 2px 4px 0 gray;
 
     font-family: nunito-reg;
+    overflow-x: hidden;
 }
 
 .post-container hr {
@@ -192,4 +198,28 @@ form.comment-box textarea {
 
 form.comment-box textarea:focus {
     outline: none;
+}
+
+/* Profile.php */
+.delete-btn {
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+
+    cursor: pointer;
+}
+
+.delete-confirm.active {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(to bottom, var(--light-color-1), #bc6c2522);
+}
+
+.delete-confirm > * {
+    display: none;
+}
+
+.delete-confirm.active > * {
+    display: block;
 }

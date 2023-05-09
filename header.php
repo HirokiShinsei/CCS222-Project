@@ -134,9 +134,12 @@
             </svg>
             <p class="username">' . $_SESSION['username'] . '</p>
 
-            <div class="tab-option" name="profile" tabindex=-1>
+            <div class="tab-option" name="profile" tabindex=-1 data-name="' . $_SERVER['PHP_SELF'] . '">
                 <img src="img/add.png" alt="" class="icon">
-                <p>Profile</p>
+                <p>';
+                    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php') echo 'Back to Home';
+                    else echo 'Profile';
+                echo '</p>
             </div>
             <div class="tab-option" name="logout" tabindex=-1>
                 <img src="img/add.png" alt="" class="icon">

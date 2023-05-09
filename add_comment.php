@@ -12,6 +12,5 @@
     $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
     $stmt -> execute();
 
-    header('Location: home.php');
 
 ?>
