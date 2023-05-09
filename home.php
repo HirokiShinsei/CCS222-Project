@@ -68,7 +68,7 @@
                             <svg width=35 height=35>
                                 <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
                             </svg>
-                            <h4 class="username">' . $post_user['username'] . '</h4>
+                            <a href="profile-visit.php?user_id=' . $post['user_id'] . '"><h4 class="username">' . $post_user['username'] . '</h4></a>
                             <p>' . $post['date'] . '</p>
                         </div>
                         <div class="post-content">
