@@ -68,7 +68,10 @@
                             <svg width=35 height=35>
                                 <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
                             </svg>
-                            <a href="profile-visit.php?user_id=' . $post['user_id'] . '"><h4 class="username">' . $post_user['username'] . '</h4></a>
+                            <a href="';
+                            if ($_SESSION['username'] === $post_user['username']) echo 'profile.php';
+                            else echo 'profile-visit.php?user_id=' . $post['user_id'];
+                            echo '"><h4 class="username">' . $post_user['username'] . '</h4></a>
                             <p>' . $post['date'] . '</p>
                         </div>
                         <div class="post-content">
