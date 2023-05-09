@@ -64,3 +64,24 @@ function delete_post(postID) {
     }
     xhr.send('id=' + encodeURIComponent(postID));
 }
+
+// edit post
+document.querySelectorAll('.edit-btn').forEach(edit_btn => {
+    edit_btn.addEventListener('click', () => {
+        
+        const form = document.createElement('form');
+        form.style.display = 'none';
+        document.body.appendChild(form);
+
+        form.action = 'edit-post.php';
+        form.method = 'POST';
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'id';
+        input.value = edit_btn.getAttribute('data-id');
+        form.appendChild(input);
+        
+        form.submit();
+    });
+});

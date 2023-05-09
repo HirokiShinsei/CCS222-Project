@@ -85,12 +85,20 @@
                             <circle cx=50% cy=50% r=45% stroke=black stroke-width=10% fill="transparent"/>
                             <line x1=35% y1=35% x2=65% y2=65% stroke=black stroke-width=15% stroke-linecap="round" />
                             <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
-                        </svg>
-                        <div class="delete-confirm">
+                            </svg>
+                            <div class="delete-confirm">
                             <h3 class="username">Are you sure you want to delete this post?</h3>
                             <button onclick="delete_post(' . $post['id'] . ')">Yes</button>
                             <button onclick="this.parentElement.classList.remove(\'active\')">No</button>
                         </div>
+
+                        <svg width=25 height=25 class="edit-btn" data-id="' . $post['id'] . '">
+                            <circle cx=50% cy=50% r=45% stroke=black stroke-width=10% fill=transparent />
+                            <g transform="rotate(45 12.5 12.5)">
+                                <rect x=42.5% y=22% width=15% height=50% ry=7% fill=black stroke=none />
+                                <path d="M 10.5 17 L 12.5 20 L 14.5 17 Z"/> 
+                            </g>
+                        </svg>
                     </div><hr>';
             
             // Insert all comments here

@@ -206,12 +206,16 @@ form.comment-box textarea:focus {
 }
 
 /* Profile.php */
-.delete-btn {
+.delete-btn, .edit-btn {
     position: absolute;
     top: 1rem;
     right: 3rem;
 
     cursor: pointer;
+}
+
+.edit-btn {
+    top: 3rem;
 }
 
 .delete-confirm.active {

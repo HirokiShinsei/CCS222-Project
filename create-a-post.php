@@ -12,6 +12,8 @@
 </head>
 <body>
     <?php 
+        include_once "header.php";
+        
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_start();
 
@@ -32,7 +34,7 @@
             $stmt = $db -> prepare('INSERT INTO posts (user_id, title, content, date, likes) VALUES (:userID, :title, :content, :date, :likes)');
             $stmt -> bindParam(':userID', $_SESSION['user_id'], PDO::PARAM_INT);
             $stmt -> bindParam(':title', $_POST['title'], PDO::PARAM_STR);
-            $stmt -> bindParam(':content', $_POST['content'], PDO::PARAM_STR);
+            $stmt -> bindParam(':content', nl2br($_POST['content']), PDO::PARAM_STR);
             $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
             $stmt -> bindParam(':likes', json_encode(array()));
             $stmt -> execute();
@@ -42,7 +44,6 @@
             exit;
         }
     ?>
-    <?php include "header.php" ?>
     <div class="post">
         <h1 class="post-head">Create a post</h1>
         <!-- <hr class="post"> -->
