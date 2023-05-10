@@ -218,11 +218,23 @@ form.comment-box textarea:focus {
     top: 3rem;
 }
 
-.delete-confirm.active {
+.delete-confirm {
     position: absolute;
     inset: 0;
-
+    
     background: linear-gradient(to bottom, var(--light-color-1), #bc6c2522);
+
+    display: none;
+    opacity: 0;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.delete-confirm.active {
+    display: flex;
+    opacity: 1;
 }
 
 .delete-confirm > * {
@@ -231,4 +243,32 @@ form.comment-box textarea:focus {
 
 .delete-confirm.active > * {
     display: block;
+}
+
+.delete-confirm.active button {
+    width: 6rem;
+    height: 2.5rem;
+
+    margin-top: 0.5rem;
+    background-color: white;
+    
+    border-radius: 0.3rem;
+    border: solid 1px black;
+    
+    font-family: nunito-semibold;
+    font-size: 1.1rem;
+    transition: 200ms;
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.delete-confirm.active .yes-btn:hover {
+    background-color: seagreen;
+    color: white;
+}
+
+.delete-confirm.active .no-btn:hover {
+    background-color: darkred;
+    color: white;
 }
