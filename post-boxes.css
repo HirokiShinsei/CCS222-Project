@@ -135,7 +135,7 @@ h4.username {
     margin-left: 0.5rem;
 }
 
-.post-user a {
+.post-user a, .comment-container a {
     text-decoration: none;
     color: black;
 }

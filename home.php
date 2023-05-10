@@ -114,7 +114,10 @@
                                 <svg width=30 height=30>
                                     <circle cx=15 cy=15 r=15 fill=black/>
                                 </svg>
-                                <h4 class="username">' . $comment['name'] . '</h4>
+                                <a href="';
+                                if ($_SESSION['username'] === $post_user['username']) echo 'profile.php';
+                                else echo 'profile-visit.php?user_id=' . $post['user_id'];
+                                echo '"><h4 class="username">' . $post_user['username'] . '</h4></a>
                                 <p>(' . $comment['date'] . ')</p>
                             </div>
                             <p>' . $comment['content'] . '</p>
