@@ -33,8 +33,8 @@
         
                     // update row of post (in table posts)
                     $stmt = $db -> prepare('UPDATE posts SET title = :title, content = :content, date = :date WHERE id = :id');
-                    $stmt -> bindParam(':title', $_POST['title'], PDO::PARAM_STR);
-                    $stmt -> bindParam(':content', nl2br($_POST['content']), PDO::PARAM_STR);
+                    $stmt -> bindParam(':title', strip_tags($_POST['title']), PDO::PARAM_STR);
+                    $stmt -> bindParam(':content', strip_tags(nl2br($_POST['content']), ['<br>', '<br/>']), PDO::PARAM_STR);
                     $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
                     $stmt -> bindParam(':id', $_POST['id']);
                     $stmt -> execute();
