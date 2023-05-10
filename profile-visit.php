@@ -94,13 +94,29 @@
 
             // Iterate through all comments related to post
             foreach ($comments as $comment) {
+
+                // Get user id of commenter
+                $stmt = $db -> prepare('SELECT * FROM users WHERE username = :user');
+                $stmt -> bindParam(':user', $comment['name'], PDO::PARAM_STR);
+                $stmt -> execute();
+
+                $user_id = $stmt -> fetch(PDO::FETCH_ASSOC)['user_id'];
+
                 echo    '<div class="comment-container">
                             <div>
                                 <svg width=30 height=30>
                                     <circle cx=50% cy=50% r=50% fill=black/>
-                                </svg>
-                                <h4 class="username">' . $comment['name'] . '</h4>
-                                <p>(' . $comment['date'] . ')</p>
+                                </svg>';
+
+                                if ($post['user_id'] !== $user_id){
+                                    if ($_SESSION['username'] === $comment['name']) echo '<a href="profile.php">';
+                                    else echo '<a href="profile-visit.php?user_id=' . $user_id . '">';
+                                } 
+                                echo '<h4 class="username">' . $comment['name'] . '</h4>';
+                                
+                                if ($post['user_id'] !== $user_id) echo '</a>';
+
+                                echo '<p>(' . $comment['date'] . ')</p>
                             </div>
                             <p>' . $comment['content'] . '</p>
                         </div>';
