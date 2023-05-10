@@ -1,3 +1,11 @@
+const post_bar = document.querySelector('#post-link');
+if (post_bar != null) {
+    post_bar.addEventListener('click', () => {
+        post_bar.disabled = true;
+        window.location.href='create-a-post.php';
+    });
+}
+
 document.querySelectorAll('.like').forEach(like_button => {
     like_button.addEventListener('click', function() {
         const post_id = this.getAttribute("data-id");
@@ -20,9 +28,16 @@ document.querySelectorAll('.like').forEach(like_button => {
     });
 });
 
+// make comment area expandable
+document.querySelectorAll('.comment-box textarea').forEach(textarea => {
+    textarea.addEventListener('input', () => {
+        textarea.style.height = '1rem';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    });
+});
+
 // comment
 document.querySelectorAll('.comment-box').forEach(form => {
-    console.log(form);
     form.addEventListener('submit', e => {
         e.preventDefault();
 

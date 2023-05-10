@@ -53,5 +53,11 @@
             <input type="submit" value="Post">
         </form>
     </div>
+    <script>
+        document.querySelector('.content').addEventListener('input', () => {
+            document.querySelector('.content').style.height = 'auto';
+            document.querySelector('.content').style.height = document.querySelector('.content').scrollHeight + 'px';
+        });
+    </script>
 </body>
 </html>

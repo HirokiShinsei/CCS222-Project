@@ -52,9 +52,12 @@ tabOptions.forEach(option => {
 });
 
 // Remove focus from options dropdown if first option is selected
-document.querySelector('header > #tab-box > .tab-option[first-option]').addEventListener('keydown', e => {
-    if (e.key === 'Enter') document.querySelector('header > #tab-box > .tab-option[first-option]').blur();
-});
+const first_option_tab = document.querySelector('header > #tab-box > .tab-option[first-option]');
+if (first_option_tab != null) {
+    first_option_tab.addEventListener('keydown', e => {
+        if (e.key === 'Enter') first_option_tab.blur();
+    });
+}
 
 // Search box
 

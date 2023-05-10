@@ -17,7 +17,7 @@
             <svg width=35 height=35>
                 <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
             </svg>
-            <input type="text" placeholder="Create a post" onclick="window.location.href='create-a-post.php'">
+            <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link">
             <img src="img/image.png" alt="" class="icon">
         </div>
 
@@ -147,14 +147,6 @@
 
     ?>
     </section>
-    <script>
-        document.querySelectorAll('form.comment-box textarea').forEach(textarea => {
-            textarea.addEventListener('input', () => {
-                textarea.style.height = '1rem';
-                textarea.style.height = textarea.scrollHeight + 'px';
-            });
-        })
-    </script>
     <script src="post-boxes.js"></script>
 </body>
 </html>

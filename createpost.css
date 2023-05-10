@@ -24,7 +24,6 @@ body {
 
 .post {
     width: 70%;
-    height: auto;
     margin: 0 auto;
     margin-top: 8rem;
     padding: 20px;
@@ -46,43 +45,39 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  min-height: calc(40vh + 1rem);
-}
-
-.post input[type="text"],
-.post textarea {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #e5e5e5;
-  border-radius: 3px;
-  font-size: 16px;
 }
 
 .title {
+  margin-bottom: 10px;
+  padding: 10px;
   box-shadow: 2px 2px 5px 2px #0002;
+  
+  font-size: 16px;
+  font-family: nunito-black;
+  
   border: 0;
   border-radius: 5px;
-  margin-bottom: 10rem;
-  font-family: nunito-black;
-  font-weight: bolder;
-}
-
-.title [type="text"] {
-  font-weight: bold;
-  font-family: nunito-black;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
+
 }
 
 .content {
-  margin-top: 1.5em;
-  min-height: 12em;
+  margin-block: 1rem;
+  padding: 10px;
+  
+  font-family: nunito-reg;
+  font-size: 16px;
   box-shadow: 2px 2px 5px 2px #0002;
   border: 0;
   border-radius: 5px;
-
+  
+  box-sizing: border-box;
+  min-height: 15em;
+  
   resize: none;
   flex-grow: 1;
+  overflow-y: hidden;
 }
 
 .post input[type="submit"] {
