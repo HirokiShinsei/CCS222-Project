@@ -15,7 +15,7 @@
     <div class="input-section">
         <div class="post-tab">
             <svg width=35 height=35>
-                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                <circle cx=17.5 cy=17.5 r=17.5 fill="<?php echo $user_profile ?>" />
             </svg>
             <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link">
             <img src="img/image.png" alt="" class="icon">
@@ -66,7 +66,7 @@
             echo    '<div class="post-container">
                         <div class="post-user">
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '"/>
                             </svg>
                             <a href="';
                             if ($_SESSION['username'] === $post_user['username']) echo 'profile.php';
@@ -115,12 +115,13 @@
                 $stmt -> bindParam(':user', $comment['name'], PDO::PARAM_STR);
                 $stmt -> execute();
 
-                $user_id = $stmt -> fetch(PDO::FETCH_ASSOC)['user_id'];
+                $comment_user = $stmt -> fetch(PDO::FETCH_ASSOC);
+                $user_id = $comment_user['user_id'];
 
                 echo    '<div class="comment-container">
                             <div>
                                 <svg width=30 height=30>
-                                    <circle cx=15 cy=15 r=15 fill=black/>
+                                    <circle cx=15 cy=15 r=15 fill="' . $comment_user['profile_src'] . '"/>
                                 </svg>
                                 <a href="';
                                 if ($_SESSION['username'] === $comment['name']) echo 'profile.php';
@@ -142,7 +143,7 @@
                         <input type="hidden" name="username" value="' . $_SESSION['username'] . '"> 
                         <div>
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $user_profile . '"/>
                             </svg>
                             <h4 class="username">' . $_SESSION['username'] . '</h4>
                         </div>

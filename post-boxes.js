@@ -100,3 +100,43 @@ document.querySelectorAll('.edit-btn').forEach(edit_btn => {
         form.submit();
     });
 });
+
+// edit profile picture
+modify_profile.addEventListener('click', openProfileOptionBox);
+modify_profile.parentElement.parentElement.querySelector('g').addEventListener('click', openProfileOptionBox);
+
+function openProfileOptionBox() {
+    backdrop.style.display = 'block';
+    document.querySelector('#profile-upload-popup').classList.add('active');
+
+    document.querySelector('body').style.overflowY = 'hidden';
+
+    document.querySelectorAll('.comment-box > textarea, .comment-box > input[type="submit"], #searchbar > input, #tab-box, #user-btn')
+    .forEach(container => {container.setAttribute('tabindex', -1);});
+};
+
+exit_btn.addEventListener('click', () => {
+    backdrop.style.display = 'none';
+    document.querySelector('#profile-upload-popup').classList.remove('active');
+    
+    document.querySelector('body').style.overflowY = 'auto';
+
+    document.querySelectorAll('.comment-box > textarea, .comment-box > input[type="submit"], #searchbar > input, #tab-box, #user-btn')
+    .forEach(container => {container.setAttribute('tabindex', 0);});
+
+});
+
+document.querySelectorAll('.profile-option').forEach(profile => {
+    profile.addEventListener('click', () => {
+        console.log(profile.fill);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'change-profile.php');
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                location.reload();
+            }
+        }
+        xhr.send('newfill=' + encodeURIComponent(profile.getAttribute('fill')));
+    });
+});

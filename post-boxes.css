@@ -206,7 +206,7 @@ form.comment-box textarea:focus {
 }
 
 /* Profile.php */
-.delete-btn, .edit-btn {
+.delete-btn, .edit-btn, #exit_btn {
     position: absolute;
     top: 1rem;
     right: 3rem;
@@ -271,4 +271,64 @@ form.comment-box textarea:focus {
 .delete-confirm.active .no-btn:hover {
     background-color: darkred;
     color: white;
+}
+
+#modify_profile {
+    font-family: nunito-reg;
+    font-size: 0.8rem;
+
+    border: none;
+    cursor: pointer;
+}
+
+#profile-upload-popup {
+    position: absolute;
+    inset: 6rem 15rem;
+
+    padding: 1rem 3rem;
+
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px 0 gray;
+    background-color: lightgray;
+
+    font-family: nunito-reg;
+
+    z-index: 2;
+    display: none;
+}
+
+#profile-upload-popup.active {
+    display: flex;
+    flex-direction: column;
+}
+
+#backdrop {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px);
+
+    z-index: 1;
+    display: none;
+}
+
+#profile-avatars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 6rem);
+    justify-content: space-evenly;
+
+    gap: 2rem;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+#profile-avatars svg {
+    width: 6rem;
+    height: 6rem;
+    transform: scale(1);
+
+    transition: 300ms ease-out;
+}
+
+#profile-avatars svg:hover {
+    transform: scale(110%);
 }

@@ -16,20 +16,23 @@
 
         if (empty($_GET['user_id']))
             header('Location: 404.html');
-        // Get linked user's name from link ID
+        
+            // Get linked user's name from link ID
         $stmt = $db -> prepare('SELECT * FROM users WHERE user_id = :user');
         $stmt -> bindParam(':user', $_GET['user_id']);
         $stmt -> execute();
 
-        $user_name = $stmt -> fetch(PDO::FETCH_ASSOC)['username'];
+        $user = $stmt -> fetch(PDO::FETCH_ASSOC);
+        $user_name = $user['username'];
+        $user_description = $user['description']
     ?>
     <section class="post-section" style="margin-top:3rem">
         <div class="post-container">
             <svg width=75 height=75>
-                <circle cx=50% cy=50% r=50% fill=black/>
+                <circle cx=50% cy=50% r=50% fill="<?php echo $user['profile_src']?>"/>
             </svg>
             <h2 class="username"><?php echo $user_name ?></h2>
-            <p>Where the fun starts. Everyday.</p>
+            <p><?php echo $user_description ?></p>
         </div>
 
         <?php
@@ -54,7 +57,7 @@
             echo    '<div class="post-container">
                         <div class="post-user">
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '"/>
                             </svg>
                             <h4 class="username">' . $post_user['username'] . '</h4>
                             <p>' . $post['date'] . '</p>
@@ -100,12 +103,13 @@
                 $stmt -> bindParam(':user', $comment['name'], PDO::PARAM_STR);
                 $stmt -> execute();
 
-                $user_id = $stmt -> fetch(PDO::FETCH_ASSOC)['user_id'];
+                $comment_user = $stmt -> fetch(PDO::FETCH_ASSOC);
+                $user_id = $comment_user['user_id'];
 
                 echo    '<div class="comment-container">
                             <div>
                                 <svg width=30 height=30>
-                                    <circle cx=50% cy=50% r=50% fill=black/>
+                                    <circle cx=50% cy=50% r=50% fill="' . $comment_user['profile_src'] . '" />
                                 </svg>';
 
                                 if ($post['user_id'] !== $user_id){
@@ -126,13 +130,13 @@
                     <form class="comment-box">
                         <input type="hidden" name="post_id" value="' . $post['id'] . '">
                 ';
-
+            
             if (isset($_SESSION['username'])) { 
                 echo '
                         <input type="hidden" name="username" value="' . $_SESSION['username'] . '"> 
                         <div>
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill=black/>
+                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '" />
                             </svg>
                             <h4 class="username">' . $_SESSION['username'] . '</h4>
                         </div>

@@ -36,6 +36,12 @@
         if (isset($recent_searches))
             $searches = json_decode($recent_searches, true);
 
+        // Get user profile from session
+        $stmt = $db -> prepare('SELECT * FROM users WHERE username = :user');
+        $stmt -> bindParam(':user', $_SESSION['username']);
+        $stmt -> execute();
+
+        $user_profile = $stmt -> fetch(PDO::FETCH_ASSOC)['profile_src'];
     ?>  
 
     <h2>DiscussDen</h2>
@@ -130,7 +136,7 @@
         echo '
         <div id="user-btn" tabindex=0>
             <svg width=50 height=50>
-                <circle cx=25 cy=25 r=25 fill=black />
+                <circle cx=25 cy=25 r=25 fill=' . $user_profile . ' />
             </svg>
             <p class="username">' . $_SESSION['username'] . '</p>
 
