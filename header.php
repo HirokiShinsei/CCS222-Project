@@ -40,11 +40,13 @@
             $searches = json_decode($recent_searches, true);
 
         // Get user profile from session
-        $stmt = $db -> prepare('SELECT * FROM users WHERE username = :user');
-        $stmt -> bindParam(':user', $_SESSION['username']);
-        $stmt -> execute();
-
-        $user_profile = $stmt -> fetch(PDO::FETCH_ASSOC)['profile_src'];
+        if (isset($_SESSION['username'])) {
+            $stmt = $db -> prepare('SELECT * FROM users WHERE username = :user');
+            $stmt -> bindParam(':user', $_SESSION['username']);
+            $stmt -> execute();
+    
+            $user_profile = $stmt -> fetch(PDO::FETCH_ASSOC)['profile_src'];
+        }
     ?>  
 
     <h2>DiscussDen</h2>
