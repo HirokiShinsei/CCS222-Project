@@ -1,13 +1,16 @@
 <header>
     <?php session_start(); 
+
         $db_file = __DIR__ . '\forum_database.db';
         $db = new PDO('sqlite:' . $db_file);
 
-        $stmt = $db -> prepare('SELECT recent_searches FROM users WHERE username = :username');
-        $stmt -> bindParam(':username', $_SESSION['username']);
-        $stmt -> execute();
-
-        $recent_searches = $stmt -> fetch(PDO::FETCH_ASSOC)['recent_searches'];
+        if (isset($_SESSION['username'])) {
+            $stmt = $db -> prepare('SELECT recent_searches FROM users WHERE username = :username');
+            $stmt -> bindParam(':username', $_SESSION['username']);
+            $stmt -> execute();
+    
+            $recent_searches = $stmt -> fetch(PDO::FETCH_ASSOC)['recent_searches'];
+        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
             if (isset($recent_searches)) {
