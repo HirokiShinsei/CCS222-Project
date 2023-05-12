@@ -102,8 +102,10 @@ document.querySelectorAll('.edit-btn').forEach(edit_btn => {
 });
 
 // edit profile picture
-modify_profile.addEventListener('click', openProfileOptionBox);
-modify_profile.parentElement.parentElement.querySelector('g').addEventListener('click', openProfileOptionBox);
+if (modify_profile = document.getElementById('#modify_profile')) {
+    modify_profile.addEventListener('click', openProfileOptionBox);
+    modify_profile.parentElement.parentElement.querySelector('g').addEventListener('click', openProfileOptionBox);
+}
 
 function openProfileOptionBox() {
     backdrop.style.display = 'block';
@@ -144,42 +146,44 @@ document.querySelectorAll('.profile-option').forEach(profile => {
 
 const div = document.querySelector('.modal.option');
 const option_btn = document.querySelector('#option-btn');
-
-option_btn.addEventListener('focus', e => {
-    div.querySelector('.tab-option:first-child').focus();
-});
-
-div.addEventListener('keydown', e => {
-    if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const children = div.querySelectorAll('.tab-option');
-        
-        const currentIndex = Array.from(children).indexOf(document.activeElement);
-        const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
-        children[nextIndex].focus();
-        
-    } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const children = div.querySelectorAll('.tab-option');
-
-        const currentIndex = Array.from(children).indexOf(document.activeElement);
-        const prevIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
-        children[prevIndex].focus();
-    }
-});
-
 const changeNameForm = document.querySelector('#change-name');
 const changeNameBio = document.querySelector('#change-description');
 
-div.querySelectorAll('.tab-option')[0].addEventListener('click', ChangeName);
-div.querySelectorAll('.tab-option')[0].addEventListener('keydown', e => {
-    if (e.key === 'Space') ChangeName;
-});
-
-div.querySelectorAll('.tab-option')[1].addEventListener('click', ChangeBio);
-div.querySelectorAll('.tab-option')[1].addEventListener('keydown', e => {
-    if (e.key === 'Space') ChangeBio;
-});
+if (option_btn != null && div != null) {
+    
+    option_btn.addEventListener('focus', e => {
+        div.querySelector('.tab-option:first-child').focus();
+    });
+    
+    div.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const children = div.querySelectorAll('.tab-option');
+            
+            const currentIndex = Array.from(children).indexOf(document.activeElement);
+            const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
+            children[nextIndex].focus();
+            
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const children = div.querySelectorAll('.tab-option');
+    
+            const currentIndex = Array.from(children).indexOf(document.activeElement);
+            const prevIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
+            children[prevIndex].focus();
+        }
+    });
+    
+    div.querySelectorAll('.tab-option')[0].addEventListener('click', ChangeName);
+    div.querySelectorAll('.tab-option')[0].addEventListener('keydown', e => {
+        if (e.key === 'Space') ChangeName;
+    });
+    
+    div.querySelectorAll('.tab-option')[1].addEventListener('click', ChangeBio);
+    div.querySelectorAll('.tab-option')[1].addEventListener('keydown', e => {
+        if (e.key === 'Space') ChangeBio;
+    });
+}
 
 function ChangeName() {
     backdrop.style.display = 'flex';
@@ -190,3 +194,30 @@ function ChangeBio() {
     backdrop.style.display = 'flex';
     changeNameBio.style.display = 'unset';
 }
+
+function Sort() {
+    console.log('sorting');
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'sorting-algorithm.php');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            location.reload();
+        }
+    }
+
+    if (this.id == 'sort-by-hot') {
+        xhr.send('sortMethod=hot');
+    }
+    else if (this.id == 'sort-by-top') {
+        xhr.send('sortMethod=top');
+    }
+    else {
+        xhr.send('sortMethod=new');
+    } 
+}
+
+document.querySelectorAll('.post-tab > .group').forEach(sortTab => {
+    sortTab.addEventListener('click', Sort);
+});

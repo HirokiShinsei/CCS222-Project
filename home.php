@@ -28,21 +28,21 @@
 
         <!-- /* best-hot-new */ -->
         <div class="post-tab">
-            <div class="group">
+            <div class="group" id="sort-by-hot">
                 <a href="#" class="reddit-button">
                     <img src="img/hot.png" alt="" class="icon"/>
                     <span class="txt-hot"><span>Hot</span></span>
                 </a>
             </div>
 
-            <div class="group">
+            <div class="group" id="sort-by-new">
                 <a href="#" class="reddit-button">
                     <img src="img/new.png" alt="" class="icon" />
                     <span class="new"><span>New</span></span>
                 </a>
             </div>
 
-            <div class="group">
+            <div class="group" id="sort-by-top">
                 <a href="#" class="reddit-button">
                     <img src="img/top.png" alt="" class="icon" />
                     <span class="top"><span>Top</span></span>
@@ -58,8 +58,40 @@
         $stmt -> execute();
         $posts = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         
+        if (isset($_SESSION['sortMethod']))
+        {
+            if ($_SESSION['sortMethod'] == 'hot') {
+                usort($posts, function($a, $b) {
+                    $date = new DateTime("now", new DateTimeZone("Asia/Manila"));
+                    $date -> modify('-2 days');
+
+                    if (DateTime::createFromFormat('F j, Y g:i A', $a['date']) >= $date && DateTime::createFromFormat('F j, Y g:i A', $b['date']) >= $date) {
+
+                        if (count(json_decode($b['likes'])) == count(json_decode($a['likes'])))
+                            return strtotime($b['date']) - strtotime($a['date']);
+                        return count(json_decode($b['likes'])) - count(json_decode($a['likes']));
+                    }
+
+                    return strtotime($b['date']) - strtotime($a['date']);
+                }); 
+            }
+            else if ($_SESSION['sortMethod'] == 'top') {
+                usort($posts, function($a, $b) {
+                    if (count(json_decode($b['likes'])) == count(json_decode($a['likes'])))
+                        return strtotime($b['date']) - strtotime($a['date']);
+                    return count(json_decode($b['likes'])) - count(json_decode($a['likes']));
+                }); 
+            }
+            else {
+                usort($posts, function($a, $b) {
+                    return strtotime($b['date']) - strtotime($a['date']);
+                }); 
+            }
+        }
+
+
         // Iterate through every post
-        foreach (array_reverse($posts) as $post) {
+        foreach ($posts as $post) {
 
             // Get post user details
             $stmt = $db -> prepare('SELECT * FROM users WHERE user_id = :userID');
