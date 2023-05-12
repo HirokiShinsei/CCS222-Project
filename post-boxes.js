@@ -107,7 +107,7 @@ modify_profile.parentElement.parentElement.querySelector('g').addEventListener('
 
 function openProfileOptionBox() {
     backdrop.style.display = 'block';
-    document.querySelector('#profile-upload-popup').classList.add('active');
+    document.querySelector('#profile-upload-popup').style.display = 'flex';
 
     document.querySelector('body').style.overflowY = 'hidden';
 
@@ -115,15 +115,17 @@ function openProfileOptionBox() {
     .forEach(container => {container.setAttribute('tabindex', -1);});
 };
 
-exit_btn.addEventListener('click', () => {
-    backdrop.style.display = 'none';
-    document.querySelector('#profile-upload-popup').classList.remove('active');
+document.querySelectorAll('.exit-btn').forEach(exit_btn => {
+    exit_btn.addEventListener('click', function() {
+        backdrop.style.display = 'none';
+        this.parentElement.style.display = 'none';
+        
+        document.querySelector('body').style.overflowY = 'auto';
     
-    document.querySelector('body').style.overflowY = 'auto';
-
-    document.querySelectorAll('.comment-box > textarea, .comment-box > input[type="submit"], #searchbar > input, #tab-box, #user-btn')
-    .forEach(container => {container.setAttribute('tabindex', 0);});
-
+        document.querySelectorAll('.comment-box > textarea, .comment-box > input[type="submit"], #searchbar > input, #tab-box, #user-btn')
+        .forEach(container => {container.setAttribute('tabindex', 0);});
+    
+    });
 });
 
 document.querySelectorAll('.profile-option').forEach(profile => {
@@ -140,3 +142,52 @@ document.querySelectorAll('.profile-option').forEach(profile => {
         xhr.send('newfill=' + encodeURIComponent(profile.getAttribute('fill')));
     });
 });
+
+const div = document.querySelector('.modal.option');
+const option_btn = document.querySelector('#option-btn');
+
+option_btn.addEventListener('focus', e => {
+    div.querySelector('.tab-option:first-child').focus();
+});
+
+div.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const children = div.querySelectorAll('.tab-option');
+        
+        const currentIndex = Array.from(children).indexOf(document.activeElement);
+        const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
+        children[nextIndex].focus();
+        
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const children = div.querySelectorAll('.tab-option');
+
+        const currentIndex = Array.from(children).indexOf(document.activeElement);
+        const prevIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
+        children[prevIndex].focus();
+    }
+});
+
+const changeNameForm = document.querySelector('#change-name');
+const changeNameBio = document.querySelector('#change-description');
+
+div.querySelectorAll('.tab-option')[0].addEventListener('click', ChangeName);
+div.querySelectorAll('.tab-option')[0].addEventListener('keydown', e => {
+    if (e.key === 'Space') ChangeName;
+});
+
+div.querySelectorAll('.tab-option')[1].addEventListener('click', ChangeBio);
+div.querySelectorAll('.tab-option')[1].addEventListener('keydown', e => {
+    if (e.key === 'Space') ChangeBio;
+});
+
+function ChangeName() {
+    backdrop.style.display = 'flex';
+    changeNameForm.style.display = 'unset';
+}
+
+function ChangeBio() {
+    backdrop.style.display = 'flex';
+    changeNameBio.style.display = 'unset';
+}

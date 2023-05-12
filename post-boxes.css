@@ -206,7 +206,7 @@ form.comment-box textarea:focus {
 }
 
 /* Profile.php */
-.delete-btn, .edit-btn, #exit_btn {
+.delete-btn, .edit-btn, .exit-btn, #option-btn {
     position: absolute;
     top: 1rem;
     right: 3rem;
@@ -281,7 +281,7 @@ form.comment-box textarea:focus {
     cursor: pointer;
 }
 
-#profile-upload-popup {
+#profile-upload-popup, #change-name, #change-description {
     position: absolute;
     inset: 6rem 15rem;
 
@@ -295,10 +295,6 @@ form.comment-box textarea:focus {
 
     z-index: 2;
     display: none;
-}
-
-#profile-upload-popup.active {
-    display: flex;
     flex-direction: column;
 }
 
@@ -331,4 +327,37 @@ form.comment-box textarea:focus {
 
 #profile-avatars svg:hover {
     transform: scale(110%);
+}
+
+.modal.option {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+
+    background-color: var(--light-color-2);
+    border-radius: 0.5rem;
+    /* border: 2px solid var(--light-color-1); */
+    box-shadow: 0 2px 4px 0 gray;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 200ms;
+}
+
+.modal.option * {
+    text-overflow: clip;
+}
+
+.modal.option:focus-within {
+    max-height: 1000px;
+}
+
+#change-name, #change-description {
+    inset: 10rem 15rem;
+}
+
+#change-name input, #change-description input {
+    width: 100%;
+    box-sizing: border-box;
 }

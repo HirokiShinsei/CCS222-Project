@@ -24,7 +24,6 @@
             }
             else {
                 $_SESSION['username'] = trim($_POST['username']);
-                $_SESSION['user-link'] = "localhost/CCS222-Project/" . $_SESSION['username'];
 
                 // SQLite Database Access
                 $db_file = __DIR__ . '\forum_database.db';
@@ -40,10 +39,9 @@
                 else {
                     $_SESSION['password'] = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
 
-                    $insert_data = $db -> prepare('INSERT INTO users (username, password, link) VALUES (:username, :password, :link)');
+                    $insert_data = $db -> prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
                     $insert_data -> bindParam(':username', $_SESSION['username']);
                     $insert_data -> bindParam(':password', $_SESSION['password']);
-                    $insert_data -> bindParam(':link', $_SESSION['user-link']);
                     $insert_data -> execute();
 
                     session_destroy();

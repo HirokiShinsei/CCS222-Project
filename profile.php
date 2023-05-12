@@ -48,12 +48,50 @@
                         <path d="M 10.5 15 L 12.5 20 L 14.5 15 Z" fill=white /> 
                     </g>
             </svg>
+
             <h2 class="username"><?php echo $_SESSION['username'] ?></h2>
             <p><?php echo $user_description?></p>
+
+            <svg width=5 height=25 id="option-btn" tabindex=1>
+                <circle cx=50% cy=25% r=12% fill=black />
+                <circle cx=50% cy=50% r=12% fill=black />
+                <circle cx=50% cy=75% r=12% fill=black />
+            </svg>
+            <div class="modal option" tabindex=0>
+                <div class="tab-option" tabindex=-1>
+                    <p>Change Name</p>
+                </div>
+                <div class="tab-option" tabindex=-1>
+                    <p>Change Description</p>
+                </div>
+            </div>
         </div>
+
         <div id="backdrop"></div>
+        
+        <form action="change-name.php" method="post" id="change-name">
+            <svg width=25 height=25 class="exit-btn">
+                <circle cx=50% cy=50% r=45% stroke=black stroke-width=10% fill="transparent"/>
+                <line x1=35% y1=35% x2=65% y2=65% stroke=black stroke-width=15% stroke-linecap="round" />
+                <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
+            </svg>
+            <h2 class="username">Change Profile Username</h2>
+            <input type="text" placeholder="Enter new username here" name="newname">
+            <input type="submit" value="Change Username">
+        </form>
+        <form action="change-description.php" method="post" id="change-description">
+            <svg width=25 height=25 class="exit-btn">
+                <circle cx=50% cy=50% r=45% stroke=black stroke-width=10% fill="transparent"/>
+                <line x1=35% y1=35% x2=65% y2=65% stroke=black stroke-width=15% stroke-linecap="round" />
+                <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
+            </svg>
+            <h2 class="username">Change Profile Bio</h2>
+            <input type="text" placeholder="Enter new bio here" name="newdescription">
+            <input type="submit" value="Change Bio">
+        </form>
+            
         <div id="profile-upload-popup">
-            <svg width=25 height=25 id="exit_btn">
+            <svg width=25 height=25 class="exit-btn">
                 <circle cx=50% cy=50% r=45% stroke=black stroke-width=10% fill="transparent"/>
                 <line x1=35% y1=35% x2=65% y2=65% stroke=black stroke-width=15% stroke-linecap="round" />
                 <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
@@ -70,6 +108,7 @@
                 ?>
             </div>
         </div>
+
 
         <?php
         // Insert all posts here
