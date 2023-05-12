@@ -98,6 +98,7 @@ searchInput.addEventListener('input', () => {
         
         xhr.onload = () => {
             if (xhr.status === 200) {
+                console.log(xhr.responseText);
                 const suggestions = JSON.parse(xhr.responseText);
                 let suggestionsHTML = '';
                 

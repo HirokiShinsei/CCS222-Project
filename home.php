@@ -74,7 +74,7 @@
                                 <image href="' . $post_user['profile_src'] . '" x=0 y=0 width=35 height=35 clip-path="url(#avatar-clip)" />
                             </svg>
                             <a href="';
-                            if ($_SESSION['username'] === $post_user['username']) echo 'profile.php';
+                            if (isset($_SESSION['username']) && $_SESSION['username'] === $post_user['username']) echo 'profile.php';
                             else echo 'profile-visit.php?user_id=' . $post['user_id'];
                             echo '"><h4 class="username">' . $post_user['username'] . '</h4></a>
                             <p>' . $post['date'] . '</p>
@@ -129,7 +129,7 @@
                                     <image href="' . $comment_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                                 </svg>
                                 <a href="';
-                                if ($_SESSION['username'] === $comment['name']) echo 'profile.php';
+                                if (isset($_SESSION['username']) && $_SESSION['username'] === $comment['name']) echo 'profile.php';
                                 else echo 'profile-visit.php?user_id=' . $user_id;
                                 echo '"><h4 class="username">' . $comment['name'] . '</h4></a>
                                 <p>(' . $comment['date'] . ')</p>
