@@ -43,31 +43,37 @@ h4.username {
 
 /* best-hot-new */
 .group {
-    margin-right: 2rem; 
+    margin-right: 1.5rem; 
+    
     font-style: bold;
     font-weight: 800;
     font-size: 20px;
-}
-
-.reddit-button {
+    
+    border-radius: 0.8rem;
+    
     padding: 8px 16px;
-    border-radius: 4px; /* Adjust the value to change the roundness */
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.6;
-    transition: opacity 0.3s, border-color 0.3s;
+
+    transition: 200ms ease-out;
+
     display: flex;
+    column-gap: 0.5rem;
     align-items: center;
+    
+    cursor: pointer;
 }
 
-.reddit-button:hover {
-    background-color: white;
-    opacity: 0.8;
+.group.active {
+    background-color: var(--light-color-1);
+    box-shadow: 0 0 5px inset #000a;
 }
 
-.reddit-button:active {
-    opacity: 1;
+
+.group:hover {
+    background-color: var(--medium-color);
+    box-shadow: 0 0 5px inset #000a;
+}
+
+.group:active {
     border-color: #999;
 }
 

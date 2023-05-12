@@ -28,25 +28,19 @@
 
         <!-- /* best-hot-new */ -->
         <div class="post-tab">
-            <div class="group" id="sort-by-hot">
-                <a href="#" class="reddit-button">
-                    <img src="img/hot.png" alt="" class="icon"/>
-                    <span class="txt-hot"><span>Hot</span></span>
-                </a>
+            <div class="group <?php if(empty($_SESSION['sortMethod']) || $_SESSION['sortMethod'] == 'new') echo 'active'?>" id="sort-by-new">
+                <img src="img/new.png" alt="" class="icon" />
+                <span>New</span>
             </div>
 
-            <div class="group" id="sort-by-new">
-                <a href="#" class="reddit-button">
-                    <img src="img/new.png" alt="" class="icon" />
-                    <span class="new"><span>New</span></span>
-                </a>
+            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'hot') echo 'active'?>" id="sort-by-hot">
+                <img src="img/hot.png" alt="" class="icon"/>
+                <span>Hot</span>
             </div>
 
-            <div class="group" id="sort-by-top">
-                <a href="#" class="reddit-button">
-                    <img src="img/top.png" alt="" class="icon" />
-                    <span class="top"><span>Top</span></span>
-                </a>
+            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'top') echo 'active'?>" id="sort-by-top">
+                <img src="img/top.png" alt="" class="icon" />
+                <span>Top</span>
             </div>
         </div>
     </div>

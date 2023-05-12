@@ -194,30 +194,26 @@ function ChangeBio() {
     backdrop.style.display = 'flex';
     changeNameBio.style.display = 'unset';
 }
-
-function Sort() {
-    console.log('sorting');
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'sorting-algorithm.php');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            location.reload();
-        }
-    }
-
-    if (this.id == 'sort-by-hot') {
-        xhr.send('sortMethod=hot');
-    }
-    else if (this.id == 'sort-by-top') {
-        xhr.send('sortMethod=top');
-    }
-    else {
-        xhr.send('sortMethod=new');
-    } 
-}
-
 document.querySelectorAll('.post-tab > .group').forEach(sortTab => {
-    sortTab.addEventListener('click', Sort);
+    sortTab.addEventListener('click', () => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'sorting-algorithm.php');
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                location.reload();                
+            }
+        }
+
+        if (sortTab.id == 'sort-by-hot') {
+            xhr.send('sortMethod=hot');
+        }
+        else if (sortTab.id == 'sort-by-top') {
+            xhr.send('sortMethod=top');
+        }
+        else {
+            xhr.send('sortMethod=new');
+        } 
+    });
 });
