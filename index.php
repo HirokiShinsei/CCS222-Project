@@ -9,7 +9,9 @@
 </head>
 <body>
     <?php 
+    session_set_cookie_params('86400', '/', '.php', true, true);
     session_start();
+    
     if(isset($_SESSION['username'])) {
         header('Location: home.php');
     } else {
