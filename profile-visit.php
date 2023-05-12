@@ -141,7 +141,7 @@
                         <input type="hidden" name="username" value="' . $_SESSION['username'] . '"> 
                         <div>
                             <svg width=35 height=35>
-                                <image href="' . $post_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
+                                <image href="' . $user_profile . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                             </svg>
                             <h4 class="username">' . $_SESSION['username'] . '</h4>
                         </div>
