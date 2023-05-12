@@ -10,9 +10,6 @@ $stmt -> bindParam(':current_user', $_SESSION['username']);
 $stmt -> bindParam(':description', $_POST['newdescription']);
 $stmt -> execute();
 
-$_SESSION['username'] = $_POST['newname'];
-setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
-
 header('Location: profile.php');
 
 ?>
