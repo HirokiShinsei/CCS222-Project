@@ -12,6 +12,8 @@
 
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            session_set_cookie_params('86400', '/', '.php', true, true);
             session_start();
             
             $_SESSION['username'] = $_POST['username'];
@@ -36,8 +38,7 @@
 
                     } else {
                         
-                        $_SESSION['username'] = $row['username'];                       
-                        setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
+                        $_SESSION['username'] = $row['username'];
                         
                         header('Location: home.php');
                     }

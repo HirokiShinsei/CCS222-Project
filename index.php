@@ -8,12 +8,9 @@
     <link rel="icon" href="img/icon.png">
 </head>
 <body>
-    <?php if(isset($_COOKIE['username'])) {
-        session_start();
-
-        $_SESSION['username'] = $_COOKIE['username'];
-        $_SESSION['user-link'] = $_COOKIE['user-link'];
-
+    <?php 
+    session_start();
+    if(isset($_SESSION['username'])) {
         header('Location: home.php');
     } else {
         header('Location: login.php');
