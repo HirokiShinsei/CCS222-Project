@@ -23,6 +23,10 @@
         $stmt -> execute();
 
         $user = $stmt -> fetch(PDO::FETCH_ASSOC);
+
+        if ($user === false)
+            header('Location: 404.html');
+
         $user_name = $user['username'];
         $user_description = $user['description']
     ?>
