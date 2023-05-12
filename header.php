@@ -136,7 +136,13 @@
         echo '
         <div id="user-btn" tabindex=0>
             <svg width=50 height=50>
-                <circle cx=25 cy=25 r=25 fill=' . $user_profile . ' />
+                <defs>
+                    <clipPath id="avatar-clip" clipPathUnits="objectBoundingBox" >
+                        <circle cx=0.5 cy=0.5 r=0.5 />
+                    </clipPath>
+                </defs>
+
+                <image href="' . $user_profile . '" width=100% height=100% clip-path="url(#avatar-clip)" />
             </svg>
             <p class="username">' . $_SESSION['username'] . '</p>
 

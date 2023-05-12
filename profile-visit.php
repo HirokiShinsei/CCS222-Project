@@ -29,7 +29,12 @@
     <section class="post-section" style="margin-top:3rem">
         <div class="post-container">
             <svg width=75 height=75>
-                <circle cx=50% cy=50% r=50% fill="<?php echo $user['profile_src']?>"/>
+                <defs>
+                    <clipPath id="avatar-clip" clipPathUnits="objectBoundingBox" >
+                        <circle cx=0.5 cy=0.5 r=0.5 />
+                    </clipPath>
+                </defs>
+                <image href="<?php echo $user['profile_src'] ?>" width=100% height=100% clip-path="url(#avatar-clip)" />
             </svg>
             <h2 class="username"><?php echo $user_name ?></h2>
             <p><?php echo $user_description ?></p>
@@ -57,7 +62,7 @@
             echo    '<div class="post-container">
                         <div class="post-user">
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '"/>
+                                <image href="' . $post_user['profile_src'] . '" x=0 y=0 width=35 height=35 clip-path="url(#avatar-clip)" />
                             </svg>
                             <h4 class="username">' . $post_user['username'] . '</h4>
                             <p>' . $post['date'] . '</p>
@@ -109,7 +114,7 @@
                 echo    '<div class="comment-container">
                             <div>
                                 <svg width=30 height=30>
-                                    <circle cx=50% cy=50% r=50% fill="' . $comment_user['profile_src'] . '" />
+                                    <image href="' . $comment_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                                 </svg>';
 
                                 if ($post['user_id'] !== $user_id){
@@ -136,7 +141,7 @@
                         <input type="hidden" name="username" value="' . $_SESSION['username'] . '"> 
                         <div>
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '" />
+                                <image href="' . $post_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                             </svg>
                             <h4 class="username">' . $_SESSION['username'] . '</h4>
                         </div>

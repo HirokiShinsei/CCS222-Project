@@ -15,7 +15,7 @@
     <div class="input-section">
         <div class="post-tab">
             <svg width=35 height=35>
-                <circle cx=17.5 cy=17.5 r=17.5 fill="<?php echo $user_profile ?>" />
+                <image href="<?php echo $user_profile ?>" width=100% height=100% clip-path="url(#avatar-clip)" />
             </svg>
             <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link">
             <img src="img/image.png" alt="" class="icon">
@@ -66,7 +66,7 @@
             echo    '<div class="post-container">
                         <div class="post-user">
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $post_user['profile_src'] . '"/>
+                                <image href="' . $post_user['profile_src'] . '" x=0 y=0 width=35 height=35 clip-path="url(#avatar-clip)" />
                             </svg>
                             <a href="';
                             if ($_SESSION['username'] === $post_user['username']) echo 'profile.php';
@@ -121,7 +121,7 @@
                 echo    '<div class="comment-container">
                             <div>
                                 <svg width=30 height=30>
-                                    <circle cx=15 cy=15 r=15 fill="' . $comment_user['profile_src'] . '"/>
+                                    <image href="' . $comment_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                                 </svg>
                                 <a href="';
                                 if ($_SESSION['username'] === $comment['name']) echo 'profile.php';
@@ -143,7 +143,7 @@
                         <input type="hidden" name="username" value="' . $_SESSION['username'] . '"> 
                         <div>
                             <svg width=35 height=35>
-                                <circle cx=17.5 cy=17.5 r=17.5 fill="' . $user_profile . '"/>
+                                <image href="' . $post_user['profile_src'] . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                             </svg>
                             <h4 class="username">' . $_SESSION['username'] . '</h4>
                         </div>

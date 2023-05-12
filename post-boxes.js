@@ -130,7 +130,6 @@ document.querySelectorAll('.exit-btn').forEach(exit_btn => {
 
 document.querySelectorAll('.profile-option').forEach(profile => {
     profile.addEventListener('click', () => {
-        console.log(profile.fill);
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'change-profile.php');
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -139,7 +138,7 @@ document.querySelectorAll('.profile-option').forEach(profile => {
                 location.reload();
             }
         }
-        xhr.send('newfill=' + encodeURIComponent(profile.getAttribute('fill')));
+        xhr.send('newfill=' + encodeURIComponent(profile.getAttribute('href')));
     });
 });
 
