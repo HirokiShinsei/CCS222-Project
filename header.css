@@ -18,6 +18,10 @@
     src: url(fonts/Nunito-SemiBold.ttf);
 }
 
+html {
+    color-scheme: light dark;
+}
+
 body {
     --dark-color-1: #283618;
     --dark-color-2: #606c38;
