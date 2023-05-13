@@ -46,7 +46,7 @@ modify_profile.parentElement.parentElement.querySelector('g').addEventListener('
 
 
 function openProfileOptionBox() {
-    backdrop.style.display = 'block';
+    document.querySelector('#backdrop-profile').style.display = 'block';
     document.querySelector('#profile-upload-popup').style.display = 'flex';
 
     document.querySelector('body').style.overflowY = 'hidden';
@@ -57,7 +57,7 @@ function openProfileOptionBox() {
 
 document.querySelectorAll('.exit-btn').forEach(exit_btn => {
     exit_btn.addEventListener('click', function() {
-        backdrop.style.display = 'none';
+        document.querySelector('#backdrop-profile').style.display = 'none';
         this.parentElement.style.display = 'none';
         
         document.querySelector('body').style.overflowY = 'auto';
@@ -119,13 +119,13 @@ option_btn.addEventListener('focus', e => {
 });
 
 function ChangeName() {
-    backdrop.style.display = 'flex';
+    document.querySelector('#backdrop-profile').style.display = 'flex';
     changeNameForm.style.display = 'unset';
     document.querySelector('body').style.overflowY = 'hidden';
 }
 
 function ChangeBio() {
-    backdrop.style.display = 'flex';
+    document.querySelector('#backdrop-profile').style.display = 'flex';
     changeNameBio.style.display = 'unset';
     document.querySelector('body').style.overflowY = 'hidden';
 }

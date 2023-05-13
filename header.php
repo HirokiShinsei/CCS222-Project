@@ -97,7 +97,7 @@
     <?php if(isset($_SESSION['username'])) {
         echo '
         <div id="user-btn" tabindex=0>
-            <svg width=50 height=50>
+            <svg width=40 height=40>
                 <defs>
                     <clipPath id="avatar-clip" clipPathUnits="objectBoundingBox" >
                         <circle cx=0.5 cy=0.5 r=0.5 />
@@ -109,9 +109,33 @@
             <p class="username">' . $_SESSION['username'] . '</p>
         </div>
         ';
-    } else {
-        echo '<a href="login.php" tabindex=3>Log In or Sign Up</a>';
-    } ?>
-
-    <script src="header.js"></script>
+echo '
 </header>
+<div id="backdrop"></div>
+<div id="mobile-sidebar">
+    <div id="user-btn-expanded" tabindex=0>
+        <svg width=40 height=40>
+            <defs>
+                <clipPath id="avatar-clip" clipPathUnits="objectBoundingBox" >
+                    <circle cx=0.5 cy=0.5 r=0.5 />
+                </clipPath>
+            </defs>
+
+            <image href="' . $user_profile . '" width=100% height=100% clip-path="url(#avatar-clip)" />
+        </svg>
+        <p class="username">' . $_SESSION['username'] . '</p>
+    </div>';
+    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php') 
+        echo '<a class="option" href="home.php">Back to Home'; 
+    else echo '<a class="option" href="profile.php">Go to Profile';
+    echo '</a>
+    <a class="option" id="log-out-option">Log Out</a>
+</div>';
+
+} else {
+    echo '<a href="login.php" tabindex=3>Log In or Sign Up</a>
+    </header>
+';} 
+?>
+<script src="header.js"></script>
+    

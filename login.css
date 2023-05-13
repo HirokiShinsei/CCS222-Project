@@ -1,16 +1,7 @@
-@font-face {
-    font-family: nunito-reg;
-    src: url(fonts/Nunito-Regular.ttf);
-}
+@import url(main-vars.css);
 
-@font-face {
-    font-family: nunito-black;
-    src: url(fonts/Nunito-Black.ttf);
-}
-
-@font-face {
-    font-family: nunito-xtrabold;
-    src: url(fonts/Nunito-ExtraBold.ttf);
+body {
+    background-color: var(--color-4);
 }
 
 form {
@@ -25,20 +16,20 @@ form {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    --black-font: nunito-black;
-    --bold-font: nunito-xtrabold;
-    --reg-font: nunito-reg;
 }
 
 h1 {
-    font-family: var(--black-font);
+    font-family: var(--font);
+    font-weight: 900;
 }
+
 input[type="submit"], a {
-    font-family: var(--bold-font);
+    font-family: var(--font);
+    font-weight: 800;
 }
 
 h3, input[type="text"], label {
-    font-family: var(--reg-font);
+    font-family: var(--font);
 }
 
 h1, h3 {
@@ -50,7 +41,6 @@ h3 {
 }
 
 label {
-
     font-size: 0.75rem;
     align-self: flex-start;
     margin-top: 1rem;
@@ -66,7 +56,10 @@ input[type="text"], input[type="password"] {
     align-self: stretch;
     padding: 0.8rem;
     margin-top: 0.2rem ;
-    box-shadow: 2px 2px 5px 2px #0002;
+
+    background-color: var(--color-3);
+    box-shadow: 0 2px 4px 0 gray;
+
     border: 0;
     border-radius: 5px;
 }
@@ -77,51 +70,67 @@ input[type="submit"] {
     width: 6rem;
     height: 2.5rem;
     margin-top: 0.5rem;
-    background-color: white;
-    border-radius: 0.3rem;
-    border: solid 1px black;
+
+    background-color: transparent;
+    
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-1);
+
     font-size: 1.1rem;
     transition: 200ms;
     cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    color: white;
-    background-color: black;
+    background-color: var(--color-2);
 }
 
 hr {
     width: 100%;
     height: 1px;
     border: none;
-    background: #aaa;
+    background-color: var(--color-1);
     margin: 20px 0;
 }
 
 a.create {
-
     width: 11rem;
     padding: 0.5rem;
     text-decoration: none;
     text-align: center;
     color: black;
-    background-color: lightgreen;
-    /* border: solid 1px black; */
+    background-color: var(--color-2);
     border-radius: 0.3rem;
 
     transition: 200ms;
 }
 
 a.create:hover {
-    
-    background-color: seagreen;
+    background-color: var(--color-1);
     color: white;
 }
 
 a.forgot {
     font-size: 0.75rem;
-    font-family: var(--reg-font);
+    font-family: var(--font);
+    font-weight: 400;
     text-decoration: none;
 
     margin-block: 0.6rem 1.2rem;
+}
+
+#signup {
+    margin-top: 1.5rem;
+}
+
+@media (prefers-color-scheme:dark) {
+    input[type="text"], input[type="password"] {
+        box-shadow: 0 0 7px white;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    form {
+        width: 80%;
+    }
 }

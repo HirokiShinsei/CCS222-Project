@@ -1,6 +1,8 @@
 // Redirect to home page when the title is clicked
-document.querySelector('header > h2').onclick = function() {
-    window.location.href = 'home.php';
+if (window.innerWidth > 480) {
+    document.querySelector('header > h2').onclick = function() {
+        window.location.href = 'home.php';
+    }
 }
 
 
@@ -124,8 +126,30 @@ searchInput.addEventListener('keydown', e => {
 const user_btn = document.querySelector('#user-btn');
 
 if (user_btn != null) {
-    user_btn.addEventListener('click', () => {window.location.href = 'profile.php'});
-    user_btn.addEventListener('contextmenu', logOut);
+    if (window.innerWidth > 480) {
+        user_btn.addEventListener('click', () => {window.location.href = 'profile.php'});
+        user_btn.addEventListener('contextmenu', logOut);
+    } else {
+        user_btn.addEventListener('touchstart', expandSidebar);
+    }
+}
+
+function expandSidebar(e) {
+    document.querySelector('#backdrop').classList.add('active');
+    document.querySelector('#mobile-sidebar').classList.add('active');
+    
+    function closeSidebar(e) {
+        if (!document.querySelector('#mobile-sidebar').contains(e.target)) {
+            document.querySelector('#mobile-sidebar').classList.remove('active');
+            document.querySelector('#backdrop').classList.remove('active');
+            user_btn.addEventListener('touchstart', expandSidebar);
+        }
+    }
+    e.stopPropagation();
+
+    document.addEventListener('touchstart', closeSidebar);
+    user_btn.removeEventListener('touchstart', expandSidebar);
+    document.querySelector('#log-out-option').addEventListener('touchstart', logOut);
 }
 // Log out
 function logOut(e) {

@@ -50,7 +50,7 @@ img.icon {
 
     background-color: white;
     border-radius: 2rem;
-    box-shadow: 2px 2px 4px #0007;
+    box-shadow: 0 2px 4px 0 gray;
 
     padding: 0.4rem;
     width: 40rem;
@@ -112,8 +112,8 @@ img.icon {
     margin-top: 2.2rem;
 }
 
-/* If the section is selected (active) */
-#search-box section.active {
+/* If the section is selected (active), hovered on, or touch selected */
+#search-box section.active, #search-box section:hover, #search-box section:active {
     background-color: var(--color-1);
 }
 
@@ -131,9 +131,7 @@ img.icon {
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    align-self: flex-start;
 
-    margin-top: 0.35rem;
     border-radius: 1.5rem;
 
     outline: solid 2px transparent;
@@ -147,11 +145,6 @@ img.icon {
 #user-btn:hover, #user-btn:focus, #user-btn:focus-within {
     background-color: var(--color-2);
     box-shadow: 2px 2px 3px #000a;
-}
-
-/* User icon */
-#user-btn > svg {
-    transform: scale(0.8);
 }
 
 /* User username */
@@ -172,6 +165,121 @@ a[href="login.php"] {
     text-decoration: none;
 }
 
+#mobile-sidebar {
+    display: none;
+}
+
+/* Mobile browser support */
+@media only screen and (max-device-width: 480px) {
+    header {
+        display: grid;
+        justify-content: center;
+
+        height: fit-content;
+        padding-bottom: 1rem;
+
+        position: absolute;
+        box-shadow: 0 2px 4px gray;
+    }
+
+    header > h2 {
+        font-size: 1.2rem;
+        text-align: center;
+
+        cursor: auto;
+    }
+
+    header > #searchbar {
+        width: calc(100vw - 4rem);
+        margin-block: 1rem;
+    }
+
+    #user-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+    }
+
+    #user-btn > .username {
+        display: none;
+    }
+
+    #mobile-sidebar {
+        background-color: var(--color-3);
+        
+        position: fixed;
+        width: 60vw;
+        height: 100vh;
+        inset: 0 auto 0 0;
+
+        display: flex;
+        flex-direction: column;
+        
+        left: -60vw;
+        transition: left 300ms ease-out;
+
+        z-index: 2;
+    }
+
+    #mobile-sidebar.active {
+        left: 0;
+    }
+
+    #user-btn-expanded {
+        background-color: var(--color-3);
+
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: flex-start;
+
+        margin: 1rem;
+    }
+
+    /* User username */
+    #user-btn-expanded > .username {
+        padding-inline: 0.5rem;
+        margin: 0;
+        
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .option {
+        font-family: var(--font);
+        padding-block: 0.75rem;
+        padding-left: 1rem;
+        text-decoration: none;
+        color: unset;
+
+        cursor: pointer;
+
+        background-color: var(--color-3);
+    }
+
+    .option:hover, .option:active {
+        background-color: var(--color-1);
+    }
+
+    #backdrop {
+        position: fixed;
+        inset: 0;
+
+        background-color: #000a;
+        opacity: 0;
+
+        transition: 200ms;
+        z-index: -1;
+    }
+    
+    #backdrop.active {
+        backdrop-filter: blur(3px);
+        opacity: 1;
+        z-index: 2;
+    }
+}
+
 /* If color scheme is dark */
 @media (prefers-color-scheme:dark) {
     #searchbar {
@@ -190,4 +298,5 @@ a[href="login.php"] {
     #user-btn:hover, #user-btn:focus, #user-btn:focus-within {
         box-shadow: 0 0 7px white;
     }
+
 }

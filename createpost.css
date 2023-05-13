@@ -1,44 +1,29 @@
-@font-face {
-    font-family: nunito-reg;
-    src: url(fonts/Nunito-Regular.ttf);
-}
-
-@font-face {
-    font-family: nunito-black;
-    src: url(fonts/Nunito-Black.ttf);
-}
-
-@font-face {
-    font-family: nunito-xtrabold;
-    src: url(fonts/Nunito-ExtraBold.ttf);
-}
+@import url(main-vars.css);
 
 body {
     margin: 0;
     padding: 0;
-
-    --black-font: nunito-black;
-    --bold-font: nunito-xtrabold;
-    --reg-font: nunito-reg;
 }
 
 .post {
     width: 70%;
-    margin: 0 auto;
-    margin-top: 8rem;
+
+    margin: 8rem auto auto;
     padding: 20px;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+
+    background-color: var(--color-3);
+    box-shadow: 0 2px 4px 0 gray;
+    border-radius: 0.3rem;
 } 
 
 .post-head {
   font-size: 24px;
-  font-family: nunito-xtrabold;
-  font-weight: bold;
-  margin: 0 0 20px;
-  color: #1a1a1b;
+  font-family: var(--font);
+  font-weight: 800;
   text-align: center;
+  
+  margin: 0 0 20px;
+  
 }
 
 .form {
@@ -47,51 +32,73 @@ body {
   margin-top: 1rem;
 }
 
-.title {
+.title, .content {
   margin-bottom: 10px;
   padding: 10px;
-  box-shadow: 2px 2px 5px 2px #0002;
   
+  font-family: var(--font);
   font-size: 16px;
-  font-family: nunito-black;
   
   border: 0;
-  border-radius: 5px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 4px 0 gray;
 
+  background-color: var(--color-4);
+}
+
+.title:focus, .content:focus {
+  outline: none;
+}
+
+.title {
+  font-weight: 900;
 }
 
 .content {
   margin-block: 1rem;
-  padding: 10px;
   
-  font-family: nunito-reg;
-  font-size: 16px;
-  box-shadow: 2px 2px 5px 2px #0002;
-  border: 0;
   border-radius: 5px;
-  
+
   box-sizing: border-box;
   min-height: 15em;
   
   resize: none;
+
   flex-grow: 1;
   overflow-y: hidden;
 }
 
 .post input[type="submit"] {
-  background-color: white;
-  color: black;
-  border: solid 1px black;
-  border-radius: 3px;
   padding: 10px 20px;
   font-size: 1.1rem;
+
   cursor: pointer;
-  transition: 200ms;
+  transition: 50ms;
+
+  box-sizing: border-box;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-1);
+
 }
 
-.post input[type="submit"]:hover {
-  color: white;
-  background-color: black;
+.post input[type="submit"]:hover, .post input[type="submit"]:focus, .post input[type="submit"]:active {
+  background-color: var(--color-2);
+  box-shadow: 0 0 3px white;
+}
+
+@media (prefers-color-scheme:dark) {
+  .post, .title, .content {
+    box-shadow: 0 0 7px white;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .post {
+    margin-top: 10rem;
+    width: 100%;
+    box-sizing: border-box;
+    
+    border-radius: 0;
+  }
 }

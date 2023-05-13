@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Include header -->
-    <?php include_once "header.php"?>
+    <?php include_once "header.php" ?>
 
     <!-- Create a post, sort posts (new, hot, top) -->
     <div id="input-section">
@@ -31,7 +31,7 @@
         ?>
 
         <!-- New, Hot, Top Post sorting tabs -->
-        <div class="post-tab">
+        <div class="post-tab" id="sort-by">
             <div class="group <?php if(empty($_SESSION['sortMethod']) || $_SESSION['sortMethod'] == 'new') echo 'active'?>" id="sort-by-new" tabindex=0>
                 <img src="img/new.png" alt="" class="icon" />
                 <span>New</span>

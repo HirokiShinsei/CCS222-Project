@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DisscussDen Sign Up</title>
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="sign-up.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
     ?>
     
     
-    <form action="sign-up.php" method="post">
+    <form action="sign-up.php" method="post" autocomplete="off">
         <h1>Sign Up</h1>
         <h3>It's quick and easy.</h3>
         <hr>
@@ -71,7 +71,7 @@
         <input type="password" name="password_2" id="password" required> 
         <?php if (isset($error_msg) && $error_msg == "Passwords do not match.") echo '<label for="password" class="error">' . $error_msg . '</label>' ?>
 
-        <input type="submit" value="Sign Up">
+        <input type="submit" value="Sign Up" id="signup">
     </form>
 </body>
 </html>

@@ -46,7 +46,6 @@
 .group {
     margin-right: 1.5rem; 
     
-    font-style: bold;
     font-weight: 800;
     font-size: 20px;
     
@@ -70,7 +69,7 @@
 }
 
 /* When user hovers over tab, or when tabbed into */
-.group:hover, .group:focus {
+.group:hover, .group:focus, .group:active {
     outline: none;
     background-color: var(--color-1);
     box-shadow: 0 0 5px inset #000a;
@@ -167,9 +166,9 @@ button.like {
     height: 2rem;
 }
 
-button.like:hover {
+button.like:hover, button.like:active {
     background-color: var(--color-2);
-    box-shadow: 0 0 3px lightpink;
+    box-shadow: 0 0 3px white;
 }
 
 /* The like button picture */
@@ -221,9 +220,9 @@ form.comment-box input[type="submit"] {
 }
 
 /* Submit button when hovered*/
-form.comment-box input[type="submit"]:hover, form.comment-box input[type="submit"]:focus {
+form.comment-box input[type="submit"]:hover, form.comment-box input[type="submit"]:focus, form.comment-box input[type="submit"]:active {
     background-color: var(--color-2);
-    box-shadow: 0 0 3px lightpink;
+    box-shadow: 0 0 3px white;
 
 }
 
@@ -267,5 +266,53 @@ form.comment-box textarea:focus {
 
     .post-container {
         box-shadow: 0 0 7px white;
+    }
+}
+
+/* Mobile browser support */
+@media only screen and (max-width: 600px) {
+    #input-section {
+        margin-top: 9rem;
+        overflow-x: hidden;
+    }
+
+    .post-tab {
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0;
+
+        margin-top: 0;
+    }
+
+    #sort-by {
+        padding-block: 0.3rem;
+    }
+
+    .group {
+        transform: scale(0.8);
+    }
+    
+    .post-section {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .post-container {
+        margin: 0.5rem 0 0;
+        border-radius: 0;
+    }
+
+    h4.username, .post-content {
+        font-size: smaller;
+    }
+}
+
+@media only screen and (max-width: 600px) and (prefers-color-scheme:dark) {
+    #sort-by {
+        box-shadow: none;
+    }
+
+    .post-container {
+        box-shadow: 0 0 3px white;
     }
 }

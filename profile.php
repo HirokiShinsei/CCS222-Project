@@ -25,7 +25,7 @@
         $user_description = $user['description'];
 
     ?>
-    <section class="post-section" style="margin-top:3rem">
+    <section class="post-section" id="main-profile">
         
         <div class="post-container">
             <svg width=75 height=75>
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div id="backdrop"></div>
+        <div id="backdrop-profile"></div>
         
         <form action="change-name.php" method="post" id="change-name">
             <svg width=25 height=25 class="exit-btn">
