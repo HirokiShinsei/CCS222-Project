@@ -65,7 +65,7 @@
     <h2>DiscussDen</h2>
 
     <!-- Search bar -->
-    <form action="" method="post" id="searchbar">
+    <form action="search-results.php" method="post" id="searchbar">
         <!-- Search box -->
         <div id="search-box">
             <!-- This is where the typed suggestion is placed -->
