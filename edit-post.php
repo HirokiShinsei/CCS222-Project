@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a post</title>
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="header-pc.css">
+    <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="createpost.css">
     
 </head>
