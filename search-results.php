@@ -9,7 +9,7 @@
 <body>
     <?php include_once "header.php" ?>
     
-    <h1>Search Results</h1>
+    <h1 id="search-results">Search Results</h1>
 
     <?php 
     

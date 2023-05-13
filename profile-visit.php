@@ -31,7 +31,7 @@
         $user_name = $user['username'];
         $user_description = $user['description']
     ?>
-    <section class="post-section" style="margin-top:3rem">
+    <section class="post-section" id="main-profile">
         <div class="post-container">
             <svg width=75 height=75>
                 <defs>
