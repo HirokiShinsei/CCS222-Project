@@ -153,5 +153,6 @@
     }
 
     ?>
+    <script src="post-boxes.js"></script>
 </body>
 </html>
