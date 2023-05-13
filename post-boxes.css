@@ -11,6 +11,8 @@
     background-color: var(--color-3);
     
     display: flex;
+    justify-content: center;
+    justify-items: center;
     align-items: center;
 
     margin: 2rem auto 0;
@@ -44,7 +46,7 @@
 
 /* New, Hot, Top */
 .group {
-    margin-right: 1.5rem; 
+    margin-inline: 0.75rem; 
     
     font-weight: 800;
     font-size: 20px;
@@ -57,6 +59,7 @@
 
     display: flex;
     column-gap: 0.5rem;
+    justify-content: space-around;
     align-items: center;
     
     cursor: pointer;
@@ -288,8 +291,8 @@ form.comment-box textarea:focus {
         padding-block: 0.3rem;
     }
 
-    .group {
-        transform: scale(0.8);
+    #sort-by img {
+        width: 30%;
     }
     
     .post-section {
@@ -304,6 +307,10 @@ form.comment-box textarea:focus {
 
     h4.username, .post-content {
         font-size: smaller;
+    }
+
+    .comment-box h4.username {
+        display: none;
     }
 }
 
