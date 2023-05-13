@@ -49,12 +49,11 @@ searchInput.addEventListener('input', () => {
         
         xhr.onload = () => {
             if (xhr.status === 200) {
-                console.log(xhr.responseText);
                 const suggestions = JSON.parse(xhr.responseText);
                 let suggestionsHTML = '';
                 
                 if (suggestions.length > 0) {
-                    suggestionsHTML = suggestions.map(suggestion => `<section>${suggestion}</section>`).join('');
+                    suggestionsHTML = suggestions.map(suggestion => `<section ontouchstart="window.location.href='search-results.php?search=${suggestion}'" onclick="window.location.href='search-results.php?search=${suggestion}'">${suggestion}</section>`).join('');
                     document.querySelector('#search-suggest-label').innerHTML = 'POSTS RELATED TO YOUR SEARCH';
                     document.querySelector('#search-suggest-label').style.marginBlock = "1em";
                 } else {
@@ -73,16 +72,6 @@ searchInput.addEventListener('input', () => {
         searchSuggestions.innerHTML = '';
     }
 });
-
-// When searchbar loses focus
-searchInput.addEventListener('blur', () => {
-    searchbar.classList.remove('start-input');
-    
-    // remove all active class tags
-    searchBox.querySelectorAll('section').forEach(option => {
-        option.classList.remove('active');
-    });
-})
 
 // When down button is pressed and there is content on the searchbar
 searchInput.addEventListener('keydown', e => {
@@ -109,6 +98,7 @@ searchInput.addEventListener('keydown', e => {
             }
 
             searchSections.forEach((section, index) => {
+
                 if (index === sectionIndex)
                     section.classList.add('active');
                 else 

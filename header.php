@@ -78,7 +78,7 @@
                     if (isset($searches)) {
                         
                         foreach($searches as $search) {
-                                echo '<section>' . $search . '</section>';
+                                echo '<section ontouchstart="window.location.href=\'search-results.php?search=' . $search . '\'" onclick="window.location.href=\'search-results.php?search=' . $search . '\'" >' . $search . '</section>';
                         }
                     }
                 ?>
