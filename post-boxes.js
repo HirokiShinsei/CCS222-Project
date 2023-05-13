@@ -102,7 +102,8 @@ document.querySelectorAll('.edit-btn').forEach(edit_btn => {
 });
 
 // edit profile picture
-if (modify_profile = document.getElementById('#modify_profile')) {
+const modify_profile = document.getElementById('modify_profile');
+if (modify_profile != null) {
     modify_profile.addEventListener('click', openProfileOptionBox);
     modify_profile.parentElement.parentElement.querySelector('g').addEventListener('click', openProfileOptionBox);
 }

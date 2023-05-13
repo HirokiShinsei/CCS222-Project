@@ -1,5 +1,7 @@
 <header>
-    <?php session_start(); 
+    <?php 
+    session_set_cookie_params(86400);
+    session_start(); 
 
         $db_file = __DIR__ . '\forum_database.db';
         $db = new PDO('sqlite:' . $db_file);
