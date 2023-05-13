@@ -1,0 +1,236 @@
+@import url(main-vars.css);
+
+/* All svg in profile editor */
+.delete-btn, .edit-btn, .exit-btn, #option-btn {
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+
+    cursor: pointer;
+}
+
+/* Edit button */
+.edit-btn {
+    top: 3rem;
+}
+
+/* Delete confirmation window */
+.delete-confirm {
+    position: absolute;
+    inset: 0;
+    
+    background: linear-gradient(to bottom, var(--color-4), transparent);
+
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    transition: opacity 100ms;
+}
+
+/* When delete button is clicked, show delete window */
+.delete-confirm.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* All elements in delete window */
+.delete-confirm > * {
+    display: block;
+    opacity: 0;
+}
+
+/* Show elements in delete window */
+.delete-confirm.active > * {
+    opacity: 1;
+}
+
+/* All buttons in delete window */
+.delete-confirm button {
+    width: 6rem;
+    height: 2.5rem;
+
+    margin-top: 0.5rem;
+    background-color: var(--color-3);
+    
+    border-radius: 0.3rem;
+    border: solid 2px var(--color-1);
+    
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 1.1rem;
+
+    cursor: pointer;
+    transition: 200ms;
+}
+
+/* Yes button (delete window) */
+.delete-confirm.active .yes-btn:hover {
+    background-color: var(--color-2);
+    color: white;
+}
+
+/* No button (delete window) */
+.delete-confirm.active .no-btn:hover {
+    background-color: var(--color-2);
+    color: white;
+}
+
+/* Edit profile button (shown as a little section on the profile avatar with a pencil) */
+#modify_profile {
+    font-family: nunito-reg;
+    font-size: 0.8rem;
+
+    border: none;
+    cursor: pointer;
+}
+
+/* Backdrop blur */
+#backdrop {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px);
+
+    z-index: 1;
+    display: none;
+}
+
+/* Avatar container */
+#profile-avatars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 6rem);
+    justify-content: space-evenly;
+
+    gap: 2rem;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+/* Different avatars */
+#profile-avatars svg {
+    width: 6rem;
+    height: 6rem;
+    transform: scale(1);
+
+    transition: 300ms ease-out;
+}
+
+/* Different avatars, on hover */
+#profile-avatars svg:hover {
+    transform: scale(110%);
+}
+
+/* Options */
+.modal.option {
+    position: absolute;
+    top: 3.2rem;
+    right: 3rem;
+
+    background-color: var(--color-2);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px 0 gray;
+
+    max-height: 0;
+    max-width: 7rem;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    transition: 300ms ease-out;
+
+    padding: 0;
+}
+
+/* Option button (triple dot) */
+#option-btn {
+    outline-offset: 4px;
+    border-radius: 5px;
+    outline: 2px solid transparent;
+    transition: outline 100ms;
+}
+
+/* When focused or hovered */
+#option-btn:focus, #option-btn:hover {
+    outline: 2px solid var(--color-1);
+}
+
+/* When option button is focused, show options */
+#option-btn:focus + .modal.option {
+    max-height: 7rem;
+    max-width: 15rem;
+    overflow: hidden;
+}
+
+/* Individual options */
+.modal.option > .tab-option {
+    padding: 0.7rem 1rem;
+    margin-block: 0;
+
+}
+
+/* The p element in the tab option */
+.modal.option > .tab-option > p {
+    margin: 0;
+}
+
+/* When the tab option is active, or is selected */
+.modal.option > .tab-option.active, .modal.option > .tab-option:hover {
+    background-color: var(--color-1);
+}
+
+/* Pop-up windows (change profile avatar, change name, change bio) */
+#profile-upload-popup, #change-name, #change-description {
+    position: absolute;
+    inset: 6rem 15rem;
+
+    padding: 1rem 3rem;
+
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px 0 gray;
+    background-color: var(--color-3);
+
+    font-family: var(--font);
+
+    z-index: 2;
+    display: none;
+    flex-direction: column;
+}
+
+/* Change name window, change bio window */
+#change-name, #change-description {
+    inset: 10rem 15rem;
+}
+
+/* Change name and bio input box and submit button */
+#change-name input, #change-description input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* When color scheme is dark, set all svg fills to white */
+@media (prefers-color-scheme:dark) {
+    svg:not(#option-btn) > circle, svg > line {
+        stroke: white;
+    }
+
+    .edit-btn > g > * {
+        fill: white;
+    }
+
+    #option-btn > circle {
+        fill: white;
+    }
+
+    .modal.option {
+        box-shadow: 0 0 7px lightpink;
+    }
+
+    #profile-upload-popup, #change-name, #change-description {
+        box-shadow: 0 0 7px lightpink;
+    }
+}

@@ -6,39 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header-pc.css">
     <link rel="stylesheet" href="post-boxes.css">
     
 </head>
 <body>
-    <?php include "header.php"?>
-    <div class="input-section">
+    <!-- Include header -->
+    <?php include_once "header.php"?>
 
+    <!-- Create a post, sort posts (new, hot, top) -->
+    <div id="input-section">
+
+        <!-- Create a post tab -->
         <?php if (isset($_SESSION['username'])) {
             echo '
-            <div class="post-tab">
+            <div class="post-tab" id="create-a-post">
                 <svg width=35 height=35>
                     <image href="' . $user_profile . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                 </svg>
-                <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link">
+                <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link" tabindex=-1>
                 <img src="img/image.png" alt="" class="icon">
             </div>';
         }
         ?>
 
-        <!-- /* best-hot-new */ -->
+        <!-- New, Hot, Top Post sorting tabs -->
         <div class="post-tab">
-            <div class="group <?php if(empty($_SESSION['sortMethod']) || $_SESSION['sortMethod'] == 'new') echo 'active'?>" id="sort-by-new">
+            <div class="group <?php if(empty($_SESSION['sortMethod']) || $_SESSION['sortMethod'] == 'new') echo 'active'?>" id="sort-by-new" tabindex=0>
                 <img src="img/new.png" alt="" class="icon" />
                 <span>New</span>
             </div>
 
-            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'hot') echo 'active'?>" id="sort-by-hot">
+            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'hot') echo 'active'?>" id="sort-by-hot" tabindex=0>
                 <img src="img/hot.png" alt="" class="icon"/>
                 <span>Hot</span>
             </div>
 
-            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'top') echo 'active'?>" id="sort-by-top">
+            <div class="group <?php if(isset($_SESSION['sortMethod']) && $_SESSION['sortMethod'] == 'top') echo 'active'?>" id="sort-by-top" tabindex=0>
                 <img src="img/top.png" alt="" class="icon" />
                 <span>Top</span>
             </div>
@@ -47,11 +51,13 @@
 
     <section class="post-section">
     <?php
-        // Insert all posts here
+
+        // Get all posts from database
         $stmt = $db -> prepare('SELECT * FROM posts');
         $stmt -> execute();
         $posts = $stmt -> fetchAll(PDO::FETCH_ASSOC);
         
+        // Get sorting method
         if (isset($_SESSION['sortMethod']))
         {
             if ($_SESSION['sortMethod'] == 'hot') {
@@ -87,7 +93,6 @@
             }); 
         }
 
-
         // Iterate through every post
         foreach ($posts as $post) {
 
@@ -121,7 +126,7 @@
                     echo '<p class="likes">' . count(json_decode($post['likes'])) . '</p>';
                 }
 
-                    // Like or dislike
+                    // Upvoted or not
                     echo '<img class="like-state" ';
                         if(!((array_search($_SESSION['username'], json_decode($post['likes']))) === false)) {
                             echo 'src="img/upvote-filled.png"';

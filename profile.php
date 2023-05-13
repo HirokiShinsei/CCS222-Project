@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="icon" href="img/icon.png">
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="header-pc.css">
     <link rel="stylesheet" href="post-boxes.css">
+    <link rel="stylesheet" href="profile.css">
     
 </head>
 <body>
@@ -57,12 +58,12 @@
             <h2 class="username"><?php echo $_SESSION['username'] ?></h2>
             <p><?php echo $user_description?></p>
 
-            <svg width=5 height=25 id="option-btn" tabindex=1>
+            <svg width=5 height=25 id="option-btn" tabindex=0>
                 <circle cx=50% cy=25% r=12% fill=black />
                 <circle cx=50% cy=50% r=12% fill=black />
                 <circle cx=50% cy=75% r=12% fill=black />
             </svg>
-            <div class="modal option" tabindex=0>
+            <div class="modal option" tabindex=-1>
                 <div class="tab-option" tabindex=-1>
                     <p>Change Name</p>
                 </div>
@@ -252,5 +253,6 @@
     ?>
     </section>
     <script src="post-boxes.js"></script>
+    <script src="profile.js"></script>
 </body>
 </html>

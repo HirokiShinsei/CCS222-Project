@@ -1,15 +1,14 @@
-h4.username {
-    margin: 0;
-    margin-inline: 0.5rem;
-}
+@import url(main-vars.css);
 
-.input-section {
+/* Create a post, sorting tab */
+#input-section {
     margin-top: 6rem;
 }
 
+/* All post tabs (general selector); includes the create a post tab, and sorting tab */
 .post-tab {
     width: calc(100% - 36rem);
-    background-color: lightgray;
+    background-color: var(--color-3);
     
     display: flex;
     align-items: center;
@@ -17,31 +16,33 @@ h4.username {
     margin: 2rem auto 0;
     /* margin-top: 4rem; */
     padding: 1rem;
-
+    
     border-radius: 0.3rem;
     box-shadow: 0 2px 4px 0 gray;
 
-    font-family: nunito-reg;
+    font-family: var(--font);
 }
 
-.post-tab input {
+/* Create a post tab input */
+#create-a-post input {
     flex-grow: 1;
 
-    background-color: white;
+    background-color: var(--color-2);
     
     height: 1.8rem;
     margin-inline: 1rem;
     
     border-radius: 0.5rem;
-    border: 1px solid;
+    border: none;
+    font-family: var(--font);
 }
 
+/* Icon on create a post, icon of new, hot, top */
 .post-tab img {
     width: 2rem;
 }
 
-
-/* best-hot-new */
+/* New, Hot, Top */
 .group {
     margin-right: 1.5rem; 
     
@@ -51,9 +52,9 @@ h4.username {
     
     border-radius: 0.8rem;
     
-    padding: 8px 16px;
+    transition: 50ms;
 
-    transition: 200ms ease-out;
+    padding: 8px 16px;
 
     display: flex;
     column-gap: 0.5rem;
@@ -62,22 +63,20 @@ h4.username {
     cursor: pointer;
 }
 
+/* When tab is current sorting method */
 .group.active {
-    background-color: var(--light-color-1);
+    background-color: var(--color-2);
     box-shadow: 0 0 5px inset #000a;
 }
 
-
-.group:hover {
-    background-color: var(--medium-color);
+/* When user hovers over tab, or when tabbed into */
+.group:hover, .group:focus {
+    outline: none;
+    background-color: var(--color-1);
     box-shadow: 0 0 5px inset #000a;
 }
 
-.group:active {
-    border-color: #999;
-}
-
-
+/* The container of all posts */
 .post-section {
     width: calc(100% - 30rem);
     display: flex;
@@ -86,15 +85,11 @@ h4.username {
     margin-inline: auto;
     margin-bottom: 2rem;
 
-    --dark-color-1: #283618;
-    --dark-color-2: #606c38;
-    --medium-color: #bc6c25;
-    --light-color-1: #dda15e;
-    --light-color-2: #fefae0;
 }
 
+/* The container for every post */
 .post-container {
-    background-color: lightgray;
+    background-color: var(--color-3);
     
     display: flex;
     flex-direction: column;
@@ -106,18 +101,26 @@ h4.username {
     border-radius: 0.3rem;
     box-shadow: 0 2px 4px 0 gray;
 
-    font-family: nunito-reg;
+    font-family: var(--font);
     overflow-x: hidden;
 }
 
+/* Post creator (username) */
+h4.username {
+    margin: 0;
+    margin-inline: 0.5rem;
+}
+
+/* The divider between post content and comments section */
 .post-container hr {
     border: none;
     width: 100%;
     height: 2px;
-    background-color: black;
+    background-color: var(--color-1);
     margin-block: 1rem;
 }
 
+/* Container for username, avatar and date of creation */
 .post-user {
     display: grid;
     grid-template-rows: auto auto;
@@ -126,52 +129,71 @@ h4.username {
     width: fit-content;
 }
 
+/* Position all elements to column 2 */
 .post-user * {
     grid-column: 2;
     margin: 0;
 }
 
+/* Position svg to column 1 */
 .post-user svg {
     grid-column: 1;
     grid-row: 1 / span 2;
 }
 
+/* Date of creation */
 .post-user p {
     font-size: 0.7rem;
     margin-left: 0.5rem;
 }
 
+/* The username (both posts and comments) */
 .post-user a, .comment-container a {
     text-decoration: none;
-    color: black;
+    color: unset;
 }
 
+/* Like button */
 button.like {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     column-gap: 0.5rem;
 
-    background-color: var(--light-color-1);
+    background-color: transparent;
+    border: 2px solid var(--color-1);
+    border-radius: 0.5rem;
+
+    height: 2rem;
 }
 
+button.like:hover {
+    background-color: var(--color-2);
+    box-shadow: 0 0 3px lightpink;
+}
+
+/* The like button picture */
 img.like-state {
     max-width: 1rem;
 }
 
+/* Contains comments and the commenting interface */
 .comment-container {
     margin-left: 1rem;
 }
 
-.comment-container div {
+/* Contains commenter information */
+.comment-container > div {
     display: flex;
     align-items: center;
 }
 
-.comment-container div p {
+/* Contains comment date */
+.comment-container > div > p {
     font-size: 0.7rem;
 }
 
+/* Commenting interface */
 form.comment-box {
     display: flex;
     align-items: flex-end;
@@ -179,16 +201,33 @@ form.comment-box {
     --height: 35px;
 }   
 
+/* Contains current user icon and username */
 form.comment-box div {
     display: flex;
     align-items: center;
 
 }
 
+/* Submit button */
 form.comment-box input[type="submit"] {
+    box-sizing: border-box;
     height: var(--height);
+
+    background-color: transparent;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-1);
+
+    transition: 50ms;
 }
 
+/* Submit button when hovered*/
+form.comment-box input[type="submit"]:hover, form.comment-box input[type="submit"]:focus {
+    background-color: var(--color-2);
+    box-shadow: 0 0 3px lightpink;
+
+}
+
+/* Input area */
 form.comment-box textarea {
     resize: none;
     
@@ -203,167 +242,30 @@ form.comment-box textarea {
     height: var(--height);
     min-height: var(--height);
     
-    font-family: nunito-reg;
+    font-family: var(--font);
     font-size: 1rem;
+
+    background-color: var(--color-4);
+    border-radius: 0.5rem;
+    border: none;
 }
 
+/* When input area is tabbed into */
 form.comment-box textarea:focus {
     outline: none;
 }
 
-/* Profile.php */
-.delete-btn, .edit-btn, .exit-btn, #option-btn {
-    position: absolute;
-    top: 1rem;
-    right: 3rem;
+/* If dark mode, change post tab colors */
+@media (prefers-color-scheme:dark) {
+    .post-tab {
+        box-shadow: 0 0 7px white;
+    }
 
-    cursor: pointer;
-}
+    .post-tab img {
+        filter: invert();
+    }
 
-.edit-btn {
-    top: 3rem;
-}
-
-.delete-confirm {
-    position: absolute;
-    inset: 0;
-    
-    background: linear-gradient(to bottom, var(--light-color-1), #bc6c2522);
-
-    display: none;
-    opacity: 0;
-
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.delete-confirm.active {
-    display: flex;
-    opacity: 1;
-}
-
-.delete-confirm > * {
-    display: none;
-}
-
-.delete-confirm.active > * {
-    display: block;
-}
-
-.delete-confirm.active button {
-    width: 6rem;
-    height: 2.5rem;
-
-    margin-top: 0.5rem;
-    background-color: white;
-    
-    border-radius: 0.3rem;
-    border: solid 1px black;
-    
-    font-family: nunito-semibold;
-    font-size: 1.1rem;
-    transition: 200ms;
-    cursor: pointer;
-
-    transition: 200ms;
-}
-
-.delete-confirm.active .yes-btn:hover {
-    background-color: seagreen;
-    color: white;
-}
-
-.delete-confirm.active .no-btn:hover {
-    background-color: darkred;
-    color: white;
-}
-
-#modify_profile {
-    font-family: nunito-reg;
-    font-size: 0.8rem;
-
-    border: none;
-    cursor: pointer;
-}
-
-#profile-upload-popup, #change-name, #change-description {
-    position: absolute;
-    inset: 6rem 15rem;
-
-    padding: 1rem 3rem;
-
-    border-radius: 0.3rem;
-    box-shadow: 0 2px 4px 0 gray;
-    background-color: lightgray;
-
-    font-family: nunito-reg;
-
-    z-index: 2;
-    display: none;
-    flex-direction: column;
-}
-
-#backdrop {
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(8px);
-
-    z-index: 1;
-    display: none;
-}
-
-#profile-avatars {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 6rem);
-    justify-content: space-evenly;
-
-    gap: 2rem;
-    overflow-y: scroll;
-    padding: 1rem;
-}
-
-#profile-avatars svg {
-    width: 6rem;
-    height: 6rem;
-    transform: scale(1);
-
-    transition: 300ms ease-out;
-}
-
-#profile-avatars svg:hover {
-    transform: scale(110%);
-}
-
-.modal.option {
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
-
-    background-color: var(--light-color-2);
-    border-radius: 0.5rem;
-    /* border: 2px solid var(--light-color-1); */
-    box-shadow: 0 2px 4px 0 gray;
-
-    max-height: 0;
-    overflow: hidden;
-
-    transition: max-height 200ms;
-}
-
-.modal.option * {
-    text-overflow: clip;
-}
-
-.modal.option:focus-within {
-    max-height: 1000px;
-}
-
-#change-name, #change-description {
-    inset: 10rem 15rem;
-}
-
-#change-name input, #change-description input {
-    width: 100%;
-    box-sizing: border-box;
+    .post-container {
+        box-shadow: 0 0 7px white;
+    }
 }

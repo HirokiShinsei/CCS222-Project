@@ -1,80 +1,29 @@
-// Logout button
-const logoutBtn = document.querySelector('.tab-option[name="logout"]');
-
-logoutBtn.addEventListener('click', logOut);
-logoutBtn.addEventListener('keydown', e => {
-    if (e.key === 'Enter') logOut();
-});
-
-// Profile button
-const profileBtn = document.querySelector('.tab-option[name="profile"]');
-
-profileBtn.addEventListener('click', () => {
-    console.log(profileBtn.getAttribute('data-name'));
-    if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php' || profileBtn.getAttribute('data-name') == '/CCS222-Project/profile-visit.php') window.location.href = 'home.php';
-    else window.location.href = 'profile.php';
-});
-
-profileBtn.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-        if (profileBtn.getAttribute('data-name') == '/CCS222-Project/profile.php' || profileBtn.getAttribute('data-name') == '/CCS222-Project/profile-visit.php') window.location.href = 'home.php';
-        else window.location.href = 'profile.php';
-    }
-});
-
-// Drop down options
-const dropdowns = document.querySelectorAll('header > div');
-dropdowns.forEach(div => navigateThrough(div));
-
-// Tab options 
-const tabOptions = document.querySelectorAll('header > #tab-box > .tab-option:not([first-option])');
-tabOptions.forEach(option => {
-    option.addEventListener('keydown', e => {
-        if (e.key === 'Enter') {
-            const name = option.querySelector('p');
-            
-            switch (name.innerText) {
-                case 'Home':
-                    window.location.href='home.php';
-                    break;
-                case 'Communities':
-                    window.location.href='communities.php';
-                    break;
-                case 'Trending':
-                    window.location.href='trending.php';
-                    break;
-                case 'Create a post':
-                    window.location.href='create-a-post.php';
-                    break;
-            }
-        }
-    });
-});
-
-// Remove focus from options dropdown if first option is selected
-const first_option_tab = document.querySelector('header > #tab-box > .tab-option[first-option]');
-if (first_option_tab != null) {
-    first_option_tab.addEventListener('keydown', e => {
-        if (e.key === 'Enter') first_option_tab.blur();
-    });
+// Redirect to home page when the title is clicked
+document.querySelector('header > h2').onclick = function() {
+    window.location.href = 'home.php';
 }
+
 
 // Search box
 
+// main search bar
+const searchbar = document.querySelector('#searchbar')
+
 // search bar (input)
-const searchInput = document.querySelector('#searchbar > input');
+const searchInput = searchbar.querySelector('input');
 
 // search box (appears on user type)
-const searchBox = document.querySelector('#search-box');
+const searchBox = searchbar.querySelector('#search-box');
 
 // Search suggestions div
-const searchSuggestions = document.querySelector('#search-suggestions');
+const searchSuggestions = searchBox.querySelector('#search-suggestions');
 
 // First search box option (user typed)
-const user_option = document.querySelector('#user-typed');
+const user_option = searchBox.querySelector('#user-typed');
 
 // Every time user types on search bar
 searchInput.addEventListener('input', () => {
+
     // remove all active class tags
     searchBox.querySelectorAll('section').forEach((option, index) => {
         if (index > 0) option.classList.remove('active');
@@ -171,30 +120,17 @@ searchInput.addEventListener('keydown', e => {
     }
 });
 
-// -----------------------------------------------
-// FUNCTIONS
-// -----------------------------------------------
-function navigateThrough(div) {
-    div.addEventListener('keydown', e => {
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            const children = div.querySelectorAll('.tab-option');
-            
-            const currentIndex = Array.from(children).indexOf(document.activeElement);
-            const nextIndex = currentIndex === children.length - 1 ? 0 : currentIndex + 1;
-            children[nextIndex].focus();
-            
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            const children = div.querySelectorAll('.tab-option');
-            const currentIndex = Array.from(children).indexOf(document.activeElement);
-            const prevIndex = currentIndex === 0 ? children.length - 1 : currentIndex - 1;
-            children[prevIndex].focus();
-        }
-    });
-}
+// Add left click to open profile, right click to log out
+const user_btn = document.querySelector('#user-btn');
 
-function logOut() {
+if (user_btn != null) {
+    user_btn.addEventListener('click', () => {window.location.href = 'profile.php'});
+    user_btn.addEventListener('contextmenu', logOut);
+}
+// Log out
+function logOut(e) {
+    e.preventDefault();
+
     let xhr = new XMLHttpRequest();
     
     xhr.open('GET', 'logout.php');

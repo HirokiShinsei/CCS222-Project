@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "Nunito";
+    src: url(fonts/Nunito-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url(fonts/Nunito-Black.ttf);
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url(fonts/Nunito-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "Nunito";
+    src: url(fonts/Nunito-SemiBold.ttf);
+    font-weight: 600;
+}
+
+html {
+    color-scheme: light dark;
+
+    --font: "Nunito", system-ui;
+}
+
+@media (prefers-color-scheme:light) {
+    html {
+        --color-1: #146C94;
+        --color-2: #19A7CE;
+        --color-3: #AFD3E2;
+        --color-4: #F6F1F1;
+    }
+}
+
+@media (prefers-color-scheme:dark) {
+    html {
+        --color-1: #635985;
+        --color-2: #443C68;
+        --color-3: #393053;
+        --color-4: #18122B;
+    }
+}
+
