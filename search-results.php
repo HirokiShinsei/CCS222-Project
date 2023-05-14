@@ -9,6 +9,7 @@
 <body>
     <?php include_once "header.php" ?>
     
+    <section class="post-section">
     <h1 id="search-results">Search Results</h1>
 
     <?php 
@@ -153,6 +154,7 @@
     }
 
     ?>
+    </section>
     <script src="post-boxes.js"></script>
 </body>
 </html>

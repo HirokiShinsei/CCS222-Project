@@ -5,6 +5,11 @@
     margin-top: 3rem;
 }
 
+/* User description */
+#description {
+    word-break: break-word;
+}
+
 /* All svg in profile editor */
 .delete-btn, .edit-btn, .exit-btn, #option-btn {
     position: absolute;

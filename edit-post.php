@@ -53,7 +53,7 @@
     <div class="post">
         <h1 class="post-head">Edit post</h1>
         <!-- <hr class="post"> -->
-        <form action="edit-post.php" method="post" class="form">
+        <form action="edit-post.php" method="post" class="form" autocomplete="off">
             <input type="hidden" name="id" value="<?php echo $_POST['id']?>">
             <input type="text" name="title" class="title" placeholder="Title..." required value="<?php echo $post['title']?>">
             <textarea name="content" class="content" placeholder="Write something..." required><?php echo str_replace("<br />", "", $post['content'])?></textarea>

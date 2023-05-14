@@ -56,7 +56,7 @@
             </svg>
 
             <h2 class="username"><?php echo $_SESSION['username'] ?></h2>
-            <p><?php echo $user_description?></p>
+            <p id="description"><?php echo $user_description?></p>
 
             <svg width=5 height=25 id="option-btn" tabindex=0>
                 <circle cx=50% cy=25% r=12% fill=black />

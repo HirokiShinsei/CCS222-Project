@@ -47,7 +47,7 @@
     <div class="post">
         <h1 class="post-head">Create a post</h1>
         <!-- <hr class="post"> -->
-        <form action="create-a-post.php" method="post" class="form">
+        <form action="create-a-post.php" method="post" class="form" autocomplete="off">
             <input type="text" name="title" class="title" placeholder="Title..." required>
             <textarea name="content" class="content" placeholder="Write something..." required></textarea>
             <input type="submit" value="Post">

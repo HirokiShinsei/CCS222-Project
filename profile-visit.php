@@ -42,7 +42,7 @@
                 <image href="<?php echo $user['profile_src'] ?>" width=100% height=100% clip-path="url(#avatar-clip)" />
             </svg>
             <h2 class="username"><?php echo $user_name ?></h2>
-            <p><?php echo $user_description ?></p>
+            <p id="description"><?php echo $user_description ?></p>
         </div>
 
         <?php
