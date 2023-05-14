@@ -153,6 +153,9 @@
         }
     }
 
+    if (empty($results) && empty($users)) 
+        echo "<p id='no-result' >Sorry, we can't find anything related to your search.</p>";
+
     ?>
     </section>
     <script src="post-boxes.js"></script>
