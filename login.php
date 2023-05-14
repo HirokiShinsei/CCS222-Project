@@ -63,7 +63,6 @@
         <label for="username" class="placeholder">Password</label>
         <input type="password" name="password" id="password" required> 
         <?php if (isset($error_msg) && $error_msg == "Password is incorrect.") echo '<label for="password" class="error">' . $error_msg . '</label>' ?>
-        <a href="" class="forgot">Forgot Password?</a>
         <input type="submit" value="Log In">
         <hr>
         <a href="sign-up.php" class="create">Create an account</a>
