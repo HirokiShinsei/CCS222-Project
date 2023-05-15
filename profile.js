@@ -92,17 +92,20 @@ const changeNameBio = document.querySelector('#change-description');
 const clearSearches = document.querySelector('#clear-searches');
 
 option_btn.addEventListener('focus', e => {
-    let index = 0;
+    let index = -1;
 
-    div.querySelectorAll('.tab-option')[0].classList.add('active');
+    div.querySelectorAll('.tab-option')[0].classList.remove('active');
     div.querySelectorAll('.tab-option')[1].classList.remove('active');
     div.querySelectorAll('.tab-option')[2].classList.remove('active');
 
     function KeyDown(e) {
         if (e.key === 'ArrowDown') {
             e.preventDefault();
-            let prevIndex = index;
-            index = index == 2 ? 0 : index + 1;
+            if (index === -1) index = 0;
+            else {
+                var prevIndex = index;
+                index = index == 2 ? 0 : index + 1;
+            }
     
             div.querySelectorAll('.tab-option')[index].classList.add('active');
             div.querySelectorAll('.tab-option')[prevIndex].classList.remove('active');
@@ -114,8 +117,11 @@ option_btn.addEventListener('focus', e => {
 
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
-            let prevIndex = index;
-            index = index == 0 ? 2 : index - 1;
+            if (index === -1) index = 2;
+            else {
+                var prevIndex = index;
+                index = index == 0 ? 2 : index - 1;
+            }
     
             div.querySelectorAll('.tab-option')[index].classList.add('active');
             div.querySelectorAll('.tab-option')[prevIndex].classList.remove('active');

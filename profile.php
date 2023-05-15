@@ -68,7 +68,7 @@
                     <p>Change Name</p>
                 </div>
                 <div class="tab-option" tabindex=-1>
-                    <p>Change Description</p>
+                    <p>Change Bio</p>
                 </div>
                 <div class="tab-option" tabindex=-1>
                     <p>Clear Recent Searches</p>

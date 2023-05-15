@@ -128,8 +128,7 @@ img.icon {
 #user-btn {
     background-color: var(--color-3);
 
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
     align-items: center;
 
     border-radius: 1.5rem;
@@ -139,6 +138,7 @@ img.icon {
     transition: 200ms ease-out;
 
     cursor: pointer;
+    position: relative;
 }
 
 /* When user hovers over user button */
@@ -167,6 +167,51 @@ a[href="login.php"] {
 
 #mobile-sidebar {
     display: none;
+}
+
+#username-options {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    
+    width: 9rem;
+    max-height: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    background-color: var(--color-2);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px 0 gray;
+
+    transform-origin: center;
+    transition: max-height 200ms ease-out;
+
+}
+
+#username-options button {
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.7rem 1rem;
+    border: none;
+
+    background-color: transparent;
+
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+
+    font-family: var(--font);
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+#username-options button:hover {
+    background-color: var(--color-1);
 }
 
 /* Mobile browser support */
@@ -279,6 +324,10 @@ a[href="login.php"] {
         opacity: 1;
         z-index: 2;
     }
+
+    #username-options {
+        display: none;
+    }
 }
 
 /* If color scheme is dark */
@@ -288,11 +337,7 @@ a[href="login.php"] {
         box-shadow: 0 0 7px white;
     }
 
-    #search-box {
-        box-shadow: 0 0 7px white;
-    }
-
-    #mobile-sidebar {
+    #search-box, #mobile-sidebar, #username-options {
         box-shadow: 0 0 7px white;
     }
 
@@ -302,6 +347,10 @@ a[href="login.php"] {
 
     #user-btn:hover, #user-btn:focus, #user-btn:focus-within {
         box-shadow: 0 0 7px white;
+    }
+
+    img.icon {
+        filter: invert();
     }
 
 }

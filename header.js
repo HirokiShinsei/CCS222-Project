@@ -117,8 +117,7 @@ const user_btn = document.querySelector('#user-btn');
 
 if (user_btn != null) {
     if (window.innerWidth > 480) {
-        user_btn.addEventListener('click', () => {window.location.href = 'profile.php'});
-        user_btn.addEventListener('contextmenu', logOut);
+        user_btn.addEventListener('click', openLogOutMenu);
     } else {
         user_btn.addEventListener('touchstart', expandSidebar);
     }
@@ -142,6 +141,23 @@ function expandSidebar(e) {
     document.querySelector('#log-out-option').addEventListener('touchstart', logOut);
 }
 // Log out
+function openLogOutMenu(e) {
+    e.preventDefault();
+
+    document.querySelector('#username-options').style.maxHeight = document.querySelectorAll('#username-options button').length * 2.5 + 'rem';
+
+    e.stopPropagation();
+    document.addEventListener('click', () => {
+        if (!document.querySelector('#username-options').contains(e.target)) {
+            document.querySelector('#username-options').style.maxHeight = '0';
+            user_btn.addEventListener('click', openLogOutMenu);
+            user_btn.blur();
+        }
+    });
+    user_btn.removeEventListener('click', openLogOutMenu);
+    document.querySelector('#logout-btn').addEventListener('click', logOut);
+}
+
 function logOut(e) {
     e.preventDefault();
 

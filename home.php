@@ -25,7 +25,6 @@
                     <image href="' . $user_profile . '" width=100% height=100% clip-path="url(#avatar-clip)" />
                 </svg>
                 <input type="text" placeholder="Create a post" onclick="redirect_to_post()" id="post-link" tabindex=-1>
-                <img src="img/image.png" alt="" class="icon">
             </div>';
         }
         ?>

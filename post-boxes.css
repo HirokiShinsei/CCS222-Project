@@ -265,6 +265,12 @@ form.comment-box textarea:focus {
     font-family: var(--font);
 }
 
+#no-result {
+    font-family: var(--font);
+    text-align: center;
+    color: var(--color-1);
+}
+
 /* If dark mode, change post tab colors */
 @media (prefers-color-scheme:dark) {
     .post-tab {
