@@ -33,7 +33,7 @@
         foreach($users as $user) {
             // Create post user
             echo '<div class="post-container" style="cursor:pointer" onclick="window.location.href=\'';
-            if (isset($_SESSION['username']) && $_SESSION['username'] === $user['username']) echo 'profile.php';
+            if (isset($_SESSION['username']) && $_SESSION['username'] === $user['username']) echo 'profile';
             else echo 'profile-visit.php?user_id=' . $user['user_id'];
             echo '\'">
                 <div class="post-user">

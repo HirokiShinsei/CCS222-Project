@@ -121,6 +121,17 @@ a.forgot {
     margin-top: 1.5rem;
 }
 
+p {
+    font-family: var(--font);
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid var(--color-1);
+    border-radius: 0.5rem;
+    width: fit-content;
+    display: block;
+    margin-inline: auto;
+}
+
 @media (prefers-color-scheme:dark) {
     input[type="text"], input[type="password"] {
         box-shadow: 0 0 7px white;

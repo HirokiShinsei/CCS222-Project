@@ -26,7 +26,7 @@ document.querySelectorAll('.edit-btn').forEach(edit_btn => {
         form.style.display = 'none';
         document.body.appendChild(form);
 
-        form.action = 'edit-post.php';
+        form.action = 'edit-post';
         form.method = 'POST';
 
         const input = document.createElement('input');

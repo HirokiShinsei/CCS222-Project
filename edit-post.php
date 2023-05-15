@@ -41,7 +41,7 @@
     
     
                     // Redirect to home.php
-                    header('Location: profile.php');
+                    header('Location: profile');
                     exit;
 
                 } catch (PDOException $e) {

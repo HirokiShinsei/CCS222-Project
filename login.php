@@ -13,7 +13,7 @@
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            session_set_cookie_params('86400', '/', '.php', true, true);
+            session_set_cookie_params(86400);
             session_start();
             
             $_SESSION['username'] = $_POST['username'];
@@ -39,8 +39,9 @@
                     } else {
                         
                         $_SESSION['username'] = $row['username'];
-                        
-                        header('Location: home.php');
+                        setcookie('last_login', '.', time() + 86400 * 2);
+
+                        header('Location: home');
                     }
                 }
                 else {
@@ -49,7 +50,8 @@
             }
         }
 
-        echo '<p>Your session has expired. Please log in again.</p>'
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['session']) && $_GET['session'] === 'expired')
+            echo '<p>Your session has expired. Please log in again.</p>'
     ?>
     <form action="login.php" method="post">
         <h1>DiscussDen</h1>
@@ -64,7 +66,7 @@
         <?php if (isset($error_msg) && $error_msg == "Password is incorrect.") echo '<label for="password" class="error">' . $error_msg . '</label>' ?>
         <input type="submit" value="Log In">
         <hr>
-        <a href="sign-up.php" class="create">Create an account</a>
+        <a href="sign-up" class="create">Create an account</a>
     </form>
 </body>
 </html>

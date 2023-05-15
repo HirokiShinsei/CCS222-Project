@@ -1,14 +1,39 @@
 <header>
     <?php 
+    // generate session cookie
+    session_start(); 
 
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
-        header('Location: 403-Forbidden.html');
+        header('Location: 403-Forbidden');
         exit();
     }
 
-    // generate session cookie
-    session_set_cookie_params(86400);
-    session_start(); 
+    // If session expired, redirect to login page
+    if (!isset($_COOKIE['last_login'])) {
+        session_unset();
+        session_destroy();
+
+        header('Location: login.php?session=expired');
+        exit();
+    } else {
+        // Removes duplicate cookies
+        $count = 0;
+        foreach($_COOKIE as $cookie) {
+            if ($cookie === 'last_login') $count++;
+        }
+
+        if ($count > 1) {
+            foreach($_COOKIE as $cookie) {
+                if ($cookie === array_key_first($_COOKIE)) continue;
+                setcookie($cookie, '', time() - 3600);
+            }
+        }
+    }
+
+    if (!isset($_SESSION['username'])) {
+        header('Location: login.php');
+        exit();
+    }
 
     // access database
     $db_file = __DIR__ . '\forum_database.db';
@@ -120,14 +145,14 @@
             <p class="username">' . $_SESSION['username'] . '</p>
             <div id="username-options">';
             if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php') {
-                echo '<button onclick="window.location.href=\'home.php\'"><img src="img/home.png" class="icon">Back to Home</button>';
+                echo '<button onclick="window.location.href=\'home\'"><img src="img/home.png" class="icon">Back to Home</button>';
             } 
             else if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/search-results.php') {
-                echo '<button onclick="window.location.href=\'profile.php\'"><img src="img/profile.png" class="icon">View Profile</button>';
-                echo '<button onclick="window.location.href=\'home.php\'"><img src="img/home.png" class="icon">Back to Home</button>';
+                echo '<button onclick="window.location.href=\'profile\'"><img src="img/profile.png" class="icon">View Profile</button>';
+                echo '<button onclick="window.location.href=\'home\'"><img src="img/home.png" class="icon">Back to Home</button>';
             }
             else {
-                echo '<button onclick="window.location.href=\'profile.php\'"><img src="img/profile.png" class="icon">View Profile</button>';
+                echo '<button onclick="window.location.href=\'profile\'"><img src="img/profile.png" class="icon">View Profile</button>';
             }
             echo '<button id="logout-btn"><img src="img/logout.png" class="icon">Log Out</button>
             </div>
@@ -155,13 +180,13 @@ echo '
         <a class="option">Change Name</a>
         <a class="option">Change Description</a>
         <a class="option">Clear Recent Searches</a>
-        <a class="option" href="home.php">Back to Home</a>'; 
+        <a class="option" href="home">Back to Home</a>'; 
 
     } else if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/search-results.php') {
-        echo '<a class="option" href="profile.php">Go to Profile</a>';
+        echo '<a class="option" href="profile">Go to Profile</a>';
         echo '<a class="option" href="home.php">Back to Home</a>'; 
     }
-    else echo '<a class="option" href="profile.php">Go to Profile</a>';
+    else echo '<a class="option" href="profile">Go to Profile</a>';
     
     echo '<a class="option" id="log-out-option">Log Out</a>
 </div>';

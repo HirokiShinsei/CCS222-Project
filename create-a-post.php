@@ -40,7 +40,7 @@
             $stmt -> execute();
 
             // Redirect to home.php
-            header('Location: home.php');
+            header('Location: home');
             exit;
         }
     ?>

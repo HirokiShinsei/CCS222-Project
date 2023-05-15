@@ -1,7 +1,7 @@
 // Redirect to home page when the title is clicked
 if (window.innerWidth > 480) {
     document.querySelector('header > h2').onclick = function() {
-        window.location.href = 'home.php';
+        window.location.href = 'home';
     }
 }
 
@@ -166,7 +166,7 @@ function logOut(e) {
     xhr.open('GET', 'logout.php');
     xhr.send();
 
-    window.location.href = 'login.php';
+    window.location.href = 'login';
 }
 
 

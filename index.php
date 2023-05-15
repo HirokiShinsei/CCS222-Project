@@ -12,10 +12,19 @@
     session_set_cookie_params(86400);
     session_start();
     
+    // If session expired, redirect to login page
+    if (isset($_SESSION['expire_time']) && time() > $_SESSION['expire_time']) {
+        session_unset();
+        session_destroy();
+
+        header('Location: login.php?session=expired');
+        exit();
+    }
+
     if(isset($_SESSION['username'])) {
-        header('Location: home.php');
+        header('Location: home');
     } else {
-        header('Location: login.php');
+        header('Location: login');
     }?>
     
 </body>

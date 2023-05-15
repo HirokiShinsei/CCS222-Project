@@ -17,6 +17,6 @@ $stmt -> bindParam(':current_user', $_SESSION['username']);
 $stmt -> bindParam(':description', $newdescription);
 $stmt -> execute();
 
-header('Location: profile.php');
+header('Location: profile');
 
 ?>

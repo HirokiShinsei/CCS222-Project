@@ -26,6 +26,6 @@ $stmt -> execute();
 $_SESSION['username'] = $newname;
 setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
 
-header('Location: profile.php');
+header('Location: profile');
 
 ?>

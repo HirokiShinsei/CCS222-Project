@@ -2,7 +2,7 @@ const post_bar = document.querySelector('#post-link');
 if (post_bar != null) {
     post_bar.addEventListener('click', () => {
         post_bar.disabled = true;
-        window.location.href='create-a-post.php';
+        window.location.href='create-a-post';
     });
 }
 
