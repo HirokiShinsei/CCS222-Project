@@ -132,7 +132,7 @@ option_btn.addEventListener('focus', e => {
         } else if (e.key === 'Enter') {
             if (index === 0) ChangeName();
             else if (index === 1) ChangeBio();
-            else if (index === 2) RemoveSearches();sol
+            else if (index === 2) RemoveSearches();
         }
     }
     option_btn.addEventListener('keydown', KeyDown);
