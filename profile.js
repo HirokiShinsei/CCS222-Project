@@ -76,6 +76,8 @@ document.querySelectorAll('.profile-option').forEach(profile => {
         xhr.onload = function() {
             if (xhr.status === 200) {
                 location.reload();
+                document.querySelector('#profile-upload-popup').style.display = 'none';
+                document.querySelector('#profile-avatars').scrollTop = 0;
             }
         }
         xhr.send('newfill=' + encodeURIComponent(profile.getAttribute('href')));
@@ -87,18 +89,33 @@ const option_btn = document.querySelector('#option-btn');
 
 const changeNameForm = document.querySelector('#change-name');
 const changeNameBio = document.querySelector('#change-description');
+const clearSearches = document.querySelector('#clear-searches');
 
 option_btn.addEventListener('focus', e => {
-    let index = 1;
+    let index = 0;
 
-    div.querySelectorAll('.tab-option')[0].classList.remove('active');
+    div.querySelectorAll('.tab-option')[0].classList.add('active');
     div.querySelectorAll('.tab-option')[1].classList.remove('active');
+    div.querySelectorAll('.tab-option')[2].classList.remove('active');
 
     function KeyDown(e) {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        if (e.key === 'ArrowDown') {
             e.preventDefault();
             let prevIndex = index;
-            index = index == 0 ? 1 : 0;
+            index = index == 2 ? 0 : index + 1;
+    
+            div.querySelectorAll('.tab-option')[index].classList.add('active');
+            div.querySelectorAll('.tab-option')[prevIndex].classList.remove('active');
+            
+    
+            option_btn.addEventListener('blur', () => {
+                option_btn.removeEventListener('keydown', KeyDown);
+            });
+
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            let prevIndex = index;
+            index = index == 0 ? 2 : index - 1;
     
             div.querySelectorAll('.tab-option')[index].classList.add('active');
             div.querySelectorAll('.tab-option')[prevIndex].classList.remove('active');
@@ -110,22 +127,75 @@ option_btn.addEventListener('focus', e => {
 
         } else if (e.key === 'Enter') {
             if (index === 0) ChangeName();
-            else ChangeBio();
+            else if (index === 1) ChangeBio();
+            else RemoveSearches();
         }
+        console.log(index);
     }
     option_btn.addEventListener('keydown', KeyDown);
     div.querySelectorAll('.tab-option')[0].addEventListener('click', ChangeName);
     div.querySelectorAll('.tab-option')[1].addEventListener('click', ChangeBio);
+    div.querySelectorAll('.tab-option')[2].addEventListener('click', RemoveSearches);
+    
 });
 
+document.querySelectorAll('.option')[0].addEventListener('touchstart', ChangeName);
+document.querySelectorAll('.option')[1].addEventListener('touchstart', ChangeBio);
+document.querySelectorAll('.option')[2].addEventListener('touchstart', RemoveSearches);
+
 function ChangeName() {
+    console.log("Hi");
+    document.querySelector('#mobile-sidebar').classList.remove('active');
+    document.querySelector('#backdrop').classList.remove('active');
+    user_btn.addEventListener('touchstart', expandSidebar);
+
     document.querySelector('#backdrop-profile').style.display = 'flex';
-    changeNameForm.style.display = 'unset';
+    changeNameForm.style.display = 'flex';
     document.querySelector('body').style.overflowY = 'hidden';
 }
 
 function ChangeBio() {
+    document.querySelector('#mobile-sidebar').classList.remove('active');
+    document.querySelector('#backdrop').classList.remove('active');
+    user_btn.addEventListener('touchstart', expandSidebar);
+
     document.querySelector('#backdrop-profile').style.display = 'flex';
-    changeNameBio.style.display = 'unset';
+    changeNameBio.style.display = 'flex';
     document.querySelector('body').style.overflowY = 'hidden';
 }
+
+function RemoveSearches() {
+    document.querySelector('#mobile-sidebar').classList.remove('active');
+    document.querySelector('#backdrop').classList.remove('active');
+    user_btn.addEventListener('touchstart', expandSidebar);
+
+    document.querySelector('#backdrop-profile').style.display = 'flex';
+    clearSearches.style.display = 'flex';
+    document.querySelector('body').style.overflowY = 'hidden';
+}
+
+function ClearSearchHistory() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'clear-searches.php');
+    xhr.onload = function() {
+        console.log('Successfully cleared search history');
+        location.reload();
+    }
+    xhr.send();
+}
+
+// Clear searches
+clearSearches.querySelector('.yes-btn').addEventListener('click', ClearSearchHistory);
+clearSearches.querySelector('.yes-btn').addEventListener('touchstart', ClearSearchHistory);
+
+clearSearches.querySelector('.no-btn').addEventListener('click', () => {
+    document.querySelector('#backdrop-profile').style.display = 'none';
+    clearSearches.style.display = 'none';
+    document.querySelector('body').style.overflowY = 'auto';
+});
+
+clearSearches.querySelector('.no-btn').addEventListener('touchstart', () => {
+    document.querySelector('#backdrop-profile').style.display = 'none';
+    clearSearches.style.display = 'none';
+    document.querySelector('body').style.overflowY = 'auto';
+});

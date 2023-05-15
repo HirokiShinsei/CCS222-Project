@@ -70,6 +70,9 @@
                 <div class="tab-option" tabindex=-1>
                     <p>Change Description</p>
                 </div>
+                <div class="tab-option" tabindex=-1>
+                    <p>Clear Recent Searches</p>
+                </div>
             </div>
         </div>
 
@@ -82,7 +85,7 @@
                 <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
             </svg>
             <h2 class="username">Change Profile Username</h2>
-            <input type="text" placeholder="Enter new username here" name="newname">
+            <input type="text" placeholder="Enter new username here" name="newname" maxlength=15>
             <input type="submit" value="Change Username">
         </form>
         <form action="change-description.php" method="post" id="change-description">
@@ -92,9 +95,16 @@
                 <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
             </svg>
             <h2 class="username">Change Profile Bio</h2>
-            <input type="text" placeholder="Enter new bio here" name="newdescription">
+            <input type="text" placeholder="Enter new bio here" name="newdescription" maxlength=40>
             <input type="submit" value="Change Bio">
         </form>
+        <div id="clear-searches">
+            <h2 class="username">Clear Recent Searches?</h2>
+            <div>
+                <button class="yes-btn">Yes</button>
+                <button class="no-btn">No</button>
+            </div>
+        </div>
             
         <div id="profile-upload-popup">
             <svg width=25 height=25 class="exit-btn">

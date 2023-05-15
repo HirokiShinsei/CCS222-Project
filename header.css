@@ -206,6 +206,7 @@ a[href="login.php"] {
 
     #mobile-sidebar {
         background-color: var(--color-3);
+        box-shadow: 2px 0 4px 0 gray;
         
         position: fixed;
         width: 60vw;
@@ -215,7 +216,7 @@ a[href="login.php"] {
         display: flex;
         flex-direction: column;
         
-        left: -60vw;
+        left: calc(-60vw - 7px);
         transition: left 300ms ease-out;
 
         z-index: 2;
@@ -233,7 +234,7 @@ a[href="login.php"] {
         align-items: center;
         justify-content: flex-start;
 
-        margin: 1rem;
+        padding: 1rem;
     }
 
     /* User username */
@@ -288,6 +289,10 @@ a[href="login.php"] {
     }
 
     #search-box {
+        box-shadow: 0 0 7px white;
+    }
+
+    #mobile-sidebar {
         box-shadow: 0 0 7px white;
     }
 

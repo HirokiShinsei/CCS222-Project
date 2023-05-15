@@ -61,7 +61,7 @@
 }
 
 /* All buttons in delete window */
-.delete-confirm button {
+.delete-confirm button, #clear-searches button {
     width: 6rem;
     height: 2.5rem;
 
@@ -79,17 +79,12 @@
     transition: 200ms;
 }
 
-/* Yes button (delete window) */
-.delete-confirm.active .yes-btn:hover {
-    background-color: var(--color-2);
+/* On hover (delete window and clear searches buttons) */
+.delete-confirm button:hover, #clear-searches button:hover {
+    background-color: var(--color-1);
     color: white;
 }
 
-/* No button (delete window) */
-.delete-confirm.active .no-btn:hover {
-    background-color: var(--color-2);
-    color: white;
-}
 
 /* Edit profile button (shown as a little section on the profile avatar with a pencil) */
 #modify_profile {
@@ -113,6 +108,7 @@
     grid-template-columns: repeat(auto-fit, 6rem);
     justify-content: space-evenly;
 
+    width: 100%;
     gap: 2rem;
     overflow-y: scroll;
     padding: 1rem;
@@ -128,7 +124,7 @@
 }
 
 /* Different avatars, on hover */
-#profile-avatars svg:hover {
+#profile-avatars svg:hover, #profile-avatars svg:active {
     transform: scale(110%);
 }
 
@@ -168,7 +164,7 @@
 
 /* When option button is focused, show options */
 #option-btn:focus + .modal.option {
-    max-height: 7rem;
+    max-height: 10rem;
     max-width: 15rem;
     overflow: hidden;
 }
@@ -193,10 +189,10 @@
 }
 
 /* Pop-up windows (change profile avatar, change name, change bio) */
-#profile-upload-popup, #change-name, #change-description {
+#profile-upload-popup, #change-name, #change-description, #clear-searches {
     position: absolute;
     inset: 6rem 15rem;
-
+    
     padding: 1rem 3rem;
 
     border-radius: 0.3rem;
@@ -204,21 +200,70 @@
     background-color: var(--color-3);
 
     font-family: var(--font);
-
+    
     z-index: 2;
     display: none;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Change name window, change bio window */
-#change-name, #change-description {
-    inset: 10rem 15rem;
+#change-name, #change-description, #clear-searches {
+    inset: 10rem 25rem;
+
+    text-align: center;
 }
 
-/* Change name and bio input box and submit button */
-#change-name input, #change-description input {
+#clear-searches {
+    inset: 13rem 30rem;
+}
+
+#clear-searches div {
+    display: flex;
+}
+
+#clear-searches button {
+    margin-inline: 1rem;
+}
+
+#change-name input[type="text"], #change-description input[type="text"] {
+    align-self: stretch;
+    padding: 0.8rem;
+    margin-top: 0.2rem ;
+
+    background-color: var(--color-4);
+    box-shadow: 0 2px 4px 0 gray;
+
+    border: 0;
+    border-radius: 5px;
+
     width: 100%;
     box-sizing: border-box;
+
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+#change-description input[type="text"] {
+    font-weight: 400;
+}
+
+#change-name input[type="submit"], #change-description input[type="submit"] {   
+    width: fit-content;
+    height: 2.5rem;
+    margin-top: 1.5rem;
+    padding-inline: 1rem;
+
+    background-color: transparent;
+    
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-1);
+
+    font-size: 1.1rem;
+    transition: 200ms;
+    cursor: pointer;
 }
 
 /* When color scheme is dark, set all svg fills to white */
@@ -236,11 +281,15 @@
     }
 
     .modal.option {
-        box-shadow: 0 0 7px lightpink;
+        box-shadow: 0 0 7px white;
     }
 
-    #profile-upload-popup, #change-name, #change-description {
-        box-shadow: 0 0 7px lightpink;
+    #profile-upload-popup, #change-name, #change-description, #clear-searches {
+        box-shadow: 0 0 7px white;
+    }
+
+    #change-name input[type="text"], #change-description input[type="text"] {
+        box-shadow: 0 0 7px white;
     }
 }
 
@@ -249,8 +298,28 @@
         margin-top: 8.7rem;
     }
 
-    #profile-upload-popup, #change-name, #change-description {
+    #profile-upload-popup {
         inset: 10rem 1rem;
     }
+
+    #change-name, #change-description, #clear-searches {
+        inset: 18rem 1rem;
+    }
     
+    #option-btn {
+        display: none;
+    }
+
+    .exit-btn {
+        right: 1rem;
+    }
+
+    #profile-avatars {
+        gap: 1rem;
+    }
+
+    #profile-avatars svg {
+        width: 5rem;
+        height: 5rem;
+    }
 }

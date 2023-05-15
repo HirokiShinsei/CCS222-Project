@@ -90,7 +90,9 @@
         </div>
         
         <img src="img/search.png" alt="" class="icon">
-        <input name="search" type="search" placeholder="Search a post or article" autocomplete="off" tabindex=0>
+        <input name="search" type="search" placeholder="Search a post or article" autocomplete="off" tabindex=0
+        <?php if ($_SERVER['PHP_SELF'] == '/CCS222-Project/search-results.php') echo 'value="' . $_GET['search'] . '"' ?>
+        >
     </form>
 
     <!-- User Button -->
@@ -125,11 +127,22 @@ echo '
         </svg>
         <p class="username">' . $_SESSION['username'] . '</p>
     </div>';
-    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php') 
-        echo '<a class="option" href="home.php">Back to Home'; 
-    else echo '<a class="option" href="profile.php">Go to Profile';
-    echo '</a>
-    <a class="option" id="log-out-option">Log Out</a>
+    if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php' || $_SERVER['PHP_SELF'] == '/CCS222-Project/profile-visit.php') {       
+        if ($_SERVER['PHP_SELF'] == '/CCS222-Project/profile.php') {
+            echo '
+            <a class="option">Change Name</a>
+            <a class="option">Change Description</a>
+            <a class="option">Clear Recent Searches</a>
+            ';
+        } else {
+            echo '<a class="option" href="profile.php">Go to Profile</a>';
+        }
+        echo '<a class="option" href="home.php">Back to Home</a>'; 
+
+
+    } else echo '
+    <a class="option" href="profile.php">Go to Profile</a>';
+    echo '<a class="option" id="log-out-option">Log Out</a>
 </div>';
 
 } else {

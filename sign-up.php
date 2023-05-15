@@ -61,14 +61,14 @@
         <hr>
         
         <label for="username" class="placeholder">Create a username</label>
-        <input type="text" name="username" id="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']?>" required> 
+        <input type="text" name="username" id="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']?>" required maxlength=15> 
         <?php if (isset($error_msg) && ($error_msg == "Invalid username." || $error_msg == "Username already exists.")) echo '<label for="username" class="error">' . $error_msg . '</label>' ?>
         
         <label for="username" class="placeholder">Create a password</label>
-        <input type="password" name="password_1" id="" value="<?php if(isset($_POST['password_1'])) echo $_POST['password_1']?>" required> 
+        <input type="password" name="password_1" id="" value="<?php if(isset($_POST['password_1'])) echo $_POST['password_1']?>" required maxlength=18> 
         
         <label for="username" class="placeholder">Verify password</label>
-        <input type="password" name="password_2" id="password" required> 
+        <input type="password" name="password_2" id="password" required maxlength=18> 
         <?php if (isset($error_msg) && $error_msg == "Passwords do not match.") echo '<label for="password" class="error">' . $error_msg . '</label>' ?>
 
         <input type="submit" value="Sign Up" id="signup">

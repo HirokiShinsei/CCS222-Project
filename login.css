@@ -64,9 +64,7 @@ input[type="text"], input[type="password"] {
     border-radius: 5px;
 }
 
-input[type="submit"] {
-    /* align-self: flex-end; */
-    
+input[type="submit"] {   
     width: 6rem;
     height: 2.5rem;
     margin-top: 1.5rem;

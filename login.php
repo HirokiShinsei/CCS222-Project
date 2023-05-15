@@ -57,11 +57,11 @@
         <h3>Join DiscussDen.</h3>
         
         <label for="username" class="placeholder">Username or Email</label>
-        <input type="text" name="username" id="username" value="<?php if(isset($_SESSION['username'])) echo $_SESSION['username']?>" required> 
+        <input type="text" name="username" id="username" value="<?php if(isset($_SESSION['username'])) echo $_SESSION['username']?>" required  maxlength=15> 
         <?php if (isset($error_msg) && ($error_msg == "Username does not exist." || $error_msg == "Username is invalid.")) echo '<label for="username" class="error">' . $error_msg . '</label>' ?>
         
         <label for="username" class="placeholder">Password</label>
-        <input type="password" name="password" id="password" required> 
+        <input type="password" name="password" id="password" required  maxlength=18> 
         <?php if (isset($error_msg) && $error_msg == "Password is incorrect.") echo '<label for="password" class="error">' . $error_msg . '</label>' ?>
         <input type="submit" value="Log In">
         <hr>
