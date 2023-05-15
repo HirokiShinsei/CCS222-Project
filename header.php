@@ -1,6 +1,11 @@
 <header>
     <?php 
 
+    if (empty($_SERVER['HTTP_REFERER']) || !strpos($_SERVER['HTTP_REFERER'], 'localhost/CCS222-Project')) {
+        header('Location: 403-Forbidden.html');
+        exit();
+    }
+
     // generate session cookie
     session_set_cookie_params(86400);
     session_start(); 

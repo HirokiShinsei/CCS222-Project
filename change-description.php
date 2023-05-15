@@ -1,5 +1,10 @@
 <?php
 
+if (empty($_SERVER['HTTP_REFERER']) || !strpos($_SERVER['HTTP_REFERER'], 'localhost/CCS222-Project')) {
+    header('Location: 403-Forbidden.html');
+    exit();
+}
+
 session_start();
 
 $db_file = __DIR__ . '\forum_database.db';
