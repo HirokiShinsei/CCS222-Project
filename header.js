@@ -144,7 +144,7 @@ function expandSidebar(e) {
 function openLogOutMenu(e) {
     e.preventDefault();
 
-    document.querySelector('#username-options').style.maxHeight = document.querySelectorAll('#username-options button').length * 2.5 + 'rem';
+    document.querySelector('#username-options').style.maxHeight = document.querySelectorAll('#username-options button').length * 2.5 + 1 + 'rem';
 
     e.stopPropagation();
     document.addEventListener('click', () => {
