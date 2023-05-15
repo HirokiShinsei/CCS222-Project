@@ -12,7 +12,11 @@
 </head>
 <body>
     <!-- Include header -->
-    <?php include_once "header.php" ?>
+    <?php include_once "header.php";
+    
+    // If session expired, redirect to login page
+    
+    ?>
 
     <!-- Create a post, sort posts (new, hot, top) -->
     <div id="input-section">

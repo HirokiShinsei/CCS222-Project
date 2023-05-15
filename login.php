@@ -49,9 +49,8 @@
             }
         }
 
+        echo '<p>Your session has expired. Please log in again.</p>'
     ?>
-    
-    
     <form action="login.php" method="post">
         <h1>DiscussDen</h1>
         <h3>Join DiscussDen.</h3>

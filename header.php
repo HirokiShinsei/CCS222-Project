@@ -1,7 +1,7 @@
 <header>
     <?php 
 
-    if (empty($_SERVER['HTTP_REFERER']) || !strpos($_SERVER['HTTP_REFERER'], 'localhost/CCS222-Project')) {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
         header('Location: 403-Forbidden.html');
         exit();
     }
