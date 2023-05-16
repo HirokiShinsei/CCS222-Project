@@ -76,11 +76,11 @@ SIGN-UP.PHP
         <h3>It's quick and easy.</h3>
         <hr>
         
-        <label for="username" class="placeholder">Create a username</label>
+        <label for="username" class="placeholder">Create a username (Maximum of 15 characters)</label>
         <input type="text" name="username" id="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']?>" required maxlength=15> 
         <?php if (isset($error_msg) && ($error_msg == "Invalid username. Only letters, numbers, the period and the @ symbol are allowed." || $error_msg == "Username already exists.")) echo '<label for="username" class="error">' . $error_msg . '</label>' ?>
         
-        <label for="username" class="placeholder">Create a password</label>
+        <label for="username" class="placeholder">Create a password (Maximum of 18 characters)</label>
         <input type="password" name="password_1" id="" value="<?php if(isset($_POST['password_1'])) echo $_POST['password_1']?>" required maxlength=18> 
         
         <label for="username" class="placeholder">Verify password</label>
