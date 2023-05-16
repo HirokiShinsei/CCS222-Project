@@ -97,7 +97,7 @@ PROFILE.PHP
                 <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
             </svg>
             <h2 class="username">Change Profile Username</h2>
-            <input type="text" placeholder="Enter new username here" name="newname" maxlength=15>
+            <input type="text" placeholder="Enter new username here (maximum of 15 characters)" name="newname" maxlength=15>
             <input type="submit" value="Change Username">
         </form>
         <form action="change-description.php" method="post" id="change-description">
@@ -107,7 +107,7 @@ PROFILE.PHP
                 <line x1=35% y1=65% x2=65% y2=35% stroke=black stroke-width=15% stroke-linecap="round" />
             </svg>
             <h2 class="username">Change Profile Bio</h2>
-            <input type="text" placeholder="Enter new bio here" name="newdescription" maxlength=40>
+            <input type="text" placeholder="Enter new bio here (maximum of 40 characters)" name="newdescription" maxlength=40>
             <input type="submit" value="Change Bio">
         </form>
         <div id="clear-searches">
