@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
 $db_file = __DIR__ . '\forum_database.db';
 $db = new PDO('sqlite:' . $db_file);
 
+// Delete every comment related to post
+$stmt = $db -> prepare('DELETE FROM comments WHERE post_id = :id');
+$stmt -> bindParam(':id', $_POST['id']);
+$stmt -> execute();
+
 // Delete the post with the submitted post id
 $stmt = $db -> prepare('DELETE FROM posts WHERE id = :id');
 $stmt -> bindParam(':id', $_POST['id']);
