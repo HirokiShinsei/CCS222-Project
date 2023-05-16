@@ -1,8 +1,18 @@
 <header>
     <?php 
+    /*
+    *******************************************************
+    HEADER.PHP
+
+    - The header tag of most pages
+    - Contains the sidebar and user options as well
+    ********************************************************
+    */
+
     // generate session cookie
     session_start(); 
 
+    // Prevents direct url attack (redirect to 403 Forbidden)
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
         header('Location: 403-Forbidden');
         exit();
@@ -30,6 +40,7 @@
         }
     }
 
+    // If user is not logged in
     if (!isset($_SESSION['username'])) {
         header('Location: login.php');
         exit();
@@ -37,8 +48,6 @@
 
     // access database
     $db_file = __DIR__ . '\forum_database.db';
-
-    // create new PDO from database
     $db = new PDO('sqlite:' . $db_file);
 
     // Get recent searches
@@ -110,7 +119,7 @@
             <div id="recent-searches">
                 <?php
                     if (isset($searches)) {
-                        
+                        // Individual search options in recent searches
                         foreach($searches as $search) {
                                 echo '<section ontouchstart="window.location.href=\'search-results.php?search=' . $search . '\'" onclick="window.location.href=\'search-results.php?search=' . $search . '\'" >' . $search . '</section>';
                         }
@@ -125,7 +134,9 @@
         
         <img src="img/search.png" alt="" class="icon">
         <input name="search" type="search" placeholder="Search a post or article" autocomplete="off" tabindex=0
-        <?php if ($_SERVER['PHP_SELF'] == '/CCS222-Project/search-results.php' && isset($_GET['search'])) echo 'value="' . $_GET['search'] . '"' ?>
+        <?php 
+        // If in search-results.php, set the search value to the searched statement
+        if ($_SERVER['PHP_SELF'] == '/CCS222-Project/search-results.php' && isset($_GET['search'])) echo 'value="' . $_GET['search'] . '"' ?>
         >
     </form>
 

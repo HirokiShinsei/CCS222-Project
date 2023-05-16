@@ -1,3 +1,13 @@
+<?php
+/*
+*******************************************************
+EDIT-POST.PHP
+
+- The post editing interface
+********************************************************
+*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +22,13 @@
 </head>
 <body>
     <?php 
+        // Include the header
         include_once "header.php";
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if ($_SERVER['HTTP_REFERER'] != 'http://localhost/CCS222-Project/edit-post.php') {
+            // Import the post into page if the post method is not from this page
+            if (!isset($_POST['source'])) {
                 
                 // Get post content from id
                 $stmt = $db -> prepare('SELECT * FROM posts WHERE id = :id');
@@ -24,37 +36,34 @@
                 $stmt -> execute();
                 $post = $stmt -> fetch(PDO::FETCH_ASSOC);
 
-            } else {
+            } 
+            // If the post method is from this page (i.e. the form below)
+            else {
+                
+                // Get current date and time
+                $date = new DateTime("now", new DateTimeZone("Asia/Manila"));
+                $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-                try {
-                    // Get current date and time
-                    $date = new DateTime("now", new DateTimeZone("Asia/Manila"));
-                    $db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-                    // update row of post (in table posts)
-                    $stmt = $db -> prepare('UPDATE posts SET title = :title, content = :content, date = :date WHERE id = :id');
-                    $stmt -> bindParam(':title', strip_tags($_POST['title']), PDO::PARAM_STR);
-                    $stmt -> bindParam(':content', strip_tags(nl2br($_POST['content']), ['<br>', '<br/>']), PDO::PARAM_STR);
-                    $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
-                    $stmt -> bindParam(':id', $_POST['id']);
-                    $stmt -> execute();
-    
-    
-                    // Redirect to home.php
-                    header('Location: profile');
-                    exit;
+                // update row of post (in table posts)
+                $stmt = $db -> prepare('UPDATE posts SET title = :title, content = :content, date = :date WHERE id = :id');
+                $stmt -> bindParam(':title', strip_tags($_POST['title']), PDO::PARAM_STR);
+                $stmt -> bindParam(':content', strip_tags(nl2br($_POST['content']), ['<br>', '<br/>']), PDO::PARAM_STR);
+                $stmt -> bindParam(':date', $date -> format('F j, Y g:i A'));
+                $stmt -> bindParam(':id', $_POST['id']);
+                $stmt -> execute();
 
-                } catch (PDOException $e) {
-                    echo "<h1>Error: " . $e -> getMessage() . '</h1>';
-                }
+
+                // Redirect to profile page
+                header('Location: profile');
+                exit;
             }
         }
     ?>
     <div class="post">
         <h1 class="post-head">Edit post</h1>
-        <!-- <hr class="post"> -->
         <form action="edit-post.php" method="post" class="form" autocomplete="off">
             <input type="hidden" name="id" value="<?php echo $_POST['id']?>">
+            <input type="hidden" name="source" value=".">
             <input type="text" name="title" class="title" placeholder="Title..." required value="<?php echo $post['title']?>">
             <textarea name="content" class="content" placeholder="Write something..." required><?php echo str_replace("<br />", "", $post['content'])?></textarea>
             <input type="submit" value="Edit">

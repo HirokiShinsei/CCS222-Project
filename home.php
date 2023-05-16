@@ -1,3 +1,17 @@
+<?php
+/*
+*******************************************************
+HOME.PHP
+
+- The homepage
+- Handles all user posts and comments
+- Contains the link to create-a-post.php
+- Contains the sorting algorithm and buttons
+********************************************************
+*/
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

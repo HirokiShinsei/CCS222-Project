@@ -1,3 +1,15 @@
+<?php
+/*
+*******************************************************
+INDEX.PHP
+
+- The main page of the website
+- Redirects to home page if session exists;
+otherwise, redirects to login.php
+********************************************************
+*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,14 @@
+<?php
+/*
+*******************************************************
+PROFILE.PHP
+
+- The profile interface
+- Contains the user's posts
+- Contains the profile editing interface 
+********************************************************
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +24,7 @@
 </head>
 <body>
     <?php 
+        // Include the header
         include_once "header.php";
 
         // Get current user's ID

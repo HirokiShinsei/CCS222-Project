@@ -1,3 +1,14 @@
+<?php
+/*
+*******************************************************
+PROFILE-VISIT.PHP
+
+- The profile visiting interface
+- Visit users other than the session user here
+********************************************************
+*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

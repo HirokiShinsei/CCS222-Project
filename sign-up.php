@@ -1,3 +1,13 @@
+<?php
+/*
+*******************************************************
+SIGN-UP.PHP
+
+- The sign up interface
+- Create a new user here
+********************************************************
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,39 +22,45 @@
 
     <?php 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            session_start();
 
+            // Restrict the username to these characters
             $allowed_chars = '/^[a-zA-Z0-9.@]+$/';
-        
+            
+            // If username does not follow these characters, return error message
             if (!preg_match($allowed_chars, $_POST['username'])) {
-                $error_msg = "Invalid username.";
+                $error_msg = "Invalid username. Only letters, numbers, the period and the @ symbol are allowed.";
             }
+            // If passwords in both fields do not match, return error message
             else if ($_POST['password_1'] != $_POST['password_2']) {
                 $error_msg = "Passwords do not match.";
             }
             else {
-                $_SESSION['username'] = trim($_POST['username']);
+                // assign the username to a variable
+                $username = $_POST['username'];
 
-                // SQLite Database Access
+                // access the database
                 $db_file = __DIR__ . '\forum_database.db';
                 $db = new PDO('sqlite:' . $db_file);
 
+                // Check if username is unique
                 $user_check = $db -> prepare('SELECT * FROM users WHERE username = :user');
-                $user_check -> bindParam(':user', $_SESSION['username'], PDO::PARAM_STR);
+                $user_check -> bindParam(':user', $username, PDO::PARAM_STR);
                 $user_check -> execute();
                 
                 if ($user_check -> rowCount() > 0) {
                     $error_msg = "Username already exists.";
                 }
                 else {
-                    $_SESSION['password'] = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
+                    // Hash the password
+                    $password = password_hash($_POST['password_1'], PASSWORD_DEFAULT);
 
+                    // Insert the data into a new row in the database
                     $insert_data = $db -> prepare('INSERT INTO users (username, password) VALUES (:username, :password)');
-                    $insert_data -> bindParam(':username', $_SESSION['username']);
-                    $insert_data -> bindParam(':password', $_SESSION['password']);
+                    $insert_data -> bindParam(':username', $username);
+                    $insert_data -> bindParam(':password', $password);
                     $insert_data -> execute();
 
-                    session_destroy();
+                    // Redirect to login page
                     header('Location: login');
 
                 }
@@ -62,7 +78,7 @@
         
         <label for="username" class="placeholder">Create a username</label>
         <input type="text" name="username" id="username" value="<?php if(isset($_POST['username'])) echo $_POST['username']?>" required maxlength=15> 
-        <?php if (isset($error_msg) && ($error_msg == "Invalid username." || $error_msg == "Username already exists.")) echo '<label for="username" class="error">' . $error_msg . '</label>' ?>
+        <?php if (isset($error_msg) && ($error_msg == "Invalid username. Only letters, numbers, the period and the @ symbol are allowed." || $error_msg == "Username already exists.")) echo '<label for="username" class="error">' . $error_msg . '</label>' ?>
         
         <label for="username" class="placeholder">Create a password</label>
         <input type="password" name="password_1" id="" value="<?php if(isset($_POST['password_1'])) echo $_POST['password_1']?>" required maxlength=18> 

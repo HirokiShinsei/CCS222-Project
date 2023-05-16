@@ -1,16 +1,29 @@
 <?php
+/*
+*******************************************************
+CHANGE_NAME.PHP
+
+- Changes user name
+********************************************************
+*/
+
+// Prevent direct url attack (redirect to 403 Forbidden)
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
     header('Location: 403-Forbidden.html');
     exit();
 }
 
+// start the session
 session_start();
 
+// access the database
 $db_file = __DIR__ . '\forum_database.db';
 $db = new PDO('sqlite:' . $db_file);
 
+// get the new name from the submitted data
 $newname = strip_tags($_POST['newname']);
 
+// set the new username in users
 $stmt = $db -> prepare('UPDATE users SET username = :user WHERE username = :current_user');
 $stmt -> bindParam(':current_user', $_SESSION['username']);
 $stmt -> bindParam(':user', $newname);
@@ -26,6 +39,7 @@ $stmt -> execute();
 $_SESSION['username'] = $newname;
 setcookie("username", $_SESSION['username'], time() + (86400 * 7), "/");
 
+// redirect to profile page
 header('Location: profile');
 
 ?>

@@ -1,3 +1,13 @@
+<?php
+/*
+*******************************************************
+SEARCH-RESULTS.PHP
+
+- The search results interface
+- Show all posts and users related to search here
+********************************************************
+*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +26,7 @@
     
     // Check if search is set and not empty
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search'])) {
-        $searchTerm = $_GET['search'];
+        $searchTerm = trim($_GET['search']);
 
         // Get post searches
         $stmt = $db -> prepare("SELECT * FROM posts WHERE title LIKE :term OR content LIKE :term");

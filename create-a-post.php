@@ -1,3 +1,13 @@
+<?php
+/*
+*******************************************************
+CREATE-A-POST.PHP
+
+- The create-a-post interface
+********************************************************
+*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +22,16 @@
 </head>
 <body>
     <?php 
+        // Include the header
         include_once "header.php";
         
+        // If the user has posted the title and content
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // start the session
             session_start();
 
-            // Open database file
+            // Access the database
             $db_file = __DIR__ . '\forum_database.db';
             $db = new PDO('sqlite:' . $db_file);
 
@@ -39,14 +53,13 @@
             $stmt -> bindParam(':likes', json_encode(array()));
             $stmt -> execute();
 
-            // Redirect to home.php
+            // Redirect to home
             header('Location: home');
             exit;
         }
     ?>
     <div class="post">
         <h1 class="post-head">Create a post</h1>
-        <!-- <hr class="post"> -->
         <form action="create-a-post.php" method="post" class="form" autocomplete="off">
             <input type="text" name="title" class="title" placeholder="Title..." required>
             <textarea name="content" class="content" placeholder="Write something..." required></textarea>

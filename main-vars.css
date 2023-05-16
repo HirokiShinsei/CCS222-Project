@@ -1,3 +1,13 @@
+/*
+*******************************************************
+MAIN-VARS.CSS
+
+- Contains global styling and color schemes
+- To be imported in all css files
+- Do not modify unless you want to change the colors in
+the color scheme
+********************************************************
+*/
 @font-face {
     font-family: "Nunito";
     src: url(fonts/Nunito-Regular.ttf);

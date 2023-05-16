@@ -1,3 +1,13 @@
+/*
+*******************************************************
+HEADER.CSS
+
+- Styling for header.php
+- To be imported in webpages that contains the header 
+importation statement
+********************************************************
+*/
+
 @import url('main-vars.css');
 
 body {

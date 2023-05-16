@@ -1,3 +1,12 @@
+/*
+*******************************************************
+POST-BOXES.CSS
+
+- Styling for posts, comments
+- Used in home.php, search-results.php, profile.php,
+profile-visit.php, 
+********************************************************
+*/
 @import url(main-vars.css);
 
 /* Create a post, sorting tab */
