@@ -64,7 +64,7 @@ EDIT-POST.PHP
         <form action="edit-post.php" method="post" class="form" autocomplete="off">
             <input type="hidden" name="id" value="<?php echo $_POST['id']?>">
             <input type="hidden" name="source" value=".">
-            <input type="text" name="title" class="title" placeholder="Title..." required value="<?php echo $post['title']?>">
+            <input type="text" name="title" class="title" placeholder="Place your title here (maximum of 100 characters)" required value="<?php echo $post['title']?>" maxlength=100>
             <textarea name="content" class="content" placeholder="Write something..." required><?php echo str_replace("<br />", "", $post['content'])?></textarea>
             <input type="submit" value="Edit">
         </form>

@@ -61,7 +61,7 @@ CREATE-A-POST.PHP
     <div class="post">
         <h1 class="post-head">Create a post</h1>
         <form action="create-a-post.php" method="post" class="form" autocomplete="off">
-            <input type="text" name="title" class="title" placeholder="Title..." required>
+            <input type="text" name="title" class="title" placeholder="Place your title here (maximum of 100 characters)" required maxlength=100>
             <textarea name="content" class="content" placeholder="Write something..." required></textarea>
             <input type="submit" value="Post">
         </form>

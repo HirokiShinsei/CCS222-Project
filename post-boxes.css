@@ -274,10 +274,15 @@ form.comment-box textarea:focus {
     font-family: var(--font);
 }
 
-#no-result {
+#no-result { 
     font-family: var(--font);
     text-align: center;
     color: var(--color-1);
+}
+
+/* Post content */
+.post-content {
+    overflow-wrap: break-word;
 }
 
 /* If dark mode, change post tab colors */

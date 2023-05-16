@@ -14,7 +14,7 @@ PROFILE.CSS
 
 /* User description */
 #description {
-    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* All svg in profile editor */
