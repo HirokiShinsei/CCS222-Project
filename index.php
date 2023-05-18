@@ -38,6 +38,5 @@ otherwise, redirects to login.php
     } else {
         header('Location: login');
     }?>
-    
 </body>
 </html>

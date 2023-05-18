@@ -331,6 +331,7 @@ form.comment-box textarea:focus {
     .post-container {
         margin: 0.5rem 0 0;
         border-radius: 0;
+        padding-inline: 1.5rem;
     }
 
     h4.username, .post-content {

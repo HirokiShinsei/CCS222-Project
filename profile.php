@@ -38,6 +38,7 @@ PROFILE.PHP
 
     ?>
     <section class="post-section" id="main-profile">
+    <p style="color: white; text-align:center; font-family: system-ui, sans-serif; margin-top: 2rem"><?php if(isset($_GET['error']) && $_GET['error'] == 'user_exists') echo 'Username already exists!'; ?></p>        
         
         <div class="post-container">
             <svg width=75 height=75>

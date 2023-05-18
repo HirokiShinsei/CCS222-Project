@@ -326,7 +326,8 @@ PROFILE.CSS
     }
 
     #change-name, #change-description, #clear-searches {
-        inset: 18rem 1rem;
+        inset: auto 1rem;
+	height: fit-content;
     }
     
     #option-btn {
@@ -344,5 +345,18 @@ PROFILE.CSS
     #profile-avatars svg {
         width: 5rem;
         height: 5rem;
+    }
+
+    /* All svg in profile editor */
+    .delete-btn, .edit-btn, .exit-btn, #option-btn {
+        top: 1rem;
+        right: 1.5rem;
+
+        cursor: pointer;
+    }
+
+    /* delete button */
+    .delete-btn {
+        right: 3.5rem;
     }
 }

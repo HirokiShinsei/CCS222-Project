@@ -232,6 +232,7 @@ a[href="login.php"] {
         justify-content: center;
 
         height: fit-content;
+        max-height: 9rem;
         padding-bottom: 1rem;
 
         position: absolute;

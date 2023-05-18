@@ -23,6 +23,18 @@ $db = new PDO('sqlite:' . $db_file);
 // get the new name from the submitted data
 $newname = strip_tags($_POST['newname']);
 
+// Check if username is unique
+$stmt = $db -> prepare('SELECT * FROM users WHERE username = :new_user');
+$stmt -> bindParam(':new_user', $newname);
+$stmt -> execute();
+
+$names = $stmt -> fetchAll(PDO::FETCH_ASSOC);
+
+if (count($names) > 0) {
+    header('Location: profile.php?error=user_exists');
+    exit;
+}
+
 // set the new username in users
 $stmt = $db -> prepare('UPDATE users SET username = :user WHERE username = :current_user');
 $stmt -> bindParam(':current_user', $_SESSION['username']);
